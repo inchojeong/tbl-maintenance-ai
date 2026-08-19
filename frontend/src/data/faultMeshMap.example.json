@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "note": "EXAMPLE — fault_code to area/mesh/checkpoint mapping. AI returns fault_code only; FE/BE resolve geometry via this file.",
+  "faults": {
+    "FAULT_AREA01_PART01": {
+      "fault_code": "FAULT_AREA01_PART01",
+      "label_ko": "구역1 부품1 이상(모의)",
+      "area_id": "AREA_01",
+      "model": "Maintenance_Area_01.glb",
+      "target_mesh": "AREA_01_PART_01",
+      "cover_mesh": "AREA_01_COVER_01",
+      "inspection_point": "AREA_01_CHECK_01",
+      "default_view_target": "AREA_01_OVERVIEW",
+      "component_focus_view": "AREA_01_PART_01_VIEW",
+      "system_code": "ENGINE_OIL",
+      "legacy_aliases": [
+        "ENGINE_OIL_FILTER",
+        "OIL_FILTER",
+        "ENGINE_OIL_SYSTEM"
+      ]
+    },
+    "FAULT_AREA02_PART01": {
+      "fault_code": "FAULT_AREA02_PART01",
+      "label_ko": "구역2 부품1 이상(모의)",
+      "area_id": "AREA_02",
+      "model": "Maintenance_Area_02.glb",
+      "target_mesh": "AREA_02_PART_01",
+      "cover_mesh": "AREA_02_COVER_01",
+      "inspection_point": "AREA_02_CHECK_01",
+      "default_view_target": "AREA_02_OVERVIEW",
+      "component_focus_view": "AREA_02_PART_01_VIEW",
+      "system_code": "UNKNOWN",
+      "legacy_aliases": []
+    },
+    "FAULT_AREA03_PART01": {
+      "fault_code": "FAULT_AREA03_PART01",
+      "label_ko": "구역3 부품1 이상(모의)",
+      "area_id": "AREA_03",
+      "model": "Maintenance_Area_03.glb",
+      "target_mesh": "AREA_03_PART_01",
+      "cover_mesh": "AREA_03_COVER_01",
+      "inspection_point": "AREA_03_CHECK_01",
+      "default_view_target": "AREA_03_OVERVIEW",
+      "component_focus_view": "AREA_03_PART_01_VIEW",
+      "system_code": "UNKNOWN",
+      "legacy_aliases": []
+    },
+    "FAULT_AREA04_PART01": {
+      "fault_code": "FAULT_AREA04_PART01",
+      "label_ko": "구역4 부품1 이상(모의)",
+      "area_id": "AREA_04",
+      "model": "Maintenance_Area_04.glb",
+      "target_mesh": "AREA_04_PART_01",
+      "cover_mesh": "AREA_04_COVER_01",
+      "inspection_point": "AREA_04_CHECK_01",
+      "default_view_target": "AREA_04_OVERVIEW",
+      "component_focus_view": "AREA_04_PART_01_VIEW",
+      "system_code": "UNKNOWN",
+      "legacy_aliases": []
+    }
+  }
+}

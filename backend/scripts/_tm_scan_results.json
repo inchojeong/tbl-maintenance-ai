@@ -1,0 +1,595 @@
+{
+  "pdf_dir": "D:\\OneDrive - 주식회사 티벨\\02. 과제 관리\\610. 정부지원사업\\2026 해병대 인공지능 아이디어 시제품 개발 공모전\\교범데이터\\CH-47D 정비교범(공개 배포가 허용된 미군 헬기 정비교범)",
+  "match_count": 49,
+  "matches": [
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 568,
+      "pdf_page_human": 569,
+      "printed_page_guess": 17,
+      "topics": [
+        "oil_pressure",
+        "xmsn_oil_temp"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T CHAPTER 6 DRIVE SYSTEM TROUBLESHOOTING CHAPTER OVERVIEW Chapter 6 contains procedures for Drive System troubleshooting. Each system and failure symptom is listed below. Included in this chapter are locations and views of all electrical connectors, receptacles, relays, and ground connections for the Drive System. Refer to TM 55-1520-240-23 for required maintenance procedures. SYSTEM PARA TRANSMISSION LUBRICATION SYSTEMS 6-1 TRANSMISSION CHIP DETECTORS AND DEBRIS INDICATING SCREENS 6-2 FAILURE SYMPTOM LIST TRANSMISSION LUBRICATION SYSTEMS SYSTEM TASK XMSN AUX OIL PRESS CAPSULE ON WITH ROTORS TURNING 6-1.3 XMSN OIL HOT CAPSULE ON, ONE TRANSMISSION OIL TEMPERATURE INDICATION HIGH 6-1.3 XMSN OIL PRESS CAPSULE ON AND ONE TRANSMISSION OIL PRESSURE INDICATION LOW 6-1.3 XMSN OIL PRESS CAPSULE ON, TRANSMISSION OIL PRESSURE INDICATIONS NORMAL 6-1.3 TRANSMISSION CHIP DETECTORS AND INDICATING SCREENS SYMPTOM TASK SYMPTOM TASK SYMPTOM TASK AFT TRANSMISSION DEBRIS SCREEN INDICATOR DOES NO. 1 OR NO. 2 ENG CHIP DET (WITHOUT 74) ENG 1 OR TRANSMISSION CHIP DETECTOR INDICATOR DISPLAYS NOT CHANGE TO BLACK-AND-WHITE FAN DISPLAY WHEN ENG 2 CHIP DETR (WITH 74) CAPSULE LIT, TRANSMISSION BLACK-AND-WHITE FAN, XMSN CHIP DET (WITHOUT 74) DEBRIS SCREEN SHORTED 6-2.3 OR ENGINE CHIP DETECTOR INDICATOR BLACK-AND- XMSN CHIP DETR (WITH 74) CAPSULE OUT 6-2.3 WHITE FWD TRANSMISSION DEBRIS SCREEN INDICATOR DOES 6-2.3 TRANSMISSION CHIP DETECTOR INDICATOR IS ALL BLACK NOT CHANGE TO BLACK-AND-WHITE FAN DISPLAY WHEN NO. 2 ENG CHIP DET (WITHOUT 74), ENG 2 CHIP DETR WHEN GND SWITCH IS SET TO TEST 6-2.3 DEBRIS SCREEN SHORTED 6-2.3 (WITH 74) CAPSULE DOES NOT COME ON WHEN NO. 2 ENGINE TRANSMISSION CHIP DET SHORTED TRANSMISSION DEBRIS SCREEN INDICATOR DISPLAYS LEFT TRANSMISSION DEBRIS SCREEN INDICATO",
+      "full_len": 2780
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 18,
+      "pdf_page_human": 19,
+      "printed_page_guess": 16,
+      "topics": [
+        "generator"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T-1 WARNING AND FIRST AID DATA. Windshield Repellant. Do not let windshield rain repellant contact open flame. Deadly hydrogen fluoride gas could be generated. Wash hands with soap and water after handling repellant. Warnings. cautions, and notes emphasize Important critical instructions. They are defined as follows: Antiseize Compounds. Some antiseize compounds are irritants. Avoid inhaling fumes and contact with the skin. Wear protective clothing. Wash thoroughly after using. Paints, Varnishes, Dopes, Thinners, Lubricants, and Fuels. These materials are generally highly An operating procedure or practice which, if not correctly followed, will flammable and may be irritants. Work in a well ventilated area away from open flames. Avoid inhaling result in personnel injury or loss of life. fumes and prolonged contact with the skin. Wash thoroughly after using. Epoxy Resins, Cements, and Adhesives. These materials may contain toxic or irritating substances. They may also be flammable. Work in a well ventilated area away from open flames. Wear protective clothing. Avoid contact with the skin. Wash thoroughly after using. An operating procedure or practice which, if not strictly observed, will result in damage or destruction of equipment. NOTE Radiation Hazard. Some instruments contain radioactive material. (See TB 55-1500-3 14-25.) Do not try to disassemble these instruments. They present no radiation hazard unless seal is broken. If you think An operating procedure or condition which it is essential to highlight. seal is broken, do not remove instrument from aircraft until you consult Base Radioactive Protection Officer (AR 40-15). Use a beta-gamma radiac meter AN/PDR-27 or equivalent to determine if instrument Personnel performing instructions involving oper",
+      "full_len": 6146
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 23,
+      "pdf_page_human": 24,
+      "printed_page_guess": 17,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T-1 Page Page CHAPTER 7. Hydraulic \"AIRFRAME\" Systems Troubleshooting (Continued) CHAPTER 9. Electrical System Troubleshooting (Continued) 7-10. Hydraulic Hand Pump..........................................................................................................................7-235 9-15. Cabin and Ramp Lights.......................................................................................................................9-259 9-16. Troop Warning System........................................................................................................................9-277 INDEX.................................................................................................................................................................Index-1 9-17. Utility Receptacles...............................................................................................................................9-303 9-18. Master Caution Lights..........................................................................................................................9-321 CHAPTER 8. Instrument Systems Troubleshooting..........................................................................................8-1 9-19. Avionics Cooling Fan...........................................................................................................................9-341 Chapter Overview..........................................................................................................................................8-2.1 9-20. Anticollision Light (AVIM).....................................................................................................................9-351 8-1. Pitot Static System.....................................................................",
+      "full_len": 11057
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 32,
+      "pdf_page_human": 33,
+      "printed_page_guess": null,
+      "topics": [
+        "oil_pressure"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T 1-1 1-1 FAILURE SYMPTOM LIST (Continued) SYMPTOM TASK SYMPTOM TASK SYMPTOM TASK CHAPTER 5 (Continued) ROTOR BLADE TRACKING AND BALANCING XMSN OIL PRESS CAPSULE ON AND ONE RH COMB TRANSMISSION DEBRIS SCREEN SYSTEM (Continued) TRANSMISSION OIL PRESSURE INDICATION INDICATOR DOES NOT CHANGE TO LOW 6-1.3 BLACK-AND-WHITE FAN DISPLAY WHEN NO FWD VERTICAL OR AFT VERTICAL INDICATION ON IPS INDICATOR 5-2.3 DEBRIS SCREEN SHORTED 6-2.3 XMSN OIL PRESS CAPSULE ON, TRANSMIS- RIGHT TRANSMISSION DEBRIS SCREEN PHAZOR CLOCK ANGLE INDICATOR SION OIL PRESSURE INDICATIONS NORMAL 6-1.3 LIGHTS DO NOT COME ON 5-2.3 INDICATOR DOES NOT CHANGE TO BLACK-AND-WHITE FAN DISPLAY WHEN ROTOR BLADE CIRCUIT BREAKER WILL DEBRIS SCREEN SHORTED 6-2.3 NOT STAY CLOSED 5-2.3 TRANSMISSION CHIP DETECTORS AND INDICATING SCREENS LEFT TRANSMISSION DEBRIS SCREEN TRACKING TARGETS NOT VISIBLE OR INDICATOR DOES NOT CHANGE TO STROBEX TUBE LAMP DOES NOT FLASH 5-2.3 AFT TRANSMISSION DEBRIS SCREEN BLACK-AND-WHITE FAN DISPLAY WHEN CHAPTER 6 INDICATOR DOES NOT CHANGE TO DEBRIS SCREEN SHORTED 6-2.3 BLACK-AND-WHITE FAN DISPLAY WHEN TRANSMISSION LUBRICATION SYSTEMS DEBRIS SCREEN SHORTED 6-2.3 XMSN AUX OIL PRESS CAPSULE ON WITH ROTORS TURNING 6-1.3 FWD TRANSMISSION DEBRIS SCREEN INDICATOR DOES NOT CHANGE TO XMSN OIL HOT CAPSULE ON, ONE TRANS- BLACK-AND-WHITE FAN DISPLAY WHEN MISSION OIL TEMPERATURE INDICATION HIGH 6-1.3 DEBRIS SCREEN SHORTED 6-2.3 GO TO NEXT PAGE Change 1 1-2.3/(1-2.4 blank)",
+      "full_len": 1471
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 35,
+      "pdf_page_human": 36,
+      "printed_page_guess": 17,
+      "topics": [
+        "oil_pressure"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T 1-1 FAILURE SYMPTOM LIST (Continued) 1-1 SYMPTOM TASK SYMPTOM TASK SYMPTOM TASK CHAPTER 4 (Continued) ENG 2 CHIP DETR CAPSULE DOES NOT COME ON WHEN LH COMB TRANSMISSION DEBRIS SCREEN INDICATOR GND SWITCH IS SET TO TEST 4-13.3 DOES NOT CHANGE TO BLACK-AND-WHITE FAN DISPLAY DECU CODE A4 4-12.4 WHEN DEBRIS SCREEN SHORTED 6-2.3 DECU CODE A5 4-12.4 NO. 1 OR NO. 2 ENGINE CHIP DETECTOR INDICATOR IS ALL BLACK WHEN GND SWITCH IS SET TO TEST 4-13.3 NO. 1 ENG CHIP DET CAPSULE DOES NOT COME ON DECU CODE A6 4-12.4 WHEN NO. 1 ENGINE TRANSMISSION CHIP DETECTOR ENG CHIP DETR CAPSULE DOES NOT COME ON AND EN- SHORTED 6-2.3 DECU CODE A7 4-12.4 GINE CHIP DETECTOR INDICATOR DOES NOT CHANGE DIS- DECU NO. 1 CODE C1, C2, C3, C4, C5, C6, C7, C8 OR CF 4-12.4 PLAY WHEN DETECTOR IS SHORTED 4-13.3 NO. 1 OR NO. 2 ENG CHIP DET (WITHOUT 74 ) ENG 1 OR ENG 2 CHIP DETR (WITH 74 ) CAPSULE LIT TRANSMISSION DECU NO. 2 CODE C1, C2, C3, C4, C5, C6, C7, C8 OR CF 4-12.4 CHAPTER 5 OR ENGINE CHIP DETECTOR INDICATOR BLACK-AND- DECU NO. 1 CODE C9 4-12.4 WHITE 6-2.3 ROTOR BLADE TRACKING AND BALANCING SYSTEM DECU NO. 2 CODE C9 4-12.4 NO. 2 CHIP DET (WITHOUT 74 ) ENG 2 CHIP DETR GREEN POWER STATUS LIGHTS DO NOT COME ON WHEN (WITH 74 ) CAPSULE DOES NOT COME ON WHEN NO. 2 DECU CODE B4 OR E1 4-12.4 HELITUNE UNIT IS TURNED ON 5-2.3 ENGINE TRANSMISSION CHIP DETECTOR SHORTED 6-2.3 DECU CODE E2 4-12.4 NO FWD LATERAL OR AFT LATERAL INDICATION ON IPS IN- RH COMB TRANSMISSION DEBRIS SCREEN INDICATOR DECU CODE E3 4-12.4 DICATOR 5-2.3 DOES NOT CHANGE TO BLACK-AND-WHITE FAN DISPLAY WHEN DEBRIS SCREEN SHORTED 6-2.3 DECU CODE B3 OR E4 4-12.4 NO FWD VERTICAL OR AFT VERTICAL INDICATION ON IPS DECU CODE F1 4-12.4 INDICATOR 5-2.3 RIGHT TRANSMISSION DEBRIS SCREEN INDICATOR DOES NOT CHANGE TO BLACK-AND-WHITE FAN DISPLAY W",
+      "full_len": 4369
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 38,
+      "pdf_page_human": 39,
+      "printed_page_guess": 17,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T 1-1 FAILURE SYMPTOM LIST (Continued) 1-1 SYMPTOM TASK SYMPTOM TASK SYMPTOM TASK CHAPTER 8 (Continued) UTILITY HYDRAULICS PRESSURE INDICATOR DOES NOT XMSN OIL PRESS INDICATOR DOES NOT READ IN NORMAL INDICATE 2500 TO 3500 PSI OR POINTER FLUCTUATES RANGE FOR ONE XMSN OIL PRESS SWITCH POSITION 8-9.3 PILOT'S AND COPILOT'S EMERGENCY POWER LIGHTS ON, MORE THAN 50 PSI 8-7.3 ROTOR AT 100 PERCENT ROTOR RPM, BOTH ENGINES XMSN OIL PRESS INDICATOR DOES NOT READ IN NORMAL OPERATING (WITHOUT 74 ) 8-5.3 HYDRAULIC OIL TEMPERATURE INDICATING SYSTEM RANGE WHEN XMSN OIL PRESS SWITCH IS AT SCAN 8-9.3 NO. 1 ENGINE PTIT INDICATOR DOES NOT INDICATE IN HYDRAULIC FLUID TEMP CIRCUIT BREAKER DOES NOT TRANSMISSION OIL TEMPERATURE INDICATING AND WARNING SYSTEM GREEN BAND (WITH 74 ) 8-5.5.1 STAY CLOSED 8-8.3 ENG XMSN HOT CAPSULE LIT 8-10.3 NO. 2 ENGINE PTIT INDICATOR DOES NOT INDICATE IN NO. 1 FLT CONT HYDRAULICS TEMPERATURE INDICATOR GREEN BAND (WITH 74 ) 8-5.6.1 POINTER DOES NOT MOVE UP SCALE OR EXCEEDS 120°C (PEGS) 8-8.3 NO. 1 OR NO. 2 ENG XMSN HOT CAPSULE DOES NOT COME ON DURING TEST 8-10.3 TORQUE INDICATING SYSTEM NO. 2 FLT CONT HYDRAULICS TEMPERATURE INDICATOR NO. 1 OR NO. 2 ENGINE TORQUE DC CIRCUIT BREAKERS POINTER DOES NOT MOVE UP SCALE OR EXCEEDS 120°C (PEGS) 8-8.3 TRANSMISSION OVERTEMP INDICATORS DO NOT RESET 8-10.3 WILL NOT STAY CLOSED (WITHOUT 74 ) 8-6.3 UTILITY HYDRAULICS TEMPERATURE INDICATOR POINTER XMSN OIL HOT CAPSULE LIT 8-10.3 NO. 1 OR NO. 2 ENGINE TORQUE DC CIRCUIT BREAKERS DOES NOT MOVE UP SCALE OR EXCEEDS 120°C (PEGS) 8-8.3 WILL NOT STAY CLOSED (WITH 74 ) 8-6.3.1 XMSN OIL HOT CAPSULE LIT OR AFT TRANSMISSION TRANSMISSION OIL PRESSURE INDICATING AND WARNING OVERTEMP INDICATOR IS BLACK DURING TEST 8-10.3 NO. 1 OR NO. 2 ENGINE TORQUE AC CIRCUIT BREAKER 8-6.3 or SYST",
+      "full_len": 5158
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 422,
+      "pdf_page_human": 423,
+      "printed_page_guess": 197,
+      "topics": [
+        "oil_pressure"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T 4-8.1 ENGINE PERFORMANCE CHECK OPERATIONAL CHECK (Continued) 4-8.1 TASK RESULT TASK RESULT 1. Follow procedures in TM 55-1520-240-10 as pilot If ENG 1 FAIL or ENG 2 FAIL warning does not come on, C. SECOND ENGINE START: Check engine instrument If engine does not motor, go to task 4-10.4. starts engines: go to task 4-8.2. display when stabilized at ground idle (N1 at 50 to 59%). If engine motors normally but does not start, go to task 4-10.4. A. DECU BIT TEST. Check following occurs: If ENG 1 FAIL or ENG 2 FAIL warning does not go out, go If engine oil pressure gauge (2) does not indicate oil ENG FAIL warning comes on after ENG PRI REV switch to task 4-8.3. pressure, go to task 8-3.3. set to PRI and goes out about 12 seconds later. If DECU No. 1 or No. 2 display (1) is blank or another If engine oil pressure is below 20 psi, go to task 8-3.3. DECU No. 1 and No. 2 displays (1) read 88. code shown, refer to task 4-12.4. If N1 gauge (3) does not indicate between 50 and 59 percent rpm after 45 seconds, go to TM 1-2840-265-23. B. FIRST ENGINE START: Check engine instruments (2 If engine does not motor, go to task 4-10.4. If ENG TEMP gauge (4) does not indicate temperature, through 5) when stabilized at ground idle (N1 at 50 to If engine motors normally but does not start, go to task go to task 8-5.3. 59%). 4-10.4. If ENG TEMP indication is high or hot start occurs, go to TM 1-2840-265-23. If engine oil pressure gauge (2) does not indicate oil pressure, go to task 8-3.3. D. ENGINE CONDITION LEVERS - FLY. Check engine If either NO. 1 or NO. 2 engine oil pressure gauges (5) If engine oil pressure is below 20 psi, go to task 8-3.3. instruments display. fluctuate more than 5 psi, go to task 8-3.3. If N1 gauge (3) does not indicate between 50 and 59 If either NO. 1",
+      "full_len": 3258
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 578,
+      "pdf_page_human": 579,
+      "printed_page_guess": 17,
+      "topics": [
+        "oil_pressure"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T 6-1.3 TRANSMISSION LUBRICATION SYSTEMS OPERATIONAL CHECK 6-1.3 INITIAL SETUP References: Applicable Configurations: TM 55-1520-240-10 All TM 55-1520-240-23 Tools: Equipment Condition: Aircraft Mechanic's Tool Kit, TM 55-1520-240-23 NSN 5180-00-323-4692 Battery Connected Materials: Electrical Power On None Hydraulic Power Off Personnel Required: Visual Check of Transmission Lubrication System Medium Helicopter Repairer Performed Rotary-Wing Aviator (2) TASK RESULT NOTE If last flight reported trouble symptom of low oil pressure indication and XMSN OIL PRESS capsule on, go to Task 6-1.4. 1. Check six TRANSMISSION CHIP DETECTOR indica- If any indicator (1) displays black-and-white fan, go to tors (1). Task 6-2.3. 2. Check five TRANSMISSION DEBRIS SCREEN indica- If any indicator (2) displays black-and-white fan, go to tors (2). Task 6-2.3. 3. Check XMSN CHIP DET (WITHOUT 74 ) XMSN CHIP If capsule (3) is lit, go to Task 6-2.3. DETR (WITH 74 ) capsule (3). 4. Check that XMSN OIL PRESS switch (4) and XMSN If either switch (4 or 5) is not at SCAN, set it to SCAN. OIL TEMP switch (5) are at SCAN. 5. Have pilot start engines and stabilize rotors at 100 XMSN OIL PRESS capsule (7) shall go out as pointer on percent rpm. Check master caution panel and XMSN XMSN OIL PRESS indicator passes 20 psi. If indicator OIL PRESS indicator (6) as rotor rpm accelerates to reads below 20 psi and capsule (7) is on, note which 100 percent. TRANSMISSION MAIN OIL PRESS light (8) is on. Have pilot stop engines, then go to Task 6-1.4. If indicator reads below 20 psi and capsule (7) is out, note which XMSN OIL PRESS switch position is lit. Have pilot stop engines, then go to Task 8-9.3. If indicator reads above 20 psi and capsule (7) is on, note which TRANSMISSION MAIN OIL PRESS light (",
+      "full_len": 1914
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 580,
+      "pdf_page_human": 581,
+      "printed_page_guess": 12,
+      "topics": [
+        "oil_pressure"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T 6-1.4 XMSN OIL PRESS CAPSULE ON AND ONE TRANSMISSION OIL PRESSURE INDICATION LOW 6-1.4 FAULT ISOLATION PROCEDURE Personnel Required: INITIAL SETUP 67U10 Medium Helicopter Repairer 67U20 Medium Helicopter Repairer Applicable Configurations: All References: TM 55-1520-240-23 Tools: Equipment Condition: Aircraft Mechanic’s Tool Klt TM 55-1520-240-23 NSN 5180-00-323-4692 Battery Connected Electrical Power On Materials: Hydraullc Power Off None GO TO NEXT PAGE 6-12",
+      "full_len": 481
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 584,
+      "pdf_page_human": 585,
+      "printed_page_guess": 16,
+      "topics": [
+        "oil_pressure"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T 6-1.5 6-1.5 XMSN OIL PRESS CAPSULE ON, TRANSMISSION OIL PRESSURE INDICATIONS NORMAL Personnel Required: FAULT ISOLATION PROCEDURE 67U20 Medium Helicopter Repairer INITIAL SETUP 100C0 Army Rotary-Wing Aviator (2) References: Applicable Configurations: TM 55-1520-240-23 All Equipment Condition: Tools: TM 55-1520-240-10: Aircraft Mechanic’s Tool Kit, Rotors Turning NSN 5180-00-323-4692 TM 55-1520-240-23: Battery Connected Materials: Electrical Power On None Hydraulic Power On GO TO NEXT PAGE 6-16",
+      "full_len": 515
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 585,
+      "pdf_page_human": 586,
+      "printed_page_guess": 17,
+      "topics": [
+        "oil_pressure"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T 6-1.5 XMSN OIL PRESSURE CAPSULE ON, TRANSMISSION OIL PRESSURE INDICATIONS NORMAL 6-1.5 (Continued) SHUT DOWN ENGINES. RE- CHECK MAINTENANCE PNL MOVE AFT SHAFT BEARING REPLACE FILTER AND PERFORM WHILE ROTORS ARE TURNING. FILTER. INSPECT FILTER ELE- A SPECTRO ANALYSIS OF THE IS AFT SHAFT MAIN OIL MENT FOR DEBRIS. REFER TO OIL. REFER TO TM 55-1520- PRESS LIGHT ON? TM 55-1520-240-23 DOES IT 240-23. CONTAIN ANY PARTICLES? REINSTALL FILTER AND CHECK HOSES BETWEEN AFT TRANS- REFER TO TROUBLE SYMPTOM MISSION AND AFT SHAFT. RE- TASK 8-9.3. FER TO TM 55-1520-240-23. IS ANY HOSE KINKED OR DAM- AGED? REPLACE AFT SHAFT PRES- SURE SW. REPEAT OPERATION- AL CHECK TASK 6-1.3. DOES XMSN OIL PRESS CAPSULE GO OUT? END OF TASK Change 7 6-17",
+      "full_len": 746
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 895,
+      "pdf_page_human": 896,
+      "printed_page_guess": 17,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T Task Page Task Page Hydraulic System - Engine .............................................................................................................. 15-5 15-87 Cable Assembly, APU Fuel Pump ...................................................................................................... 15-2.9 15-41 Engine Hydraulic Starting System Operational Check ................................................................... 15-5.5 15-96 Capacitor, Caution Panel Filter .......................................................................................................... 9-18 9-321 Engine Hydraulic Starting System Schematic ............................................................................... 15-5.1 15-90 Cargo Ramp and Ramp System ........................................................................................................ 7-3 7-119 Engine Hydraulic Starting System Visual Check ............................................................................ 15-5.4 15-95 Solenoid Valve, Ramp Engine Start System Electrical Schematic (Hydraulic Portion) ........................................................ 15-5.2 15-91 Cargo/Rescue Winch System ............................................................................................................ 14-1 14-1 Engine Start System Wiring Diagram (Hydraulic Portion) ............................................................... 15-5.3 15-92 Control Cable, Hoist Hydraulic Starting System Operational Check - Engine .................................................................. 15-5.5 15-96 Panel, Hoist Operator Hydraulic Starting System Schematic Engine ................................................................................ 15-5.1 15-90 Solenoid, Brake Release Hydraul",
+      "full_len": 9341
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 2,
+      "pdf_page_human": 3,
+      "printed_page_guess": 18,
+      "topics": [
+        "generator"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T WARNING AND FIRST AID DATA. Windshield Repellant. Do not let windshield rain repellant contact open flame. Deadly hydrogen fluoride gas could be generated. Wash hands with soap and water after handling repellant. Warnings, cautions, and notes emphasize Important critical instructions. They are defined as follows: Antiseize Compounds. Some antiseize compounds are irritants. Avoid inhaling fumes and contact with the skin. Wear protective clothing. Wash thoroughly after using. WARNING Paints, Varnishes, Dopes, Thinners, Lubricants, and Fuels. These materials are generally highly An operating procedure or practice which, if not correctly followed, will flammable and may be irritants. Work in a well ventilated area away from open flames. Avoid inhaling result in personnel injury or loss of life. fumes and prolonged contact with the skin. Wash thoroughly after using. Epoxy Resins, Cements, and Adhesives. These materials may contain toxic or irritating substances CAUTION They may also be flammable. Work in a well ventilated area away from open flames. Wear protective clothing. Avoid contact with the skin. Wash thoroughly after using. An operating procedure or practice which, if not strictly observed, will result in damage or destruction of equipment. NOTE Radiation Hazard. Some instruments contain radioactive material. (See TB 55-1500-314-25.) Do not try to disassemble these instruments. They present no radiation hazard unless seal is broken. If you think An operating procedure or condition which it is essential to highlight. seal is broken, do not remove instrument from aircraft until you consult Base Radioactive Protection Officer (AR 40-15). Use a beta-gamma radiac meter AN/PDR-27 or equivalent to determine if instrument Personnel performing instructions in",
+      "full_len": 6154
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 33,
+      "pdf_page_human": 34,
+      "printed_page_guess": 19,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T-2 Page Page CHAPTER 7. Hydraulic \"AIRFRAME\" Systems Troubleshooting (Continued) CHAPTER 9. Electrical System Troubleshooting (Continued) 7-10. Hydraulic Hand Pump...........................................................................................................................7-235 9-15. Cabin and Ramp Lights........................................................................................................................9-259 9-16. Troop Warning System.........................................................................................................................9-277 INDEX ...........................................................................................................................................................Index-1 9-17. Utility Receptacles................................................................................................................................9-303 9-18. Master Caution Lights...........................................................................................................................9-321 CHAPTER 8. Instrument Systems Troubleshooting...........................................................................................8-1 9-19. Avionics Cooling Fan............................................................................................................................9-341 Chapter Overview.............................................................................................................................................8-2.1 9-20. Anticollision Light (AVIM)......................................................................................................................9-351 8-1. Pitot Static System...............................................................",
+      "full_len": 11135
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 42,
+      "pdf_page_human": 43,
+      "printed_page_guess": null,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T CHAPTER 8 INSTRUMENT SYSTEM TROUBLESHOOTING CHAPTER OVERVIEW Chapter 8 contains procedures for Instrument System troubleshooting. Each system and failure symptom is listed below. Included in this chapter are locations and views of all electrical connectors, receptacles, relays, and ground connections for the Instrument System. Refer to TM 55-1520-240-23 for required maintenance procedures. SYSTEM PARA SYSTEM PARA PITOT STATIC SYSTEM 8-1 TRANSMISSION OIL PRESSURE INDICATING AND WARNING SYSTEM 8-9 GAS PRODUCER TACHOMETER SYSTEM 8-2 TRANSMISSION OIL TEMPERATURE INDICATING ENGINE OIL PRESSURE INDICATING SYSTEM 8-3 AND WARNING SYSTEM 8-10 ENGINE OIL TEMPERATURE INDICATING SYSTEM 8-4 FUEL QUANTITY INDICATING SYSTEM 8-11 PTIT SYSTEM 8-5 CRUISE GUIDE INDICATING SYSTEM 8-12 TORQUE INDICATING SYSTEM 8-6 TURN AND SLIP INDICATORS 8-13 HYDRAULIC PRESSURE INDICATING SYSTEM 8-7 MAINTENANCE PANEL POWER DISTRIBUTION 8-14 HYDRAULIC OIL TEMPERATURE INDICATING SYS- ROTOR TACHOMETER 8-15 TEM 8-8 ENGINE FUEL FLOW INDICATING SYSTEM 8-16 FAILURE SYMPTOM LIST PITOT STATIC SYSTEM SYMPTOM TASK SYMPTOM TASK SYMPTOM TASK AIMS ALT CIRCUIT BREAKER WILL NOT STAY NO HEAT FELT ON UPPER RIGHT OR UPPER LEFT PITOT HEAT CIRCUIT BREAKER WILL NOT STAY CLOSED 8-1.4 SIDESLIP PORTS 8-1.4 CLOSED 8-1.4 NO HEAT FELT ON LEFT OR RIGHT PITOT TUBE, NO. 1 OR NO. 2 PITOT SYSTEM LEAKS 8-1.4 PITOT STATIC SYSTEM LEAKS 8-1.4 PITOT SWITCH AT ON 8-1.4 NO. 1 OR NO. 2 SIDESLIP SYSTEM LEAKS 8-1.4 YAW PORT HEAT CIRCUIT BREAKER WILL NOT NO HEAT FELT ON LOWER RIGHT OR LOWER LEFT STAY CLOSED 8-1.4 SIDESLIP PORTS 8-1.4 PILOT OR COPILOT ALTIMETER VIBRATOR DOES NOT OPERATE 8-1.4 GAS PRODUCER TACHOMETER SYSTEM NO. 1 GAS PRODUCER TACHOMETER READS 0 PER- CENT RPM WHEN NO. 1 ENGINE IS MOTORED 8-2.3 NO. 1 ENGINE GAS PRODUCER",
+      "full_len": 2044
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 44,
+      "pdf_page_human": 45,
+      "printed_page_guess": 19,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T HYDRAULIC PRESSURE INDICATING SYSTEM SYMPTOM TASK SYMPTOM TASK SYMPTOM TASK HYDRAULICS PRESS IND CIRCUIT BREAKER DOES NOT NO. 2 FLT CONT HYDRAULICS PRESSURE INDICATOR UTILITY HYDRAULICS PRESSURE INDICATOR DOES NOT STAY CLOSED 8-7.3 DOES NOT INDICATE 2500 TO 3500 PSI OR POINTER FLUC- INDICATE 2500 TO 3500 PSI OR POINTER FLUCTUATES TUATES MORE THAN 50 PSI 8-7.3 MORE THAN 50 PSI 8-7.3 NO. 1 FLT CONT HYDRAULICS PRESSURE INDICATOR DOES NOT INDICATE 2500 TO 3500 PSI OR POINTER FLUC- TUATES MORE THAN 50 PSI 8-7.3 HYDRAULIC OIL TEMPERATURE INDICATING SYSTEM SYMPTOM TASK SYMPTOM TASK SYMPTOM TASK HYDRAULIC FLUID TEMP CIRCUIT BREAKER DOES NOT NO. 2 FLT CONT HYDRAULICS TEMPERATURE INDICATOR UTILITY HYDRAULICS TEMPERATURE INDICATOR POINTER STAY CLOSED 8-8.3 POINTER DOES NOT MOVE UP SCALE OR EXCEEDS 120°C DOES NOT MOVE UP SCALE OR EXCEEDS 120°C (PEGS) 8-8.3 (PEGS) 8-8.3 NO. 1 FLT CONT HYDRAULIC TEMPERATURE INDICATOR POINTER DOES NOT MOVE UP SCALE OR EXCEEDS 120°C (PEGS) 8-8.3 TRANSMISSION OIL PRESSURE INDICATING AND WARNING SYSTEM SYMPTOM TASK SYMPTOM TASK SYMPTOM TASK FWD, COMB, AFT, AFT SHAFT, LEFT, OR RIGHT TRANSMIS- FWD, COMB, OR AFT TRANSMISSION AUX OIL PRESS LIGHT XMSN OIL PRESS CAPSULE STILL ON WHEN ALL MAIN OIL SION MAIN OIL PRESS LIGHT DOES NOT COME ON WHEN IS STILL ON WHEN IT'S PRESSURE SWITCH IS DISCON- PRESS SWITCHES ARE DISCONNECTED 8-9.3 PRESSED 8-9.3 NECTED 8-9.3 XMSN OIL PRESS CIRCUIT BREAKER DOES NOT STAY FWD, COMB, AFT, AFT SHAFT, LEFT, RIGHT, OR AFT TRANS- XMSN AUX OIL PRESS CAPSULE DOES NOT COME ON CLOSED 8-9.3 MISSION MAIN OIL PRESS LIGHT IS OUT 8-9.3 DURING TEST 8-9.3 XMSN OIL PRESS INDICATOR DOES NOT READ IN NORMAL FWD, COMB, AFT SHAFT, LEFT, OR RIGHT TRANSMISSION- XMSN AUX OIL PRESS CAPSULE NOT LIT 8-9.3 RANGE FOR ONE XMSN OIL PRESS SWITCH PO",
+      "full_len": 3381
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 326,
+      "pdf_page_human": 327,
+      "printed_page_guess": 224,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T 8-10.4 XMSN OIL TEMP CIRCUIT BREAKER WILL NOT 8-10.4 STAY CLOSED FAULT ISOLATION PROCEDURE INITIAL SETUP Personnel Required: Aircraft Electrician Applicable Configurations: References: All TM 55-1520-240-23 Tools: Equipment Condition: Electrical Repairer's Tool Kit, TM 55-1520-240-23: NSN 5180-00-323-4915 Battery Disconnected Multimeter Electrical Power Off Materials: Hydraulic Power Off None GO TO NEXT PAGE 8-224 Change 1",
+      "full_len": 443
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 1015,
+      "pdf_page_human": 1016,
+      "printed_page_guess": 19,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T Task Page Task Page Hydraulic System - Engine ............................................................................................ 15-5 15-87 Cable Assembly, APU Fuel Pump ....................................................................................... 15-2.9 15-41 Engine Hydraulic Starting System Operational Check ................................................ 15-5.5 15-96 Capacitor, Caution Panel Filter ........................................................................................... 9-18 9-321 Engine Hydraulic Starting System Schematic ............................................................ 15-5.1 15-90 Cargo Ramp and Ramp System ......................................................................................... 7-3 7-119 Engine Hydraulic Starting System Visual Check ........................................................ 15-5.4 15-95 Solenoid Valve, Ramp Engine Start System Electrical Schematic (Hydraulic Portion) .................................... 15-5.2 15-91 Cargo/Rescue Winch System ............................................................................................. 14-1 14-1 Engine Start System Wiring Diagram (Hydraulic Portion) ............................................ 15-5.3 15-92 Control Cable, Hoist Hydraulic Starting System Operational Check- Engine ............................................... 15-5.5 15-96 Panel, Hoist Operator Hydraulic Starting System Schematic Engine ............................................................ 15-5.1 15-90 Solenoid, Brake Release Hydraulic Starting System Visual Check- Engine ....................................................... 15-5.4 15-95 Solenoid, Cable Cutter Troubleshooting Tasks List ........................................................",
+      "full_len": 8382
+    },
+    {
+      "file": "TM_55-1520-240-T-3.pdf",
+      "pdf_page_index": 27,
+      "pdf_page_human": 28,
+      "printed_page_guess": 21,
+      "topics": [
+        "generator"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T WARNING AND FIRST AID DATA. Windshield Repellant. Do not let windshield rain repellant contact open flame. Deadly hydrogen fluoride gas could be generated. Wash hands with soap and water after handling repellant. Warnings, cautions, and notes emphasize important critical instructions. They are defined as follows: Antiseize Compounds. Some antiseize compounds are irritants. Avoid inhaling fumes and contact with the skin. Wear protective clothing. Wash thoroughly after using. WARNING Paints, Varnishes, Dopes, Thinners, Lubricants, and Fuels. These materials are generally highly An operating procedure or practice which, if not correctly followed, will flammable and may be irritants. Work in a well ventilated area away from open flames. Avoid inhaling result in personnel injury or loss of life. fumes and prolonged contact with the skin. Wash thoroughly after using. Epoxy Resins, Cements, and Adhesives. These materials may contain toxic or irritating substances. CAUTION They may also be flammable. Work in a well ventilated area away from open flames. Wear protective clothing. Avoid contact with the skin. Wash thoroughly after using. An operating procedure or practice which, if not strictly observed, will result in damage or destruction of equipment. NOTE Radiation Hazard. Some instruments contain radioactive material. (See TB 55-1500-314-25.) Do not try to disassemble these instruments. They present no radiation hazard unless seal is broken. If you think An operating procedure or condition which it is essential to highlight. seal is broken, do not remove instrument from aircraft until you consult Base Radioactive Protection Officer (AR 40-15). Use a beta-gamma radiac meter AN/PDR-27 or equivalent to determine if instrument Personnel performing instructions i",
+      "full_len": 6154
+    },
+    {
+      "file": "TM_55-1520-240-T-3.pdf",
+      "pdf_page_index": 33,
+      "pdf_page_human": 34,
+      "printed_page_guess": 23,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T-3 Page Page CHAPTER 7. Hydraulic \"AIRFRAME\" Systems Troubleshooting (Continued) CHAPTER 9. Electrical System Troubleshooting (Continued) 7-10. Hydraulic Hand Pump .......................................................................................................................... 7-235 9-15. Cabin and Ramp Lights ........................................................................................................................ 9-259 9-16. Troop Warning System ......................................................................................................................... 9-277 INDEX ................................................................................................................................................................ Index-1 9-17. Utility Receptacles ............................................................................................................................... 9-303 9-18. Master Caution Lights .......................................................................................................................... 9-321 CHAPTER 8. Instrument Systems Troubleshooting ....................................................................................... 8-1 9-19. Avionics Cooling Fan ............................................................................................................................ 9-341 Chapter Overview ............................................................................................................................................ 8-2.1 9-20. Anticollision Light (AVIM) ...................................................................................................................... 9-351 8-1. Pitot Static System ..............................................",
+      "full_len": 11237
+    },
+    {
+      "file": "TM_55-1520-240-T-3.pdf",
+      "pdf_page_index": 1209,
+      "pdf_page_human": 1210,
+      "printed_page_guess": 23,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": true,
+      "snippet": "TM 55-1520-240-T Task Page Task Page Hydraulic System — Engine .............................................................................................................. 15-5 15-87 Cable Assembly, APU Fuel Pump ...................................................................................................... 15-2.9 15-41 Engine Hydraulic Starting System Operational Check ..................................................................... 15-5.5 15-96 Capacitor, Caution Panel Filter .......................................................................................................... 9-18 9-321 Engine Hydraulic Starting System Schematic ................................................................................. 15-5.1 15-90 Cargo Ramp and Ramp System ........................................................................................................ 7-3 7-119 Engine Hydraulic Starting System Visual Check ............................................................................. 15-5.4 15-95 Solenoid Valve, Ramp Engine Start System Electrical Schematic (Hydraulic Portion) ......................................................... 15-5.2 15-91 Cargo/Rescue Winch System ............................................................................................................ 14-1 14-1 Engine Start System Wiring Diagram (Hydraulic Portion) ................................................................. 15-5.3 15-92 Control Cable, Hoist Hydraulic Starting System Operational Check- Engine .................................................................... 15-5.5 15-96 Panel, Hoist Operator Hydraulic Starting System Schematic Engine ................................................................................. 15-5.1 15-90 Solenoid, Brake Relea",
+      "full_len": 9346
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 575,
+      "pdf_page_human": 576,
+      "printed_page_guess": null,
+      "topics": [
+        "oil_filter"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 6-1.2 TRANSMISSION LUBRICATION SYSTEMS VISUAL CHECK 6-1.2 INITIAL SETUP Equipment Condition: TM 55-1520-240-23 Applicable Configurations: Battery Disconnected All Electrical Power Off Tools: Hydraulic Power Off Aircraft Mechanic's Tool Kit, Left and Right Forward Work Platforms Open NSN 5180-00-323-4692 Forward Drip Pan Removed Materials: Aft Transmission Baffles Open None Pylon Hinged Fairing Open Personnel Required: Pylon Lower Fairing Open 67U10 Medium Helicopter Repairer Engine Air Inlet Screens Removed Engine Transmission Fairings Removed References: Cargo Ramp Open and Level (Task 7-3.3) TM 55-1520-240-23 TASK RESULT CHECK FORWARD TRANSMISSION LUBRICATION SYSTEM 1. Check oil level sight gage (1). If oil level is low, service transmission. Refer to TM 55-1520-240-23. 2. Check oil filter indicating button (2). If button (2) is extended, replace filter element and inspect removed element for debris. Refer to TM 55-1520-240-23. 3. Check bottom of forward transmission for oil If any oil leaks are found, investigate source. leaks. Tighten or replace leaking part as required. 4. Check inside and outside of cooler (3). If cooler is clogged, clean or replace it as re- quired. If leaks are found, replace cooler. 5. Check top of forward transmission for oil If any oil leaks are found, investigate source. leaks. Tighten or replace leaking part as required. GO TO NEXT PAGE 6-6 Change 2",
+      "full_len": 1418
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 576,
+      "pdf_page_human": 577,
+      "printed_page_guess": null,
+      "topics": [
+        "oil_filter"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 6-1.2 TRANSMISSION LUBRICATION SYSTEMS VISUAL CHECK (Continued) 6-1.2 TASK RESULT CHECK AFT TRANSMISSION LBRICATION SYSTEM 6. Check oil level sight gage (4). If oil level is low, service transmission. Refer to TM 55-1520-240-23. 7. Check oil filter indicating button (5). If button (5) is extended, replace filter element and inspect removed element for debris. Refer to TM 55-1520-240-23. 8. Check bottom and sides of aft transmission If any oil leaks are found, investigate source. for oil leaks. Tighten or replace leaking part as required. 9. Check inside and outside of cooler (6). If cooler is clogged, clean or replace it as re- quired. If leaks are found, replace cooler. CHECK COMBINING TRANSMISSION LUBRICATION SYSTEM 10. Check oil level sight gage (7). If oil level is low, service transmission. Refer to TM 55-1520-240-23. 11. Check oil filter indicating button (8). If button (8) is extended, replace filter element and inspect removed element for debris. Refer to TM 55-1520-240-23. 12. Check combining transmission for oil leaks. If any oil leaks are found, investigate source. Tighten or replace leaking part as required. 13. Check cooler (9). If cooler is clogged, clean or replace it as re- quired. If leaks are found, replace cooler. GO TO NEXT PAGE Change 2 6-7",
+      "full_len": 1298
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 577,
+      "pdf_page_human": 578,
+      "printed_page_guess": null,
+      "topics": [
+        "oil_filter"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 6-1.2 6-1.2 TRANSMISSION LUBRICATION SYSTEMS VISUAL CHECK (Continued) TASK RESULT CHECK ENGINE TRANSMISSION LUBRlTION SYSTEM 14. Check indicating button on left transmission If either bypass button is extended, replace filter oil filter (10) and right transmission oil filter element and inspect removed element for debris. (11). Refer to TM 55-1520-240-23. 15. Check oil Ieve sight gage (7). If oil level is low, service transmission. Refer to TM 55-1520-240-23. 16. Check oil lines (12, 13, and 14) between right If any line (12, 13, or 14) is loose or damaged, engine transmission and combining transmis- tighten or replace it as required. sion. 17. Check right engine transmission for oil leaks. If any oil leaks are found, investigate source. Tighten or replace leaking part as required. 18. Check cooler (15). If cooler (15) is clogged, clean or replace it as required. If leaks are found, replace cooler. 19. Check oil lines (12, 13, and 14) between left If any line (12, 13, or 14) is loose or damaged, engine transmission and combining transmis- tighten or replace it as required. sion. 20. Check left engine transmission for oil leaks. If any oil leaks are found, investigate source. Tighten or replace leaking part as required. FOLLOW-ON MAINTENANCE: TM 55-1520-240-23: Engine Transmission Fairings Installed Engine Air Inlet Screens Installed Pylon Lower Fairing and Hinged Fairing Closed Left and Right Forward Work Platforms Closed END OF TASK 6-8 Change 2",
+      "full_len": 1487
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 581,
+      "pdf_page_human": 582,
+      "printed_page_guess": 13,
+      "topics": [
+        "oil_filter"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 6-1.4 XMSN OIL PRESS CAPSULE ON AND ONE TRANSMISSION OIL 6-1.4 PRESSURE INDICATION LOW (Continued) REPLACE MAIN OIL FILTER REPLACE MAIN OIL FILTER REPLACE MAIN OIL FILTER PERFORM TRANSMISSION PERFORM TRANSMISSION PERFORM TRANSMISSION SERVICEABILITY CHECK REFER SERVICEABILITY CHECK REFER SERVICEABILITY CHECK REFER TO TM 55-1520-240-23. TO TM 55-1520-240-23. TO TM 55-1520-240-23. CLEAN SCREEN PERFORM CLEAN SCREEN PERFORM CLEAN SCREEN PERFORM TRANSMISSION SER- TRANSMISSION SER- TRANSMISSION SER- VICEABILITY CHECK REFER TO VICEABILITY CHECK REFER TO VICEABILITY CHECK REFER TO TM 55-1520-240-23 TM 55-1520-240-23. TM 55-1520-24-23. ADJUST OIL PUMP RELIEF ADJUST OIL PUMP RELIEF ADJUST OIL PuMP REFER TO VALVE REFER TO TM 55-1520- VALVE REFER TO TM 55-1520- TM 55-1520-240.23 PERFORM 240-23 PERFORM OPERA- 240-23 PERFORM OPERA- OPERATIONAL CHECK TASK 6- TIONALCHECK TASK 6.1.3. IS TIONAL CHECK TASK 6-1.3 IS 1 3 IS OIL PRESSURE OIL PRESSURE NORMAL? OIL PRESSURE NORMAL? NORMAL? REPLACE MAIN OIL PUMP REPLACE OIL COOLER REPLACE MAIN OIL PUMP REPLACE OIL COOLER REPLACE OIL COOLER PERFORM OPERATIONAL PERFORM OPERATIONAL PERFORM OPERATIONAL PERFORM OPERATIONAL PERFORM OPERATIONAL REPLACE COMBINING TRANS- CHECK TASK 6.1.3. IS OIL CHECK TASK 6-1.3. IS OIL CHECK TASK 6-1.3. IS OIL CHECK TASK 6-1.3. IS OIL CHECK TASK 6-1.3. IS OIL MISSION. PRESSURE NORMAL? PRESSURE NORMAL? PRESSURE NORMAL? PRESSURE NORMAL? PRESSURE NORMAL? GO TO NEXT PAGE 6-13",
+      "full_len": 1461
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 582,
+      "pdf_page_human": 583,
+      "printed_page_guess": 14,
+      "topics": [
+        "oil_pressure"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 6-1.4 6-1.4 XMSN OIL PRESS CAPSULE ON AND ONE TRANSMISSION OIL PRESSURE INDICATION LOW (Continued) REPLACE FILTER PERFORM TRANSMISSION SER- VICEABILITY CHECK REFER TO TM 55-1520-240-23. REPLACE FILTER PERFORM CLEAN SCREEN PERFORM TRANSMISSION SER- TRANSMISSION SER VICEABILITY CHECK REFER TO VICEABILITY CHECK REFER TO TM 55-1520-240-23. TM 55-1520-240-23. CLEAN SCREEN PERFORM ADJUST RELIEF VALVE TRANSMISSION SER- PERFORM OPERATIONAL VICEABILITY CHECK REFER TO CHECK TASK 6-1.3. IS OIL TM 55-1520-240-23. PRESSURE NORMAL? ADJUST RELIEF VALVE PERFORM OPERATIONAL CHECK TASK 6-1.3. IS OIL TASK 6-1.3. PRESSURE NORMAL? GO TO NEXT PAGE 6-14",
+      "full_len": 655
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 583,
+      "pdf_page_human": 584,
+      "printed_page_guess": 15,
+      "topics": [
+        "oil_pressure"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 6-1.4 6-1.4 XMSN OIL PRESS CAPSULE ON AND ONE TRANSMISSION OIL PRESSURE INDICATION LOW (Continued) END OF TASK 6-15",
+      "full_len": 132
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 898,
+      "pdf_page_human": 899,
+      "printed_page_guess": 17,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T Task Page Task Page Heating and Ventilating System (Continued) Indicator, Turn and Slip ..................................................................................................................... 8-13 8-309 Relay, Heater Indicator, Vertical Speed..................................................................................................................... 8-1 8-1 Relay, Heater Fan Control Igniter, Heater ................................................................................................................................... 13-1 13-1 Solenoid, Master Fuel Valve Inverter.............................................................................................................................................. 10-3 10-123 Switch, Cabin Thermostat HF Liaison Facility............................................................................................................................. 18-4 18-97 J AN/ARC-200 Junction Box, Torquemeter ................................................................................................................ 8-6 8-101 TSEC/KY-100 Hook Assembly, External Cargo, Fwd and Aft ..................................................................................... 16-1 16-1 L Hook Assembly, External Cargo, Mid.................................................................................................. 16-1 16-1 Landing Lights (Search Lights) System .............................................................................................. 9-4 9-107 Hydraulic Pressure Indicating System ................................................................................................ 8-7 8-121 Searchlight Indicator, Hydraulic Pressure Light, Aft Cyclic Trim Indicator .........................",
+      "full_len": 12318
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 899,
+      "pdf_page_human": 900,
+      "printed_page_guess": 17,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T Task Page Task Page Light, OVHD Switch Panel, Lighting.................................................................................................... 9-11 9-199 Master Caution Lights System ........................................................................................................... 9-18 9-321 Light, Radar Alt Dim Cont Panel ......................................................................................................... 9-88 9-167 Capacitor, Caution Panel Filter Light, Ramp....................................................................................................................................... 9-15 9-259 Caution Panel, Master Light, Rate of Climb Indicator ............................................................................................................. 9-10 9-187 Light, Master Caution Light, Red Position............................................................................................................................. 9-3 9-99 Relay, Dimming Lockout Lighting System Relay, Caution Light Dimming Anticollision ................................................................................................................................... 9-6 9-151 Switch, Caution Lights Dim/Bright Cabin and Ramp ............................................................................................................................ 9-15 9-259 Switch, Caution Lights Test Cargo Hook.................................................................................................................................... 9-23 9-375 Master Caution Panel (AVIM) (Without 74 )......................................................................................... 9-21 9-359 Cockpit Dome and Utility ......................",
+      "full_len": 8608
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "pdf_page_index": 901,
+      "pdf_page_human": 902,
+      "printed_page_guess": 17,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T Task Page Task Page Rotor Blade Tracking and Balancing System....................................................................................... 5-2 5-5 Switch, Emergency Power (Without 74 ) ............................................................................................. 8-5 8-73 Phase Detector, Magnetic Switch, Fire Agent Selector ................................................................................................................ 12-3 12-53 Rotor Tachometer System.................................................................................................................. 8-15 8-333 Switch, Fire Detector Test ................................................................................................................. 12-2 12-29 Generator, AC Switch, Fire Handle, Engine ............................................................................................................... 12-3 12-53 Indicator, Rotor Tachometer Switch, Hydraulic Level Check ........................................................................................................... 8-14 8-319 S Switch, No. 1, No. 2 Flight Control ...................................................................................................... 8-14 8-319 Searchlight ....................................................................................................................................... 9-4 9-107 Switch, Oil Pressure .......................................................................................................................... 8-9 8-149 Secondary Cockpit Lights System....................................................................................................... 9-13 9-229 Switch, Oil Level Check Light .........................",
+      "full_len": 10695
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 260,
+      "pdf_page_human": 261,
+      "printed_page_guess": 12,
+      "topics": [
+        "oil_pressure"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 8-9.3 TRANSMISSION OIL PRESSURE INDICATING AND WARNING SYSTEM OPERATIONAL CHECK 8-9.3 INITIAL SETUP References: TASK RESULT TM 55-1520-240-10 Applicable Configurations: 6. Short pin 2 in forward transmission auxiliary oil XMSN AUX OIL PRESS capsule (1) shall come on. All TM 55-1520-240-23 pressure switch (3) plug to ground with a wire. FWD TRANSMISSION AUX OIL PRESS light (2) shall Tools: Equipment Condition: come on. If capsule (1) does not come on, go to task 8-9.8. None TM 55-1520-240-23: 7. Remove wire. Capsule (1) and light (2) shall go out. Materials: Battery Connected 8. Short pin 2 in aft transmission auxiliary oil pressure XMSN AUX OIL PRESS capsule (1) shall come on. None Electrical Power On switch (4) plug to ground with a wire. AFT TRANSMISSION AUX OIL PRESS light (2) shall Personnel Required: Hydraulic Power Off come on. If capsule (1) does not come on, go to Aircraft Electrician (2) Visual Check of Transmission Oil Pressure task 8-9.8. Rotary Wing Aviator (2) Indicating and Warning System Performed 9. Remove wire. Capsule (1) and light (2) shall go out. 10. Short pin 2 in combining transmission auxiliary oil XMSN AUX OIL PRESS capsule (1) shall come on. TASK RESULT pressure switch (5) plug to ground with a wire. COMB TRANSMISSION AUX OIL PRESS light (2) shall come on. If capsule (1) does not come on, go CHECK TRANSMISSION AUXILIARY OIL PRESSURE WARNING SYSTEM to task 8-9.8. 1. Check that XMSN AUX OIL PRESS capsule (1) is lit. If capsule (1) is not lit, go to task 8-9.4. 11. Remove wire. Capsule (1) and light (2) shall go out. 2. Check that three TRANSMISSION AUX OIL PRESS If any light (2) is not on, go to task 8-9.5. 12. Press and release each TRANSMISSION AUX OIL Each light (2) shall come on when pressed. If it lights (2) are Iit. PRESS l",
+      "full_len": 3055
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 316,
+      "pdf_page_human": 317,
+      "printed_page_guess": 214,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 8-10 TRANSMISSION OIL TEMPERATURE INDICATING AND 8-10 WARNING SYSTEM 8-10.1 TRANSMISSION OIL TEMPERATURE INDICATING AND 8-10.1 WARNING SYSTEM WIRING DIAGRAM 8-214 Change 1",
+      "full_len": 188
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 317,
+      "pdf_page_human": 318,
+      "printed_page_guess": 215,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 8-10.1 TRANSMISSION OIL TEMPERATURE INDICATING AND WARNING SYSTEM WIRING DIAGRAM (Continued) 8-10.1 TASK 6-2.1 GO TO NEXT PAGE Change 19 8-215",
+      "full_len": 159
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 318,
+      "pdf_page_human": 319,
+      "printed_page_guess": 19,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 8-10.1 TRANSMISSION OIL TEMPERATURE INDICATING AND WARNING SYSTEM WIRING DIAGRAM (Continued) 8-10.1 END OF TASK 8-216 Change 19",
+      "full_len": 144
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 319,
+      "pdf_page_human": 320,
+      "printed_page_guess": 217,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 8-10.1.1 TRANSMISSION OIL TEMPERATURE INDICATING AND WARNING SYSTEM SCHEMATIC DIAGRAM 8-10.1.1 END OF TASK Change 19 8-217",
+      "full_len": 139
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 320,
+      "pdf_page_human": 321,
+      "printed_page_guess": 218,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 8-10.2 TRANSMISSION OIL TEMPERATURE INDICATING 8-10.2 WARNING SYSTEM VISUAL CHECK INITIAL SETUP References: TM 55-1520-240-23 Applicable Configurations: All Equipment Condition: TM 55-1520-240-23: Battery Disconnected Tools: Electrical Power Off Aircraft Mechanic's Tool Kit. Left and Right Forward work Platform Open NSN 5180-00-323-4692 Forward Drip Pan Removed Aft Transmission Baffles Open Materials: Pylon Hinged Fairing Open None Pylon Lower Fairing Open Engine Air Inlet Screen Removed Personnel Required: Engine Transmission Fairing Removed 67U10 Medium Helicopter Repairer Cargo Ramp Open and Level (Task 7-3.3) GO TO NEXT PAGE 8-218 Change 2",
+      "full_len": 668
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 321,
+      "pdf_page_human": 322,
+      "printed_page_guess": 219,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 8-10.2 TRANSMISSION OIL TEMPERATURE INDICATING AND 8-10.2 WARNING SYSTEM VISUAL CHECK (Continued) TASK RESULT TASK RESULT 1. Check TRANSMISSION TEMP indica- If indicator (1) is loose or damaged, tighten or re- CHECK NO. 2 (RIGHT) ENGINE TRANSMISSION OIL TEMPERATURE tor (1). place it as required. INDICATING AND WARNING SYSTEM INSTALLATION 2. Check TRANSMISSION TEMP switch If switch (2) is loose or damaged, tighten or re- 9. Check temperature probe (7). If probe (7) is damaged, replace it. If wiring or (2). place it as required. electrical connector to probe is damaged, repair or replace it as required. 3. Check five OVERTEMP indicators (3). If any indicator (3) is loose or damaged, tighten or replace it as required. 10. Check temperature and chip detector (8). If detector (8) is damaged, replace it. If wiring or electrical connector to detector is damaged, repair CHECK FORWARD TRANSMISSION OIL TEMPERATURE or replace it as required. INDICATING AND WARNING SYSTEM INSTALLATION 4. Check temperature probe (4). If probe (4) is damaged, replace it. If wiring or FOLLOW-ON MAINTENANCE: electrical connector to probe is damaged, repair or None replace as required. CHECK AFT TRANSMISSION OIL TEMPERATURE INDICATING AND WARNING SYSTEM INSTALLATION 5. Check temperature probe (5). If probe (5) is damaged, replace it. If wiring or electrical connector to probe is damaged, repair or replace it as required. CHECK COMBINING TRANSMISSION OIL TEMPERATURE INDICATING AND WARNING SYSTEM INSTALLATION 6. Check temperature probe (6). If probe (6) is damaged, replace it. If wiring or electrical connector to probe is damaged, repair or replace it as required. CHECK NO. 1 (LEFT) ENGINE TRANSMISSION OIL TEMPERATURE INDICATING AND WARNING SYSTEM INSTALLATION 7. Check temperature probe (",
+      "full_len": 2123
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 322,
+      "pdf_page_human": 323,
+      "printed_page_guess": 220,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 8-10.3 TRANSMISSION OIL TEMPERATURE INDICATING AND WARNING SYSTEM OPERATIONAL CHECK INITIAL SETUP Applicable Configurations: References: All TM 55-1520-240-23 Tools: Equipment Condition: Electrical Repairer’s Tool Kit, TM 55-1520-240-23: NSN 5180-00-323-4915 Battery Connected Electrical Power On Materials: None Hydraulic Power Off Visual Check of Transmission Oil Temperature Personnel Required: Indicating and Warning System Performed 68F10 Aircraft Electrician (Task 8-10.2) 68F20 Aircraft Electrician TASK RESULT CHECK TRANSMISSION OIL TEMPERATURE INDICATING SYSTEM 8-10.3 1. Check that XMSN OIL TEMP circuit If circuit breaker (1) is open, close it. If it opens breaker (1) is closed. again, go to Task 8-10.4. 2. Set and hold XMSN OIL TEMP switch Pointer on XMSN TEMP indicator (3) shall indi- (2) to TEST. cate below –70°C (–94°F). Switch (2) TEST posi- tion shall light. If pointer does not move below –70°C point, go to Task 8-10.5. If pointer moves below –70°C point but switch TEST position does not light, replace switch. Switch (2) shall return to SCAN position. SCAN 3. Release XMSN OIL TEMP switch (2). position shall light. Indicator pointer shall move up scale and display a temperature near ambient temperature. 4. Record indication on XMSN TEMP indi- If switch does not return to SCAN, or SCAN posi- cator (3). tion does not light, replace switch. If indicator pointer does not indicate near ambient tempera- ture, go to Task 8-10.6. 8-220",
+      "full_len": 1476
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 323,
+      "pdf_page_human": 324,
+      "printed_page_guess": 221,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 8-10.3 TRANSMISSION OIL TEMPERATURE INDICATING AND WARNING SYSTEM OPERATIONAL CHECK (Continued) 8-10.3 TASK RESULT 5. Turn XMSN OIL TEMP switch (2) to FWD, AFT, MIX, Each switch position shall light when selected. If not, LEFT, then RT position. Record indication on XMSN replace XMSN OIL TEMP switch (2). Each indicator (3) TEMP indicator (3) for each switch position. indication shall be near ambient temperature. If not, go to Task 8-10.7. 6. Compare highest indication recorded in step 5 with The difference in indications shall not exceed 5 percent. If indication recorded in step 4. it does, replace XMSN OIL TEMP switch (3). 7. Turn XMSN OIL TEMP switch (2) to SCAN. Switch position that recorded highest indication in step 5 shall light. If it does not, replace switch (3). CHECK TRANSMISSION OIL TEMPERATURE WARNING SYSTEM 8. Without 74 check NO. 1 ENG XMSN HOT and NO. 2 If capsule (4 or 5) is lit, go to Task 8-10.8. ENG XMSN HOT capsules (4 and 5). With 74 check ENG 1 XMSN HOT and ENG 2 XMSN If capsule (4 or 5) is lit, go to Task 8-10.8. HOT capsules (4 and 5). 9. Disconnect plug from No. 1 (left) engine transmission NO. 1 ENG XMSN HOT (Without 74) ENG 1 XMSN temperature and chip detector (6). Short pins 3 and 4 HOT (With 74) capsule (4) shall come on. If it does not, with a wire. go to Task 8-10.9. 10. Remove wire. Connect plug to temperature and chip Capsule (4) shall go out. detector (6). 11. Disconnect plug from No. 2 (right) engine transmis- NO. 2 ENG XMSN HOT (Without 74) ENG 2 XMSN sion temperature and chip detector (6). Short pins 3 HOT (With 74) capsule (5) shall come on. If it does not, and 4 with a wire. go to Task 8-10.9. 12. Remove wire. Connect plug to temperature and chip Capsule (5) shall go out. detector (6). GO TO NEXT- PAGE Change 19 8-",
+      "full_len": 1803
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 324,
+      "pdf_page_human": 325,
+      "printed_page_guess": 222,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 8-10.3 TRANSMISSION OIL TEMPERATURE INDICATING AND 8-10.3 WARNING SYSTEM OPERATIONAL CHECK (Continued) TASK RESULT TASK RESULT 13. Check XMSN OIL HOT capsule (7). If capsule (7) is lit, go to Task 8-10.10. 24. Set GND switch (17) to RESET then to Indicators (9, 11, 13, 15, and 16) shall turn all GND. black. If any indicators are still black and white, 14. Disconnect plug from forward trans- XMSN OIL HOT capsule (7) shall come on. FOR- go to Task 8-10.16. mission temperature probe (8). Short WARD TRANSMISSION OVERTEMP indicator plug pins 2 and 3 with a wire. (9) shall turn to a black-and-white fan display. If capsule (7) does not come on or annunciator (9) FOLLOW-ON MAINTENANCE: stays black, go to Task 8-10.11. TM 55-1520-240-23 15. Remove wire and connect plug to probe (8) Capsule (7) shall go out. Indicator (9) shall stay Electrical Power Off black and white. Battery Disconnected Forward Drip Pan Installed 16. Disconnect plug from aft transmission XMSN OIL HOT capsule (7) shall come on. AFT Left and Right Forward Work Platforms temperature probe (10). Short plug pins TRANSMISSION OVERTEMP indicator (11) Closed 2 and 3 with a wire. shall turn to a black-and-white fan display. If Aft Transmission Baffles Closed capsule (7) does not come on or indicator (11) Pylon Hinged Fairing Closed stays black, go to Task 8-10.12. Pylon Lower Fairing Closed Engine Transmission Fairing Installed 17. Remove wire and connect plug to probe Capsule (7) shall go out. Indicator (11) shall Engine Air Inlet Screens Installed (10). stay black and white. 18. Disconnect plug from combining trans- XMSN OIL HOT capsule (7) shall come on. COMB mission temperature probe (12). Short TRANSMISSION OVERTEMP indicator (13) plug pins 2 and 3 with a wire. shall turn to a black-and-white fan",
+      "full_len": 2925
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 325,
+      "pdf_page_human": 326,
+      "printed_page_guess": 223,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 8-10.3 TRANSMISSION OIL TEMPERATURE INDICATING AND WARNING SYSTEM OPERATIONAL CHECK (Continued) 8-10.3 END OF TASK Change 19 8-223",
+      "full_len": 147
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 327,
+      "pdf_page_human": 328,
+      "printed_page_guess": 225,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 8-10.4 XMSN OIL TEMP CIRCUIT BREAKER WILL NOT 8-10.4 STAY CLOSED (Continued) END OF TASK Change 1 8-225",
+      "full_len": 120
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 1018,
+      "pdf_page_human": 1019,
+      "printed_page_guess": 19,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T Task Page Task Page Heating and Ventilating System (Continued) Indicator, Turn and Slip ...................................................................................................... 8-1 3 8-309 Relay, Heater Indicator, Vertical Speed...................................................................................................... 8-1 8-1 Relay, Heater Fan Control Igniter, Heater .................................................................................................................... 13-1 13-1 Solenoid, Master Fuel Valve Inverter .............................................................................................................................. 10-3 10-123 Switch, Cabin Thermostat J HF Liaison Facility .............................................................................................................. 18-4 18-97 Junction Box, Torquemeter ................................................................................................. 8-6 8-101 AN/ARC-200 L TSEC/KY-1 00 Landing Lights (Search Lights) System ............................................................................... 9-4 9-107 Hook Assembly, External Cargo, Fwd and Alt ...................................................................... 16-1 16-1 Searchlight Hook Assembly, External Cargo, Mid................................................................................... 16-1 16-1 Light, Aft Cyclic Trim Indicator ............................................................................................. 9-9 9-179 Hydraulic Pressure Indicating System ................................................................................. 8-7 8-121 Light, Anti-Collision ............................................................................",
+      "full_len": 11268
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 1019,
+      "pdf_page_human": 1020,
+      "printed_page_guess": 19,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T Task Page Task Page Light, OVHD Switch Panel, Lighting .................................................................................... 9-11 9-199 Master Caution Lights System............................................................................................. 9-18 9-321 Light, Radar Alt Dim Cont Panel .......................................................................................... 9-8 9-167 Capacitor, Caution Panel Filter Light, Ramp........................................................................................................................ 9-15 9-259 Caution Panel, Master Light, Rate of Climb Indicator .............................................................................................. 9-10 9-187 Light, Master Caution Light, Red Position.............................................................................................................. 9-3 9-99 Relay, Dimming Lockout Lighting System Relay, Caution Light Dimming Anticollision ................................................................................................................. 9-6 9-151 Switch, Caution Lights Dim/Bright Cabin and Ramp .......................................................................................................... 9-15 9-259 Switch, Caution Lights Test Cargo Hook.................................................................................................................. 9-23 9-375 Master Caution Panel (AVIM) (Without 74 ).......................................................................... 9-21 9-359 Cockpit Dome and Utility .............................................................................................. 9-14 9-247 Monitor, External Power.....................................................",
+      "full_len": 8118
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "pdf_page_index": 1021,
+      "pdf_page_human": 1022,
+      "printed_page_guess": 19,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T Task Page Task Page Rotor Blade Tracking and Balancing System........................................................................ 5-2 5-5 Switch, Emergency Power (Without 74 )............................................................................... 8-5 8-73 Phase Detector, Magnetic Switch, Fire Agent Selector ................................................................................................. 12-3 12-53 Rotor Tachometer System .................................................................................................. 8-15 8-333 Switch, Fire Detector Test .................................................................................................. 12-2 12-29 Generator, AC Switch, Fire Handle, Engine ................................................................................................ 12-3 12-53 Indicator, Rotor Tachometer Switch, Hydraulic Level Check ............................................................................................ 8-14 8-319 S Switch, No. 1, No. 2 Flight Control ....................................................................................... 8-14 8-319 Searchlight ........................................................................................................................ 9-4 9-107 Switch, Oil Pressure ........................................................................................................... 8-9 8-149 Secondary Cockpit Lights System........................................................................................ 9-13 9-229 Switch, Oil Level Check Light .............................................................................................. 9-7 9-159 Floodlight, Console Switch, Parking Brake Handle ....................................",
+      "full_len": 9691
+    },
+    {
+      "file": "TM_55-1520-240-T-3.pdf",
+      "pdf_page_index": 694,
+      "pdf_page_human": 695,
+      "printed_page_guess": 12,
+      "topics": [
+        "generator"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T 15-1.2 OVERALL ELECTRICAL CABLING INTERCONNECTIONS OF APU SYSTEM COMPONENTS, \"INTERFACED\" TO MAIN ENGINE \"STARTER\" COMPONENTS (Continued) 15-1.2 A. OVERVIEW - OF APU INTERFACED TO MAIN ENGINE STARTERS C. BRIEF OPERATIONAL DESCRIPTION OF APU SYSTEM The APU Interfaced to the Main Engine Starters includes the activation of the following components and The Gas Turbine Auxiliary Power Unit T62-T-2B (APU) is mounted in the aft cabin above the ramp. The interconnections as shown in paragraph 15-1.2. basic components of the APU are the gas turbine engine, hydraulic motor-pump, fuel control, accessory 1. Hydraulic STARTERS on each engine drive, and ac generator. An APU control box, ESU, which monitors APU operation is on the left side of the 2. Engine START valves cabin above the ramp. The motor-pump on the APU pressurizes the utility and flight control hydraulic sys- 3. Solenoid-operated pilot valves on the Utility System Pressure Control Modules tems for main engine starting and ground checks. The APU also drives an ac generator which supplies 4. Start switches and relays power to No. 1 and No. 2 electrical systems. The APU receives fuel from the left fuel system thru a 5. Caution lights booster pump, a manual fuel shutoff valve, and a solenoid valve. 6. Ignition LOCK switch 7. Start Fuel Solenoid Valve The APU control switch is on the electrical power panel on the overhead switch panel. It is a three-position 8. APU Fuel Solenoid Valve switch marked APU OFF, RUN, and START. The switch is spring loaded from RUN to START. To start the 9. APU Fuel Boost Pump APU, the switch is moved from OFF to RUN for 3 to 5 seconds, then set to START for 2 seconds, then 10. APU Electronic Sequence Unit (ESU) released to RUN. APU start is then automatic and controlled by the co",
+      "full_len": 2864
+    },
+    {
+      "file": "TM_55-1520-240-T-3.pdf",
+      "pdf_page_index": 1212,
+      "pdf_page_human": 1213,
+      "printed_page_guess": 23,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T Task Page Task Page Heating and Ventilating System (Continued) Indicator, Turn and Slip ..................................................................................................................... 8-13 8-309 Relay, Heater Indicator, Vertical Speed..................................................................................................................... 8-1 8-1 Relay, Heater Fan Control Igniter, Heater ................................................................................................................................... 13-1 13-1 Solenoid, Master Fuel Valve Inverter ............................................................................................................................................. 10-3 10-123 Switch, Cabin Thermostat HF Liaison Facility............................................................................................................................. 18-4 18-97 J AN/ARC-200 TSEC/KY-1 00 Junction Box, Torquemeter ................................................................................................................ 8-6 8-101 Hook Assembly, External Cargo, Fwd and Aft ..................................................................................... 16-1 16-1 Hook Assembly, External Cargo, Mid ................................................................................................. 16-1 16-1 L Hydraulic Pressure Indicating System ................................................................................................ 8-7 8-121 Indicator, Hydraulic Pressure Landing Lights (Search Lights) System .............................................................................................. 9-4 9-107 Panel, Hydraulic Searchlight Transmitter, Hydraulic Pressure Light, A",
+      "full_len": 12320
+    },
+    {
+      "file": "TM_55-1520-240-T-3.pdf",
+      "pdf_page_index": 1213,
+      "pdf_page_human": 1214,
+      "printed_page_guess": 23,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T Task Page Task Page Light, OVHD Switch Panel, Lighting ................................................................................................... 9-11 9-199 Master Caution Lights System............................................................................................................ 9-18 9-321 Light, Radar Alt Dim Cont Panel ......................................................................................................... 9-88 9-167 Capacitor, Caution Panel Filter Light, Ramp....................................................................................................................................... 9-15 9-259 Caution Panel, Master Light, Rate of Climb Indicator ............................................................................................................. 9-10 9-187 Light, Master Caution Light, Red Position............................................................................................................................. 9-3 9-99 Relay, Dimming Lockout Lighting System Relay, Caution Light Dimming Anticollision .................................................................................................................................. 9-6 9-151 Switch, Caution Lights Dim/Bright Cabin and Ramp .......................................................................................................................... 9-15 9-259 Switch, Caution Lights Test Cargo Hook.................................................................................................................................. 9-23 9-375 Master Caution Panel (AVIM) (Without 74 )......................................................................................... 9-21 9-359 Cockpit Dome and Utility ...........................",
+      "full_len": 8582
+    },
+    {
+      "file": "TM_55-1520-240-T-3.pdf",
+      "pdf_page_index": 1215,
+      "pdf_page_human": 1216,
+      "printed_page_guess": 23,
+      "topics": [
+        "xmsn_oil_temp"
+      ],
+      "has_struct": false,
+      "snippet": "TM 55-1520-240-T Task Page Task Page Rotor Blade Tracking and Balancing System..................................................................... 5-2 5-5 Switch, Emergency Power (Without 74) ............................................................................ 8-5 8-73 Phase Detector, Magnetic Switch, Fire Agent Selector .............................................................................................. 12-3 12-53 Rotor Tachometer System ............................................................................................... 8-15 8-333 Switch, Fire Detector Test ............................................................................................... 12-2 12-29 Generator, AC Switch, Fire Handle, Engine ............................................................................................. 12-3 12-53 Indicator, Rotor Tachometer Switch, Hydraulic Level Check ......................................................................................... 8-14 8-319 S Switch, No. 1, No. 2 Flight Control .................................................................................. 8-14 8-319 Switch, Oil Pressure......................................................................................................... 8-9 8-149 Searchlight ..................................................................................................................... 9-4 9-107 Switch, Oil Level Check Light ........................................................................................... 9-7 9-159 Secondary Cockpit Lights System .................................................................................... 9-13 9-229 Switch, Parking Brake Handle .......................................................................................... 7-6",
+      "full_len": 9488
+    }
+  ]
+}

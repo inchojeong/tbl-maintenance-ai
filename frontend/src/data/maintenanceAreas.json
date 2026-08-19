@@ -1,0 +1,50 @@
+{
+  "version": "1.0",
+  "baseModel": {
+    "id": "AIRCRAFT_BASE",
+    "url": "/models/Aircraft_Base.glb",
+    "fallbackProxy": true,
+    "maxTriangles": 80000,
+    "maxSizeMb": 5
+  },
+  "areas": [
+    {
+      "area_id": "AREA_01",
+      "label_ko": "정비구역 01 (모의)",
+      "hotspotMesh": "AREA_01_HOTSPOT",
+      "model": "/models/Maintenance_Area_01.glb",
+      "defaultViewTarget": "AREA_01_OVERVIEW",
+      "legacyHotspot": "ENGINE_ZONE",
+      "enabled": true
+    },
+    {
+      "area_id": "AREA_02",
+      "label_ko": "정비구역 02 (모의)",
+      "hotspotMesh": "AREA_02_HOTSPOT",
+      "model": "/models/Maintenance_Area_02.glb",
+      "defaultViewTarget": "AREA_02_OVERVIEW",
+      "enabled": false
+    },
+    {
+      "area_id": "AREA_03",
+      "label_ko": "정비구역 03 (모의)",
+      "hotspotMesh": "AREA_03_HOTSPOT",
+      "model": "/models/Maintenance_Area_03.glb",
+      "defaultViewTarget": "AREA_03_OVERVIEW",
+      "enabled": false
+    },
+    {
+      "area_id": "AREA_04",
+      "label_ko": "정비구역 04 (모의)",
+      "hotspotMesh": "AREA_04_HOTSPOT",
+      "model": "/models/Maintenance_Area_04.glb",
+      "defaultViewTarget": "AREA_04_OVERVIEW",
+      "enabled": false
+    }
+  ],
+  "loadPolicy": {
+    "lazyLoadArea": true,
+    "maxResidentAreas": 1,
+    "showProgress": true
+  }
+}

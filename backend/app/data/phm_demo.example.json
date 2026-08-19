@@ -1,0 +1,37 @@
+{
+  "version": "1.0",
+  "disclaimer": "Simulated PHM values for prototype demo only. Not real aircraft sensor data.",
+  "aircraft_id": "DEMO-KUH-01",
+  "tail_no": "Surion-KUH-01",
+  "recorded_at": "2026-08-05T09:00:00+09:00",
+  "oil_pressure_psi": 28,
+  "oil_temperature_c": 98,
+  "filter_differential_pressure_psi": 12,
+  "vibration_g": 0.42,
+  "health_score": 28,
+  "degradation_percent": 72,
+  "estimated_rul_fh": 18,
+  "sensors": [
+    {
+      "label": "오일 압력",
+      "value": "28 psi",
+      "status": "bad"
+    },
+    {
+      "label": "오일 온도",
+      "value": "98 °C",
+      "status": "warn"
+    },
+    {
+      "label": "필터 차압",
+      "value": "12 psi",
+      "status": "bad"
+    },
+    {
+      "label": "진동",
+      "value": "0.42 g",
+      "status": "ok"
+    }
+  ],
+  "is_dummy": true
+}

@@ -1,0 +1,849 @@
+{
+  "version": "1.2",
+  "disclaimer": "DEMO / Public Technical Manual Reference only. Excerpts from publicly available CH-47D US Army TM 55-1520-240-T series. NOT Surion (수리온) procedures. pdf_page = 1-based local PDF page index (not printed page).",
+  "responses": [
+    {
+      "id": "DEMO-PUB-ENG-OIL-001",
+      "keywords": [
+        "오일 압력",
+        "엔진 오일",
+        "1번 엔진"
+      ],
+      "keywords_alt": [
+        "오일 압력 경고",
+        "오일 압력이 낮",
+        "oil pressure",
+        "어디를 확인"
+      ],
+      "response": {
+        "system_code": "ENGINE_OIL",
+        "symptom_code": "ENG_OIL_PRESS_LOW",
+        "risk_level": "HIGH",
+        "suspected_components": [
+          "PRESSURE_SENSOR"
+        ],
+        "answer": "엔진 오일 압력 지시 계통부터 확인하는 것이 좋습니다.\n\n공개 정비교범 기준으로는 먼저 1·2번 엔진의 OIL PRESS 회로 차단기(Circuit Breaker) 상태를 확인하고, 이후 엔진을 GROUND IDLE로 운용한 상태에서 오일 압력 지시값이 정상적으로 나타나는지 점검합니다. 공개 CH-47D 교범 해당 단계에서는 지시값이 약 20 psi 이상이며 과도한 변동이 없어야 합니다.\n\n압력값이 기준에서 벗어나거나 변동이 크다면 오일 압력 센서(Pressure Transmitter), 오일 라인 및 관련 배선 상태를 순서대로 확인합니다. 이상이 지속되면 관련 고장탐구 절차로 이어서 점검할 수 있습니다.\n\n관련 장비\n오일 압력 센서 및 연결계통\n\n정비교범 근거\nTM 55-1520-240-T-2\nTask 8-3.3 · PDF p.114\n\n3D 위치\n관련 장비 위치를 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T2-ENG-OIL-001"
+        ],
+        "recommended_steps": [
+          "1·2번 엔진 OIL PRESS 회로 차단기 닫힘 상태 확인",
+          "GROUND IDLE에서 오일 압력 지시값이 정상인지 확인(공개 교범 기준 약 20 psi 이상, 과도 변동 없음)",
+          "비정상 시 오일 압력 센서·오일 라인·배선 상태 확인",
+          "이상이 지속되면 관련 고장탐구 절차로 진행"
+        ],
+        "view_target_id": "ENGINE_PRESSURE_SENSOR",
+        "confidence": 0.93,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-2",
+            "document_id": "CH47-TM-T2-ENG-OIL-001",
+            "title": "Engine Oil Pressure Indicating — Operational Check",
+            "page": 114,
+            "pdf_page": 114,
+            "task": "8-3.3",
+            "paragraph": "8-3.3",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "COMPONENT",
+        "fault_code": "FAULT_AREA01_PART01",
+        "area_id": "AREA_01",
+        "target_mesh": "AREA_01_PART_01",
+        "cover_mesh": "AREA_01_COVER_01",
+        "inspection_point": "AREA_01_CHECK_01"
+      }
+    },
+    {
+      "id": "DEMO-PUB-OIL-FILTER-001",
+      "keywords": [
+        "오일 필터",
+        "필터 오염"
+      ],
+      "keywords_alt": [
+        "필터 버튼",
+        "oil filter",
+        "이물질"
+      ],
+      "response": {
+        "system_code": "ENGINE_OIL",
+        "symptom_code": "OIL_FILTER_CONTAMINATION",
+        "risk_level": "HIGH",
+        "suspected_components": [
+          "OIL_FILTER"
+        ],
+        "answer": "오일 필터 상태를 우선 확인하는 것이 좋습니다.\n\n공개 정비교범의 변속기 윤활계통 육안점검에서는 오일 필터 indicating button이 돌출되어 있으면 필터 엘리먼트를 교체하고, 제거한 엘리먼트의 이물질(debris) 여부를 확인하도록 안내합니다.\n\n오일 레벨과 누유, 쿨러 막힘 등 인접 항목도 함께 확인한 뒤 필요 시 정비교범(TM 55-1520-240-23)을 참조합니다.\n\n관련 장비\n오일 필터\n\n정비교범 근거\nTM 55-1520-240-T-1\nTask 6-1.2 · PDF p.577\n\n3D 위치\n관련 장비 위치를 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T1-OIL-FILTER-001"
+        ],
+        "recommended_steps": [
+          "오일 필터 indicating button 상태 확인",
+          "버튼 돌출 시 필터 엘리먼트 교체 및 이물질 검사(TM 55-1520-240-23 참조)",
+          "오일 레벨·누유·쿨러 막힘 등 인접 항목 확인"
+        ],
+        "view_target_id": "ENGINE_OIL_FILTER",
+        "confidence": 0.9,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-1",
+            "document_id": "CH47-TM-T1-OIL-FILTER-001",
+            "title": "Transmission Lubrication — Oil Filter Indicating Button",
+            "page": 577,
+            "pdf_page": 577,
+            "task": "6-1.2",
+            "paragraph": "6-1.2",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "COMPONENT",
+        "fault_code": "FAULT_AREA01_PART01",
+        "area_id": "AREA_01",
+        "target_mesh": "AREA_01_PART_01",
+        "cover_mesh": "AREA_01_COVER_01",
+        "inspection_point": "AREA_01_CHECK_01"
+      }
+    },
+    {
+      "id": "DEMO-PUB-HYD-001",
+      "keywords": [
+        "유압",
+        "유압 압력"
+      ],
+      "keywords_alt": [
+        "hydraulic",
+        "하이드로릭",
+        "flight control pressure"
+      ],
+      "response": {
+        "system_code": "HYDRAULIC",
+        "symptom_code": "HYD_PRESS_LOW",
+        "risk_level": "HIGH",
+        "suspected_components": [
+          "HYDRAULIC_ZONE"
+        ],
+        "answer": "먼저 비행조종 유압계통의 압력 지시 상태를 확인해 보겠습니다.\n\n공개 정비교범 기준으로는 유압 압력 지시용 회로 차단기 상태를 확인한 뒤, 비행조종 유압 압력 지시값이 정상 범위에 있는지 점검합니다. 해당 공개 교범 단계에서는 대략 2500–3500 psi 범위와 과도 변동 여부를 확인합니다.\n\n지시값이 범위를 벗어나거나 변동이 크면 관련 고장탐구 절차로 이어 점검합니다.\n\n관련 계통\n비행조종 유압계통\n\n정비교범 근거\nTM 55-1520-240-T-2\nTask 8-7.3 · PDF p.227\n\n3D 위치\n관련 계통의 위치를 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T2-HYD-PRESS-001"
+        ],
+        "recommended_steps": [
+          "유압 압력 지시용 회로 차단기 닫힘 상태 확인",
+          "공개 교범 기준으로 압력 지시값이 약 2500–3500 psi 범위인지·과도 변동이 없는지 확인",
+          "범위 이탈 시 관련 고장탐구 절차로 진행"
+        ],
+        "view_target_id": "HYDRAULIC_SYSTEM",
+        "confidence": 0.88,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-2",
+            "document_id": "CH47-TM-T2-HYD-PRESS-001",
+            "title": "Hydraulic Pressure Indicating — Operational Check",
+            "page": 227,
+            "pdf_page": 227,
+            "task": "8-7.3",
+            "paragraph": "8-7.3",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "SYSTEM",
+        "fault_code": "FAULT_HYD_SYSTEM"
+      }
+    },
+    {
+      "id": "DEMO-PUB-GEN-001",
+      "keywords": [
+        "발전기",
+        "제너레이터"
+      ],
+      "keywords_alt": [
+        "generator",
+        "GEN capsule",
+        "GEN OFF"
+      ],
+      "response": {
+        "system_code": "ELECTRICAL",
+        "symptom_code": "GEN_OFF",
+        "risk_level": "MEDIUM",
+        "suspected_components": [
+          "ELECTRICAL_ZONE"
+        ],
+        "answer": "발전기와 전기계통 연결 상태부터 확인하는 것이 좋습니다.\n\n공개 정비교범의 교류 전원(AC Power) 고장증상 목록에서는 발전기 OFF/주의(GEN) 관련 증상을 확인하고, 이어서 발전기 스위치와 발전기 제어패널(Generator Control Panel) 상태를 육안으로 점검하도록 안내합니다.\n\n스위치·패널·커넥터·배선에 손상이나 풀림이 있으면 조이거나 교체한 뒤 정비교범을 참조합니다.\n\n관련 계통\n발전기·전기계통\n\n정비교범 근거\nTM 55-1520-240-T-2\nTask 9-2.4 · PDF p.492\n\n3D 위치\n관련 계통의 위치를 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T2-GEN-001"
+        ],
+        "recommended_steps": [
+          "교류 전원(AC Power) 고장증상 목록에서 발전기 OFF/GEN 관련 증상 확인",
+          "GEN NO.1·NO.2·APU 스위치 및 발전기 제어패널 육안 점검",
+          "손상된 커넥터·배선은 조이거나 교체 후 정비교범(TM 55-1520-240-23) 참조"
+        ],
+        "view_target_id": "ELECTRICAL_SYSTEM",
+        "confidence": 0.86,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-2",
+            "document_id": "CH47-TM-T2-GEN-001",
+            "title": "AC Power / Generator Caution — Symptom & Visual Check",
+            "page": 492,
+            "pdf_page": 492,
+            "task": "9-2.4",
+            "paragraph": "9-2.4",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "SYSTEM",
+        "fault_code": "FAULT_ELEC_SYSTEM"
+      }
+    },
+    {
+      "id": "DEMO-PUB-XMSN-HOT-001",
+      "keywords": [
+        "변속기",
+        "오일 온도",
+        "XMSN"
+      ],
+      "keywords_alt": [
+        "transmission oil",
+        "OIL HOT",
+        "고온"
+      ],
+      "response": {
+        "system_code": "DRIVE_SYSTEM",
+        "symptom_code": "XMSN_OIL_HOT",
+        "risk_level": "HIGH",
+        "suspected_components": [
+          "XMSN_ZONE"
+        ],
+        "answer": "변속기 오일 온도(고온 경고) 관련 점검을 우선 진행하는 것이 좋습니다.\n\n공개 정비교범 구동계통 고장증상 목록에서는 XMSN OIL HOT(변속기 오일 고온) 경고가 점등되고 일부 변속기 오일 온도 지시가 높은 경우, 해당 윤활계통 점검 경로로 안내합니다.\n\n필요하면 온도 지시·경고계통 점검을 병행하고, 정비 조치는 정비교범을 참조합니다.\n\n관련 계통\n변속기 계통\n\n정비교범 근거\nTM 55-1520-240-T-1\nTask 6-1.3 · PDF p.569\n\n3D 위치\n관련 계통의 위치를 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T1-XMSN-HOT-001"
+        ],
+        "recommended_steps": [
+          "XMSN OIL HOT(변속기 오일 고온) 경고와 온도 지시 상태 확인",
+          "변속기 윤활계통 운용·육안 점검 수행",
+          "필요 시 온도 지시·경고계통 점검을 병행"
+        ],
+        "view_target_id": "DRIVE_SYSTEM_VIEW",
+        "confidence": 0.87,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-1",
+            "document_id": "CH47-TM-T1-XMSN-HOT-001",
+            "title": "Transmission Oil Hot — Failure Symptom List",
+            "page": 569,
+            "pdf_page": 569,
+            "task": "6-1.3",
+            "paragraph": "6-1.3",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "SYSTEM",
+        "fault_code": "FAULT_XMSN_SYSTEM"
+      }
+    },
+    {
+      "id": "DEMO-PUB-ENG-OIL-TEMP-001",
+      "keywords": [
+        "오일 온도",
+        "엔진 오일 온도"
+      ],
+      "keywords_alt": [
+        "oil temperature",
+        "오일온도"
+      ],
+      "response": {
+        "system_code": "ENGINE_OIL",
+        "symptom_code": "ENG_OIL_TEMP_ABNORMAL",
+        "risk_level": "MEDIUM",
+        "suspected_components": [
+          "ENGINE_ZONE"
+        ],
+        "answer": "엔진 오일 온도 지시 계통부터 확인해 보겠습니다.\n\n공개 정비교범의 엔진 오일 온도 지시계통 운용점검에 따라 관련 회로 차단기와 온도 지시 상태를 확인합니다.\n\n지시가 비정상일 경우 해당 고장탐구 절차로 이어서 점검합니다.\n\n관련 계통\n엔진 계통\n\n정비교범 근거\nTM 55-1520-240-T-2\nTask 8-4.3 · PDF p.140\n\n3D 위치\n관련 장비가 위치한 영역을 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T2-ENG-OIL-TEMP-001"
+        ],
+        "recommended_steps": [
+          "엔진 오일 온도 지시계통 운용점검 수행",
+          "관련 회로 차단기 및 온도 지시값 확인",
+          "이상 시 관련 고장탐구 절차로 진행"
+        ],
+        "view_target_id": "ENGINE_OIL_SYSTEM",
+        "confidence": 0.85,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-2",
+            "document_id": "CH47-TM-T2-ENG-OIL-TEMP-001",
+            "title": "Engine Oil Temperature Indicating — Operational Check",
+            "page": 140,
+            "pdf_page": 140,
+            "task": "8-4.3",
+            "paragraph": "8-4.3",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "AREA",
+        "fault_code": "FAULT_AREA01_PART01",
+        "area_id": "AREA_01",
+        "target_mesh": "AREA_01_PART_01",
+        "cover_mesh": "AREA_01_COVER_01",
+        "inspection_point": "AREA_01_CHECK_01"
+      }
+    },
+    {
+      "id": "DEMO-PUB-ENG-OIL-CB-001",
+      "keywords": [
+        "오일 압력 차단기",
+        "OIL PRESS 차단"
+      ],
+      "keywords_alt": [
+        "circuit breaker",
+        "차단기가 떨어"
+      ],
+      "response": {
+        "system_code": "ENGINE_OIL",
+        "symptom_code": "ENG_OIL_PRESS_CB",
+        "risk_level": "MEDIUM",
+        "suspected_components": [
+          "ENGINE_ZONE"
+        ],
+        "answer": "엔진 오일 압력용 회로 차단기 상태부터 확인하는 것이 좋습니다.\n\n공개 정비교범 고장증상 목록에는 OIL PRESS 회로 차단기가 닫힌 상태를 유지하지 못하는 항목이 있으며, 운용점검 중 차단기가 다시 열리면 관련 고장탐구 절차로 안내합니다.\n\n차단기·배선 이상 여부를 확인한 뒤 필요 시 정비교범을 참조합니다.\n\n관련 계통\n엔진 계통\n\n정비교범 근거\nTM 55-1520-240-T-2\nTask 8-3.3 · PDF p.44\n\n3D 위치\n관련 장비가 위치한 영역을 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T2-ENG-OIL-CB-001"
+        ],
+        "recommended_steps": [
+          "OIL PRESS 회로 차단기가 닫힌 상태를 유지하는지 확인",
+          "운용점검 중 차단기가 다시 열리면 관련 고장탐구 절차로 진행"
+        ],
+        "view_target_id": "ENGINE_OIL_SYSTEM",
+        "confidence": 0.84,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-2",
+            "document_id": "CH47-TM-T2-ENG-OIL-CB-001",
+            "title": "Engine Oil Press Circuit Breaker Will Not Stay Closed",
+            "page": 44,
+            "pdf_page": 44,
+            "task": "8-3.3",
+            "paragraph": "8-3.3",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "AREA",
+        "fault_code": "FAULT_AREA01_PART01",
+        "area_id": "AREA_01",
+        "target_mesh": "AREA_01_PART_01",
+        "cover_mesh": "AREA_01_COVER_01",
+        "inspection_point": "AREA_01_CHECK_01"
+      }
+    },
+    {
+      "id": "DEMO-PUB-XMSN-PRESS-001",
+      "keywords": [
+        "변속기 오일 압력",
+        "XMSN OIL PRESS"
+      ],
+      "keywords_alt": [
+        "transmission oil pressure",
+        "변속 압력"
+      ],
+      "response": {
+        "system_code": "DRIVE_SYSTEM",
+        "symptom_code": "XMSN_OIL_PRESS_LOW",
+        "risk_level": "HIGH",
+        "suspected_components": [
+          "XMSN_ZONE",
+          "OIL_FILTER"
+        ],
+        "answer": "변속기 오일 압력 저하 경고에 대해 윤활계통 점검을 우선 권고합니다.\n\n공개 정비교범에서는 XMSN OIL PRESS 경고와 함께 일부 변속기 오일 압력 지시가 낮은 경우 고장분리 절차를 수행하며, 그 과정에서 메인 오일 필터 교체 및 변속기 사용성 점검이 안내됩니다.\n\n필터 교체 후에도 압력이 회복되지 않으면 펌프·쿨러 등 후속 점검 경로를 따릅니다.\n\n관련 계통\n변속기 계통\n오일 필터\n\n정비교범 근거\nTM 55-1520-240-T-1\nTask 6-1.4 · PDF p.581\n\n3D 위치\n관련 계통의 위치를 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T1-XMSN-PRESS-001"
+        ],
+        "recommended_steps": [
+          "변속기 오일 압력 저하에 대한 고장분리 절차 착수",
+          "메인 오일 필터 교체 및 변속기 사용성 점검(TM 55-1520-240-23 참조)",
+          "압력이 회복되지 않으면 펌프·쿨러 등 후속 점검 경로 확인"
+        ],
+        "view_target_id": "DRIVE_SYSTEM_VIEW",
+        "confidence": 0.88,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-1",
+            "document_id": "CH47-TM-T1-XMSN-PRESS-001",
+            "title": "XMSN Oil Press Capsule On — One Indication Low",
+            "page": 581,
+            "pdf_page": 581,
+            "task": "6-1.4",
+            "paragraph": "6-1.4",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "SYSTEM",
+        "fault_code": "FAULT_XMSN_SYSTEM"
+      }
+    },
+    {
+      "id": "DEMO-PUB-HYD-FILTER-BTN-001",
+      "keywords": [
+        "유압 필터",
+        "필터 버튼"
+      ],
+      "keywords_alt": [
+        "hydraulic filter",
+        "indicating button"
+      ],
+      "response": {
+        "system_code": "HYDRAULIC",
+        "symptom_code": "HYD_FILTER_BUTTON",
+        "risk_level": "MEDIUM",
+        "suspected_components": [
+          "HYDRAULIC_ZONE"
+        ],
+        "answer": "비행조종 유압 필터 지시 상태를 먼저 확인해 보겠습니다.\n\n공개 정비교범에서는 비행조종 유압의 압력/리턴 필터 indicating button이 돌출된 경우 해당 필터 관련 고장분리 절차를 수행하도록 안내합니다.\n\n필터 상태 확인 후 필요 시 정비교범에 따라 조치합니다.\n\n관련 계통\n비행조종 유압계통\n\n정비교범 근거\nTM 55-1520-240-T-1\nTask 7-1.6 · PDF p.679\n\n3D 위치\n관련 계통의 위치를 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T1-HYD-FILTER-BTN-001"
+        ],
+        "recommended_steps": [
+          "비행조종 유압 필터 indicating button 돌출에 대한 고장분리 절차 수행",
+          "해당 압력/리턴 필터 상태 확인 후 정비교범(TM 55-1520-240-23) 참조"
+        ],
+        "view_target_id": "HYDRAULIC_SYSTEM",
+        "confidence": 0.85,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-1",
+            "document_id": "CH47-TM-T1-HYD-FILTER-BTN-001",
+            "title": "Flight Control Hydraulic Filter Indicating Button Extended",
+            "page": 679,
+            "pdf_page": 679,
+            "task": "7-1.6",
+            "paragraph": "7-1.6",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "SYSTEM",
+        "fault_code": "FAULT_HYD_SYSTEM"
+      }
+    },
+    {
+      "id": "DEMO-PUB-HYD-FILTER-LIGHT-001",
+      "keywords": [
+        "필터 교체등",
+        "필터 체인지"
+      ],
+      "keywords_alt": [
+        "filter change light",
+        "교체 지시등"
+      ],
+      "response": {
+        "system_code": "HYDRAULIC",
+        "symptom_code": "HYD_FILTER_CHANGE_LIGHT",
+        "risk_level": "MEDIUM",
+        "suspected_components": [
+          "HYDRAULIC_ZONE"
+        ],
+        "answer": "비행조종 유압 필터 교체 지시등 점등부터 확인해 보겠습니다.\n\n공개 정비교범에서는 비행조종 1번 압력/리턴 필터 교체 지시등이 켜진 경우 관련 고장분리 절차를 안내합니다.\n\n해당 필터 점검·교체 여부와 지시등 회로를 확인합니다.\n\n관련 계통\n비행조종 유압계통\n\n정비교범 근거\nTM 55-1520-240-T-1\nTask 7-1.17 · PDF p.708\n\n3D 위치\n관련 계통의 위치를 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T1-HYD-FILTER-LIGHT-001"
+        ],
+        "recommended_steps": [
+          "비행조종 1번 필터 교체 지시등 관련 고장분리 절차 진행",
+          "해당 필터 점검·교체 및 정비교범(TM 55-1520-240-23) 참조"
+        ],
+        "view_target_id": "HYDRAULIC_SYSTEM",
+        "confidence": 0.84,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-1",
+            "document_id": "CH47-TM-T1-HYD-FILTER-LIGHT-001",
+            "title": "Flight Control No.1 Filter Change Light On",
+            "page": 708,
+            "pdf_page": 708,
+            "task": "7-1.17",
+            "paragraph": "7-1.17",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "SYSTEM",
+        "fault_code": "FAULT_HYD_SYSTEM"
+      }
+    },
+    {
+      "id": "DEMO-PUB-FUEL-QTY-001",
+      "keywords": [
+        "연료량",
+        "연료 지시"
+      ],
+      "keywords_alt": [
+        "fuel quantity",
+        "연료게이지"
+      ],
+      "response": {
+        "system_code": "FUEL",
+        "symptom_code": "FUEL_QTY_WRONG",
+        "risk_level": "MEDIUM",
+        "suspected_components": [
+          "FUEL_ZONE"
+        ],
+        "answer": "연료량 지시 계통부터 확인해 보겠습니다.\n\n공개 정비교범의 연료량 지시계통 운용점검에서는 관련 회로 차단기 상태를 확인하고, 선택 스위치 위치에 따른 연료량 지시가 정상적인지 점검합니다.\n\n지시가 맞지 않으면 해당 고장탐구 절차로 이어갑니다.\n\n관련 계통\n연료계통\n\n정비교범 근거\nTM 55-1520-240-T-2\nTask 8-11.3 · PDF p.379\n\n3D 위치\n관련 계통의 위치를 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T2-FUEL-QTY-001"
+        ],
+        "recommended_steps": [
+          "연료량 지시계통 운용점검 수행",
+          "FUEL QTY DC 회로 차단기 닫힘 상태 확인",
+          "선택 스위치 위치별 지시 확인 후 이상 시 관련 고장탐구로 진행"
+        ],
+        "view_target_id": "FUEL_SYSTEM_VIEW",
+        "confidence": 0.85,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-2",
+            "document_id": "CH47-TM-T2-FUEL-QTY-001",
+            "title": "Fuel Quantity Indicating — Operational Check",
+            "page": 379,
+            "pdf_page": 379,
+            "task": "8-11.3",
+            "paragraph": "8-11.3",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "SYSTEM",
+        "fault_code": "FAULT_FUEL_SYSTEM"
+      }
+    },
+    {
+      "id": "DEMO-PUB-FUEL-BOOST-001",
+      "keywords": [
+        "부스트 펌프",
+        "연료 펌프"
+      ],
+      "keywords_alt": [
+        "fuel boost",
+        "fuel pump",
+        "부스트"
+      ],
+      "response": {
+        "system_code": "FUEL",
+        "symptom_code": "FUEL_BOOST_FAULT",
+        "risk_level": "MEDIUM",
+        "suspected_components": [
+          "FUEL_ZONE"
+        ],
+        "answer": "연료 부스트 펌프 계통부터 확인해 보겠습니다.\n\n공개 정비교범의 연료 부스트 펌프 운용점검에 따라 관련 회로 차단기와 펌프 스위치 동작 상태를 확인합니다.\n\n펌프가 정상 동작하지 않으면 관련 고장탐구 및 정비교범을 참조합니다.\n\n관련 계통\n연료계통\n\n정비교범 근거\nTM 55-1520-240-T-3\nTask 10-2.3 · PDF p.87\n\n3D 위치\n관련 계통의 위치를 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T3-FUEL-BOOST-001"
+        ],
+        "recommended_steps": [
+          "연료 부스트 펌프 계통 운용점검 수행",
+          "좌·우 MAIN/AUX 연료 펌프 회로 차단기 및 스위치 상태 확인",
+          "이상 시 관련 고장탐구 및 정비교범(TM 55-1520-240-23) 참조"
+        ],
+        "view_target_id": "FUEL_SYSTEM_VIEW",
+        "confidence": 0.86,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-3",
+            "document_id": "CH47-TM-T3-FUEL-BOOST-001",
+            "title": "Fuel Boost Pump System — Operational Check",
+            "page": 87,
+            "pdf_page": 87,
+            "task": "10-2.3",
+            "paragraph": "10-2.3",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "SYSTEM",
+        "fault_code": "FAULT_FUEL_SYSTEM"
+      }
+    },
+    {
+      "id": "DEMO-PUB-DC-001",
+      "keywords": [
+        "배터리",
+        "DC 전원",
+        "정류기"
+      ],
+      "keywords_alt": [
+        "RECT OFF",
+        "battery",
+        "DC power"
+      ],
+      "response": {
+        "system_code": "ELECTRICAL",
+        "symptom_code": "DC_POWER_FAULT",
+        "risk_level": "MEDIUM",
+        "suspected_components": [
+          "ELECTRICAL_ZONE"
+        ],
+        "answer": "배터리·DC 전원 계통 상태부터 확인해 보겠습니다.\n\n공개 정비교범의 DC 전원 운용점검에서는 배터리 스위치 투입 시 주의등 및 정류기(RECT) OFF 관련 지시 거동을 확인하도록 안내합니다.\n\n이상 시 DC 전원 관련 고장탐구 절차로 이어 점검합니다.\n\n관련 계통\n발전기·전기계통\n\n정비교범 근거\nTM 55-1520-240-T-2\nTask 9-1.4 · PDF p.527\n\n3D 위치\n관련 계통의 위치를 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T2-DC-POWER-001"
+        ],
+        "recommended_steps": [
+          "DC 전원 계통 운용점검 수행",
+          "배터리 스위치 투입 시 MASTER CAUTION 및 RECT OFF 지시 거동 확인",
+          "이상 시 DC 전원 관련 고장탐구 절차로 진행"
+        ],
+        "view_target_id": "ELECTRICAL_SYSTEM",
+        "confidence": 0.85,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-2",
+            "document_id": "CH47-TM-T2-DC-POWER-001",
+            "title": "DC Power System — Operational Check",
+            "page": 527,
+            "pdf_page": 527,
+            "task": "9-1.4",
+            "paragraph": "9-1.4",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "SYSTEM",
+        "fault_code": "FAULT_ELEC_SYSTEM"
+      }
+    },
+    {
+      "id": "DEMO-PUB-XMSN-CHIP-001",
+      "keywords": [
+        "칩 탐지",
+        "CHIP DET"
+      ],
+      "keywords_alt": [
+        "chip detector",
+        "debris screen",
+        "칩"
+      ],
+      "response": {
+        "system_code": "DRIVE_SYSTEM",
+        "symptom_code": "XMSN_CHIP_DET",
+        "risk_level": "HIGH",
+        "suspected_components": [
+          "XMSN_ZONE"
+        ],
+        "answer": "변속기 칩 탐지(Chip Detector) 계통부터 확인해 보겠습니다.\n\n공개 정비교범의 변속기 칩 탐지·debris screen 운용점검에 따라 표시기와 탐지기 설치 상태를 확인합니다.\n\n경고/표시가 비정상이면 관련 고장탐구 절차로 이어갑니다.\n\n관련 계통\n변속기 계통\n\n정비교범 근거\nTM 55-1520-240-T-1\nTask 6-2.3 · PDF p.597\n\n3D 위치\n관련 계통의 위치를 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T1-XMSN-CHIP-001"
+        ],
+        "recommended_steps": [
+          "변속기 칩 탐지·debris screen 운용점검 수행",
+          "GND/RESET 및 각 변속기 칩 탐지기 설치 상태 확인",
+          "이상 시 관련 고장탐구 절차로 진행"
+        ],
+        "view_target_id": "DRIVE_SYSTEM_VIEW",
+        "confidence": 0.86,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-1",
+            "document_id": "CH47-TM-T1-XMSN-CHIP-001",
+            "title": "Transmission Chip Detectors — Operational Check",
+            "page": 597,
+            "pdf_page": 597,
+            "task": "6-2.3",
+            "paragraph": "6-2.3",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "SYSTEM",
+        "fault_code": "FAULT_XMSN_SYSTEM"
+      }
+    },
+    {
+      "id": "DEMO-PUB-ENG-CHIP-001",
+      "keywords": [
+        "엔진 칩",
+        "기어박스 칩"
+      ],
+      "keywords_alt": [
+        "accessory gearbox",
+        "engine chip"
+      ],
+      "response": {
+        "system_code": "ENGINE_OIL",
+        "symptom_code": "ENG_CHIP_DET",
+        "risk_level": "HIGH",
+        "suspected_components": [
+          "ENGINE_ZONE"
+        ],
+        "answer": "엔진 액세서리 기어박스 칩 탐지 상태부터 확인해 보겠습니다.\n\n공개 정비교범의 엔진 액세서리 기어박스 칩 탐지기 운용점검 절차에 따라 관련 상태를 확인합니다.\n\n이상 시 해당 고장탐구 및 정비교범을 참조합니다.\n\n관련 계통\n엔진 계통\n\n정비교범 근거\nTM 55-1520-240-T-1\nTask 4-7.3 · PDF p.407\n\n3D 위치\n관련 장비가 위치한 영역을 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T1-ENG-CHIP-001"
+        ],
+        "recommended_steps": [
+          "엔진 액세서리 기어박스 칩 탐지기 운용점검 수행",
+          "이상 시 관련 고장탐구 및 정비교범(TM 55-1520-240-23) 참조"
+        ],
+        "view_target_id": "ENGINE_OIL_SYSTEM",
+        "confidence": 0.84,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-1",
+            "document_id": "CH47-TM-T1-ENG-CHIP-001",
+            "title": "Engine Accessory Gearbox Chip Detectors — Operational Check",
+            "page": 407,
+            "pdf_page": 407,
+            "task": "4-7.3",
+            "paragraph": "4-7.3",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "AREA",
+        "fault_code": "FAULT_AREA01_PART01",
+        "area_id": "AREA_01",
+        "target_mesh": "AREA_01_PART_01",
+        "cover_mesh": "AREA_01_COVER_01",
+        "inspection_point": "AREA_01_CHECK_01"
+      }
+    },
+    {
+      "id": "DEMO-PUB-FUEL-CB-001",
+      "keywords": [
+        "연료 펌프 차단기"
+      ],
+      "keywords_alt": [
+        "fuel pump circuit",
+        "펌프 차단"
+      ],
+      "response": {
+        "system_code": "FUEL",
+        "symptom_code": "FUEL_PUMP_CB",
+        "risk_level": "MEDIUM",
+        "suspected_components": [
+          "FUEL_ZONE"
+        ],
+        "answer": "연료 펌프 회로 차단기 상태부터 확인해 보겠습니다.\n\n공개 정비교범 연료계통 고장증상 목록에는 연료 펌프 관련 회로 차단기가 닫힌 상태를 유지하지 못하는 항목이 있으며, 부스트 펌프 육안·운용점검으로 이어집니다.\n\n차단기·스위치·펌프 상태를 확인한 뒤 필요 시 정비교범을 참조합니다.\n\n관련 계통\n연료계통\n\n정비교범 근거\nTM 55-1520-240-T-3\nTask 10-2 · PDF p.41\n\n3D 위치\n관련 계통의 위치를 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T3-FUEL-SYS-OVERVIEW-001"
+        ],
+        "recommended_steps": [
+          "연료계통 고장증상 목록에서 해당 연료 펌프 차단기 증상 확인",
+          "육안점검 및 운용점검으로 펌프·스위치 상태 확인"
+        ],
+        "view_target_id": "FUEL_SYSTEM_VIEW",
+        "confidence": 0.82,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-3",
+            "document_id": "CH47-TM-T3-FUEL-SYS-OVERVIEW-001",
+            "title": "Fuel Systems Troubleshooting — Chapter Overview / Pump CB Symptoms",
+            "page": 41,
+            "pdf_page": 41,
+            "task": "10-2",
+            "paragraph": "10-2",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "SYSTEM",
+        "fault_code": "FAULT_FUEL_SYSTEM"
+      }
+    },
+    {
+      "id": "DEMO-PUB-ELEC-001",
+      "keywords": [
+        "전기계통",
+        "전기 이상"
+      ],
+      "keywords_alt": [
+        "electrical system",
+        "전기 시스템"
+      ],
+      "response": {
+        "system_code": "ELECTRICAL",
+        "symptom_code": "ELEC_SYSTEM_FAULT",
+        "risk_level": "LOW",
+        "suspected_components": [
+          "ELECTRICAL_ZONE"
+        ],
+        "answer": "전기계통(DC/AC 전원) 전반부터 구분해 확인해 보겠습니다.\n\n공개 정비교범 전기계통 장에서는 DC 전원과 AC 전원(발전기) 점검을 구분해 안내합니다. 증상에 맞는 하위 점검을 선택합니다.\n\n발전기 관련이면 AC 전원, 배터리·정류기 관련이면 DC 전원 점검을 우선합니다.\n\n관련 계통\n발전기·전기계통\n\n정비교범 근거\nTM 55-1520-240-T-2\nTask 9-1 · PDF p.491\n\n3D 위치\n관련 계통의 위치를 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T2-ELEC-OVERVIEW-001"
+        ],
+        "recommended_steps": [
+          "전기계통에서 DC 전원과 AC 전원을 구분해 해당 경로 선택",
+          "증상에 맞는 육안·운용점검으로 진행"
+        ],
+        "view_target_id": "ELECTRICAL_SYSTEM",
+        "confidence": 0.8,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-2",
+            "document_id": "CH47-TM-T2-ELEC-OVERVIEW-001",
+            "title": "Electrical System Troubleshooting — Chapter Overview",
+            "page": 491,
+            "pdf_page": 491,
+            "task": "9-1",
+            "paragraph": "9-1",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "SYSTEM",
+        "fault_code": "FAULT_ELEC_SYSTEM"
+      }
+    },
+    {
+      "id": "DEMO-PUB-ENG-OIL-ZERO-001",
+      "keywords": [
+        "오일 압력 지시",
+        "압력계"
+      ],
+      "keywords_alt": [
+        "indicate 0",
+        "지시가 0",
+        "압력 게이지"
+      ],
+      "response": {
+        "system_code": "ENGINE_OIL",
+        "symptom_code": "ENG_OIL_PRESS_INDICATOR",
+        "risk_level": "MEDIUM",
+        "suspected_components": [
+          "PRESSURE_SENSOR"
+        ],
+        "answer": "엔진 오일 압력 지시 계통부터 확인하는 것이 좋습니다.\n\n공개 정비교범 기준으로는 먼저 1·2번 엔진의 OIL PRESS 회로 차단기(Circuit Breaker) 상태를 확인하고, 이후 엔진을 GROUND IDLE로 운용한 상태에서 오일 압력 지시값이 정상적으로 나타나는지 점검합니다. 공개 CH-47D 교범 해당 단계에서는 지시값이 약 20 psi 이상이며 과도한 변동이 없어야 합니다.\n\n압력값이 기준에서 벗어나거나 변동이 크다면 오일 압력 센서(Pressure Transmitter), 오일 라인 및 관련 배선 상태를 순서대로 확인합니다. 이상이 지속되면 관련 고장탐구 절차로 이어서 점검할 수 있습니다.\n\n관련 장비\n오일 압력 센서 및 연결계통\n\n정비교범 근거\nTM 55-1520-240-T-2\nTask 8-3.3 · PDF p.114\n\n3D 위치\n관련 장비 위치를 3D 모델에 표시했습니다.\n\n※ 공개 Technical Manual 기반 시제품용 DEMO 데이터이며 실제 수리온 정비절차가 아닙니다.",
+        "manual_ids": [
+          "CH47-TM-T2-ENG-OIL-001"
+        ],
+        "recommended_steps": [
+          "1·2번 엔진 OIL PRESS 회로 차단기 닫힘 상태 확인",
+          "GROUND IDLE에서 오일 압력 지시값이 정상인지 확인(공개 교범 기준 약 20 psi 이상, 과도 변동 없음)",
+          "비정상 시 오일 압력 센서·오일 라인·배선 상태 확인",
+          "이상이 지속되면 관련 고장탐구 절차로 진행"
+        ],
+        "view_target_id": "ENGINE_PRESSURE_SENSOR",
+        "confidence": 0.83,
+        "is_demo": true,
+        "sources": [
+          {
+            "manual_id": "TM 55-1520-240-T-2",
+            "document_id": "CH47-TM-T2-ENG-OIL-001",
+            "title": "Engine Oil Pressure Indicating — Operational Check",
+            "page": 114,
+            "pdf_page": 114,
+            "task": "8-3.3",
+            "paragraph": "8-3.3",
+            "printed_page": null
+          }
+        ],
+        "td_grade": "COMPONENT",
+        "fault_code": "FAULT_AREA01_PART01",
+        "area_id": "AREA_01",
+        "target_mesh": "AREA_01_PART_01",
+        "cover_mesh": "AREA_01_COVER_01",
+        "inspection_point": "AREA_01_CHECK_01"
+      }
+    }
+  ]
+}

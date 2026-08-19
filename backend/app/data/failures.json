@@ -1,0 +1,32 @@
+[
+  {
+    "id": "C-2023-081",
+    "symptom": "엔진 오일 압력 저하 · 경고등 점등",
+    "symptom_code": "LOW_OIL_PRESSURE",
+    "cause": "오일 필터 막힘 (모의)",
+    "actions": "필터 교체 · 오일 샘플 채취 · 지상가동 압력 확인",
+    "result": "압력 정상 회복 (모의)",
+    "similarity": 0.95,
+    "is_dummy": true
+  },
+  {
+    "id": "C-2024-033",
+    "symptom": "오일 압력 불안정",
+    "symptom_code": "LOW_OIL_PRESSURE",
+    "cause": "오일 펌프 흡입측 미세 누기 (모의)",
+    "actions": "흡입 라인 점검 · 시일 교체",
+    "result": "재발 없음 (모의)",
+    "similarity": 0.78,
+    "is_dummy": true
+  },
+  {
+    "id": "C-2022-019",
+    "symptom": "저압 경고 · 온도 상승",
+    "symptom_code": "LOW_OIL_PRESSURE",
+    "cause": "오일 쿨러 유로 부분 막힘 (모의)",
+    "actions": "쿨러 세척 · 필터 동시 교체",
+    "result": "정상 (모의)",
+    "similarity": 0.64,
+    "is_dummy": true
+  }
+]

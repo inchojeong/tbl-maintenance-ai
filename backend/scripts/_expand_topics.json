@@ -1,0 +1,204 @@
+{
+  "oil_temp": [
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 31,
+      "head": "1-1 FAILURE SYMPTOM LIST The following list contains the titles of all Failure Symptoms in this manual. The titles are alphabetically arranged beneath the system and chapter where they are found. SYMPTOM TASK CHAPTER 2 V"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 34,
+      "head": "TM 55-1520-240-T 1-1 FAILURE SYMPTOM LIST 1-1 The following list contains the titles of all Failure Symptoms in this manual. The titles are alphabetically arranged beneath the system and chapter where they are found. SYM"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 38,
+      "head": "TM 55-1520-240-T 1-1 FAILURE SYMPTOM LIST (Continued) 1-1 SYMPTOM TASK CHAPTER 7 (Continued) POWER STEERING/SWIVEL LOCK MODULE DOES NOT MAINTAIN PRESSURE WITH APU OFF 7-5.4 WHEEL BRAKES SYSTEM BRAKE PRESSURE BLEEDS DOWN "
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 50,
+      "head": "TM 55-1520-240-T 1-1 FAILURE SYMPTOM LIST (CONTINUED) 1-1 SYMPTOM TASK SYMPTOM TASK DOPPLER/GPS NAVIGATION SYSTEM (DGNS) EDGE LIT PANEL DOES NOT LIGHT OR VARY CDU MAL LAMP AND ALL LED SEGMENTS ARE NOT ILLUMINATED CDU DIS"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 214,
+      "head": "TM 55-1520-240-T CHAPTER 4 POWERPLANT SYSTEM TROUBLESHOOTING CHAPTER OVERVIEW Chapter 4 contains procedures for Powerplant System troubleshooting. Each system and failure symptom is listed below. Included in this Chapter"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 227,
+      "head": "TM 55-1520-240-T 4-1.1 ENGINE PERFORMANCE CHECK OPERATIONAL CHECK (Continued) 4-1.1 TASK RESULT If either NO. 1 or NO. 2 engine oil temperature indicator (5 and 10) readings is high, go to Task 4-1.9. If either pilot’s o"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 248,
+      "head": "TM 55-1520-240-T 4-1.9 NO. 1 OR NO. 2 ENGINE OIL TEMP HIGH 4-1.9 FAULT ISOLATION PROCEDURE INITIAL SETUP References: Applicable Configurations : TM 55-1520-240-23 Without 74 Equipment Condition : Tools: TM 55-1520-240-23"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 423,
+      "head": "TM 55-1520-240-T 4-8.1 ENGINE PERFORMANCE CHECK OPERATIONAL CHECK (Continued) 4-8.1 TASK RESULT 1. Follow procedures in TM 55-1520-240-10 as pilot If ENG 1 FAIL or ENG 2 FAIL warning does not come on, starts engines: go "
+    }
+  ],
+  "fuel": [
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 39,
+      "head": "TM 55-1520-240-T 1-1 FAILURE SYMPTOM LIST (Continued) 1-1 SYMPTOM TASK CHAPTER 8 (Continued) PILOT'S AND COPILOT'S EMERGENCY POWER LIGHTS ON, ROTOR AT 100 PERCENT ROTOR RPM, BOTH ENGINES OPERATING (WITHOUT 74 ) 8-5.3 NO."
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 40,
+      "head": "TM 55-1520-240-T 1-1 FAILURE SYMPTOM LIST (Continued) 1-1 SYMPTOM TASK CHAPTER 8 (Continued) FUEL QUANTITY INDICATION WRONG WHEN FUEL QUAN- TITY SELECT SWITCH IS SET TO L AFT 8-11.3 FUEL QUANTITY INDICATION WRONG WHEN FU"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 43,
+      "head": "TM 55-1520-240-T 1-1 FAILURE SYMPTOM LIST (Continued) 1-1 SYMPTOM TASK CHAPTER 9 (Continued) PILOT'S OR COPILOT'S MASTER CAUTION LIGHTS DO NOT COME ON WHEN ELECTRICAL POWER IS APPLIED 9-18.3 AVIONICS COOLING FAN AVIONIC "
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 47,
+      "head": "1-1 FAILURE SYMPTOM LIST (Continued) TM 55-1520-240-T SYMPTOM TASK SYMPTOM TASK SYMPTOM TASK CHAPTER 15 AUXILIARY POWER UNIT APU CONT NORM OR APU CONT EM ERG CIRCUIT BREAKER DOES NOT STAY CLOSED ESU BITE INDICATORS DO NO"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 895,
+      "head": "TM 55-1520-240-T ALPHABETICAL INDEX Task Page A Absorber, Dynamic ................................ ................................ ................................ ........................... 2-2 2-19 AC Power System .."
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 896,
+      "head": "TM 55-1520-240-T Task Page Hydraulic System - Engine ................................ ................................ ................................ .............. 15-5 15-87 Engine Hydraulic Starting System Operation"
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "page": 43,
+      "head": "TM 55-1520-240-T CHAPTER 8 INSTRUMENT SYSTEM TROUBLESHOOTING CHAPTER OVERVIEW Chapter 8 contains procedures for Instrument System troubleshooting. Each system and failure symptom is listed below. Included in this chapter"
+    },
+    {
+      "file": "TM_55-1520-240-T-2.pdf",
+      "page": 377,
+      "head": "TM 55-1520-240-T 8-11.2 FUEL QUANTITY INDICATING SYSTEM VISUAL CHECK 8-11.2 INITIAL SETUP References: Applicable Configurations: TM 55-1520-240-23 All Equipment Condition: Tools: TM 55-1520-240-23: Electrical Repairer’s "
+    }
+  ],
+  "dc_batt": [
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 40,
+      "head": "TM 55-1520-240-T 1-1 FAILURE SYMPTOM LIST (Continued) 1-1 SYMPTOM TASK CHAPTER 8 (Continued) FUEL QUANTITY INDICATION WRONG WHEN FUEL QUAN- TITY SELECT SWITCH IS SET TO L AFT 8-11.3 FUEL QUANTITY INDICATION WRONG WHEN FU"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 41,
+      "head": "TM 55-1520-240-T 1-1 FAILURE SYMPTOM LIST (Continued) 1-1 SYMPTOM TASK Chapter 9 (Continued) NO. 1 AND NO. 2 RECT OFF CAPSULES ON (NO. 1 GENERA- TOR SELECTED) (WITHOUT 74 ) 9-2.4 RECT 1 AND RECT 2 CAPSULES ON (NO. 1 GENE"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 42,
+      "head": "TM 55-1520-240-T 1-1 FAILURE SYMPTOM LIST (Continued) 1-1 SYMPTOM TASK CHAPTER 9 (Continued) CONSOLE PANEL LIGHTS (WITH 17 ) BARO ALT SWITCH CAPTION DOES NOT LIGHT BRIGHT WHEN PRESSED 9-12.8 CONSOLE CIRCUIT BREAKER WILL "
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 147,
+      "head": "TM 55-1520-240-T 2-1.2 VIBRATION ANALYSIS VISUAL CHECK 2-1.2 INITIAL SETUP Applicable Configurations: All Tools: Aircraft Mechanic's Tool Kit, NSN 5180-00-323-4692 Materials: None Personnel Required: Medium Helicopter Re"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 149,
+      "head": "TM 55-1520-240-T 2-1.2.1 LOW FREQUENCY VIBRATION ISOLATION PROCEDURE 2-1.2.1 INITIAL SETUP References: Applicable Configurations: All TM 55-1520-240-23 TM 55-1520-240-10 Tools: Equipment Condition: Aircraft Mechanic’s To"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 153,
+      "head": "TM 55-1520-240-T 2-1.2.2 HIGH FREQUENCY VIBRATION ISOLATION PROCEDURE 2-1.2.2 INITIAL SETUP Applicable Configurations: All Tools: Aircraft Mechanic’s Tool Kit, NSN 5180-00-323-4692 Chadwick Helmuth Model 192 Spectrum Ana"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 155,
+      "head": "TM 55-1520-240-T 2-1.3 VIBRATION FREQUENCY IDENTIFIED AS 225 RPM (1 /REV) 2-1.3 FAULT ISOLATION PROCEDURE INITIAL SETUP Applicable Configurations: All Tools: Aircraft Mechanic’s Tool Kit, NSN 5180-00-323-4692 Sharp PC 15"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 158,
+      "head": "TM 55-1520-240-T 2-1.4 VIBRATION FREQUENCY IDENTIFIED AS 675 CYCLES/MIN (3/REV) 2-1.4 FAULT ISOLATION PROCEDURE INITIAL SETUP Applicable Configurations: All Tools: Aircraft Mechanic’s Tool Kit, NSN 5180-00-323-4692 Chadw"
+    }
+  ],
+  "xmsn_press": [
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 33,
+      "head": "1-1 FAILURE SYMPTOM LIST (Continued) SYMPTOM TASK CHAPTER 5 (Continued) ROTOR BLADE TRACKING AND BALANCING SYSTEM (Continued) NO FWD VERTICAL OR AFT VERTICAL INDICATION ON IPS INDICATOR 5-2.3 PHAZOR CLOCK ANGLE INDICATOR"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 36,
+      "head": "TM 55-1520-240-T 1-1 FAILURE SYMPTOM LIST (Continued) 1-1 SYMPTOM TASK CHAPTER 4 (Continued) DECU CODE A4 4-12.4 DECU CODE A5 4-12.4 DECU CODE A6 4-12.4 DECU CODE A7 4-12.4 DECU NO. 1 CODE C1, C2, C3, C4, C5, C6, C7, C8 "
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 569,
+      "head": "TM 55-1520-240-T CHAPTER 6 DRIVE SYSTEM TROUBLESHOOTING CHAPTER OVERVIEW Chapter 6 contains procedures for Drive System troubleshooting. Each system and failure symptom is listed below. Included in this chapter are locat"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 581,
+      "head": "TM 55-1520-240-T 6-1.4 XMSN OIL PRESS CAPSULE ON AND ONE TRANSMISSION OIL PRESSURE INDICATION LOW FAULT ISOLATION PROCEDURE Personnel Required: INITIAL SETUP 67U10 Medium Helicopter Repairer 67U20 Medium Helicopter Repai"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 582,
+      "head": "TM 55-1520-240-T 6-1.46-1.4 XMSN OIL PRESS CAPSULE ON AND ONE TRANSMISSION OIL PRESSURE INDICATION LOW (Continued) REPLACE MAIN OIL FILTER PERFORM TRANSMISSION SERVICEABILITY CHECK REFER TO TM 55-1520-240-23. REPLACE MAI"
+    }
+  ],
+  "hyd_filter": [
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 679,
+      "head": "TM 55-1520-240-T 7-1.6 INDICATING BUTTON ON FLIGHT CONTROL HYDRAULIC PRESSURE OR RETURN FILTER IS EXTENDED 7-1.6 FAULT ISOLATION PROCEDURE INITIAL SETUP Applicable Configurations: All Tools: Aircraft Mechanic’s Tool Kit "
+    }
+  ],
+  "chip": [
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 32,
+      "head": "1-1 FAILURE SYMPTOM LIST (Continued) SYMPTOM TASK CHAPTER 4 (Continued) ENGINE START AND IGNITION (Continued) NO. 2 ENGINE DOES NOT MOTOR (GAS PRODUCER TACHOMETER DOES NOT INDICATE 10 TO 15% N1) NO. 2 ENGINE DOES NOT STA"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 33,
+      "head": "1-1 FAILURE SYMPTOM LIST (Continued) SYMPTOM TASK CHAPTER 5 (Continued) ROTOR BLADE TRACKING AND BALANCING SYSTEM (Continued) NO FWD VERTICAL OR AFT VERTICAL INDICATION ON IPS INDICATOR 5-2.3 PHAZOR CLOCK ANGLE INDICATOR"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 35,
+      "head": "TM 55-1520-240-T 1-1 FAILURE SYMPTOM LIST (Continued) 1-1 SYMPTOM TASK CHAPTER 4 (Continued) NO. 1 ENG CONT CAPSULE DOES NOT COME ON 4-5.3 NO. 1 ENGINE OR NO. 2 ENGINE FUEL CONTROL POINTER DOES NOT MAKE CONTACT WITH STOP"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 36,
+      "head": "TM 55-1520-240-T 1-1 FAILURE SYMPTOM LIST (Continued) 1-1 SYMPTOM TASK CHAPTER 4 (Continued) DECU CODE A4 4-12.4 DECU CODE A5 4-12.4 DECU CODE A6 4-12.4 DECU CODE A7 4-12.4 DECU NO. 1 CODE C1, C2, C3, C4, C5, C6, C7, C8 "
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 37,
+      "head": "TM 55-1520-240-T 1-1 FAILURE SYMPTOM LIST (Continued) 1-1 SYMPTOM TASK CHAPTER 6 (Continued) XMSN CHIP DET (WITHOUT 74 ) XMSN CHIP DETR (WITH 74 ) CAPSULE LIT, ONE TRANSMISSION CHIP DETECTOR INDICATOR BLACK-AND-WHITE 6-2"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 48,
+      "head": "TM 55-1520-240-T l-l FAILURE SYMPTOM LIST (Continued) 1-1 SYMPTOM TASK SYMPTOM TASK SYMPTOM TASK CHAPTER 16 EXTERNAL CARGO HOOK SYSTEM AFT CARGO HOOK DOES NOT OPEN AFT HOOK OPEN CAPSULE DOES NOT COME ON WHEN AFT CARGO HO"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 214,
+      "head": "TM 55-1520-240-T CHAPTER 4 POWERPLANT SYSTEM TROUBLESHOOTING CHAPTER OVERVIEW Chapter 4 contains procedures for Powerplant System troubleshooting. Each system and failure symptom is listed below. Included in this Chapter"
+    },
+    {
+      "file": "TM_55-1520-240-T-1.pdf",
+      "page": 406,
+      "head": "TM 55-1520-240-T 4-7.2 ENGINE ACCESSORY GEARBOX CHIP DETECTORS VISUAL CHECK 4-7.2 INITIAL SETUP Applicable Configurations: References: Without 74 TM 55-1520-240-23 Tools: Equipment Condition: Aircraft Mechanic's Tool Kit"
+    }
+  ]
+}

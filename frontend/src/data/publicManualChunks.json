@@ -1,0 +1,845 @@
+{
+  "version": "1.2",
+  "disclaimer": "DEMO / Public Technical Manual Reference only. Excerpts from publicly available CH-47D US Army TM 55-1520-240-T series. NOT Surion (수리온) procedures. pdf_page = 1-based local PDF page index (not printed page).",
+  "aircraft_demo": "DEMO_HELICOPTER_CH47_PUBLIC_TM",
+  "chunks": [
+    {
+      "id": "CH47-TM-T2-ENG-OIL-001",
+      "document_id": "CH47-TM-T2-ENG-OIL-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-2",
+      "title": "Engine Oil Pressure Indicating — Operational Check",
+      "chapter": "8",
+      "section": "Engine Oil Pressure Indicating System",
+      "page": 114,
+      "pdf_page": 114,
+      "printed_page": null,
+      "paragraph": "8-3.3",
+      "task": "8-3.3",
+      "system_code": "ENGINE_OIL",
+      "subsystem": "LUBRICATION_INDICATING",
+      "symptom_codes": [
+        "ENG_OIL_PRESS_LOW",
+        "LOW_OIL_PRESSURE"
+      ],
+      "symptom_ko": "엔진 오일 압력 저하(지시 이상)",
+      "symptom_en": "No. 1 Engine Oil Press Indicator Does Not Indicate 20 PSI Minimum",
+      "possible_causes": [
+        "OIL PRESS 회로 차단기(Circuit Breaker)가 열려 있거나 유지되지 않음",
+        "오일 압력 지시기 이상",
+        "오일 압력 센서(Transmitter)·오일 라인·배선 이상(육안점검 경로)"
+      ],
+      "recommended_steps": [
+        "1·2번 엔진 OIL PRESS 회로 차단기 닫힘 상태 확인",
+        "GROUND IDLE에서 오일 압력 지시값이 정상인지 확인(공개 교범 기준 약 20 psi 이상, 과도 변동 없음)",
+        "비정상 시 오일 압력 센서·오일 라인·배선 상태 확인",
+        "이상이 지속되면 관련 고장탐구 절차로 진행"
+      ],
+      "component_codes": [
+        "PRESSURE_SENSOR"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Task 8-3.3: GROUND IDLE 20 psi 미만 또는 5 psi 초과 변동 시 8-3.6 고장분리.",
+      "original_text": "8-3.3 ENGINE OIL PRESSURE INDICATING SYSTEM OPERATIONAL CHECK. Have pilot operate No. 1 engine to GROUND IDLE. Indicator shall indicate 20 psi minimum with pointer fluctuations less than 5 psi. If below 20 psi or fluctuating more than 5 psi, go to task 8-3.6 or 8-3.6.1.",
+      "keywords": [
+        "oil pressure",
+        "20 psi",
+        "GROUND IDLE",
+        "8-3.3",
+        "오일 압력",
+        "엔진 오일",
+        "경고"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "COMPONENT",
+      "td_grade": "COMPONENT",
+      "pdf_file": "TM_55-1520-240-T-2.pdf"
+    },
+    {
+      "id": "CH47-TM-T1-OIL-FILTER-001",
+      "document_id": "CH47-TM-T1-OIL-FILTER-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-1",
+      "title": "Transmission Lubrication — Oil Filter Indicating Button",
+      "chapter": "6",
+      "section": "Transmission Lubrication Systems",
+      "page": 577,
+      "pdf_page": 577,
+      "printed_page": null,
+      "paragraph": "6-1.2",
+      "task": "6-1.2",
+      "system_code": "ENGINE_OIL",
+      "subsystem": "TRANSMISSION_LUBRICATION",
+      "symptom_codes": [
+        "OIL_FILTER_CONTAMINATION",
+        "OIL_FILTER_BYPASS"
+      ],
+      "symptom_ko": "오일 필터 오염/바이패스(지시 버튼 돌출)",
+      "symptom_en": "Oil filter indicating button extended",
+      "possible_causes": [
+        "오일 필터 엘리먼트 막힘/오염",
+        "제거한 필터 엘리먼트 내 이물질(debris)"
+      ],
+      "recommended_steps": [
+        "오일 필터 indicating button 상태 확인",
+        "버튼 돌출 시 필터 엘리먼트 교체 및 이물질 검사(TM 55-1520-240-23 참조)",
+        "오일 레벨·누유·쿨러 막힘 등 인접 항목 확인"
+      ],
+      "component_codes": [
+        "OIL_FILTER"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Task 6-1.2: indicating button 돌출 시 필터 교체 및 이물질 검사.",
+      "original_text": "6-1.2 Check oil filter indicating button (5). If button (5) is extended, replace filter element and inspect removed element for debris. Refer to TM 55-1520-240-23.",
+      "keywords": [
+        "oil filter",
+        "indicating button",
+        "debris",
+        "6-1.2",
+        "오일 필터",
+        "오염"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "COMPONENT",
+      "td_grade": "COMPONENT",
+      "pdf_file": "TM_55-1520-240-T-1.pdf"
+    },
+    {
+      "id": "CH47-TM-T2-HYD-PRESS-001",
+      "document_id": "CH47-TM-T2-HYD-PRESS-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-2",
+      "title": "Hydraulic Pressure Indicating — Operational Check",
+      "chapter": "8",
+      "section": "Hydraulic Pressure Indicating System",
+      "page": 227,
+      "pdf_page": 227,
+      "printed_page": null,
+      "paragraph": "8-7.3",
+      "task": "8-7.3",
+      "system_code": "HYDRAULIC",
+      "subsystem": "FLT_CONT_HYDRAULICS",
+      "symptom_codes": [
+        "HYD_PRESS_LOW",
+        "HYD_PRESS_OUT_OF_RANGE"
+      ],
+      "symptom_ko": "비행조종 유압 압력 지시 이상",
+      "symptom_en": "FLT CONT Hydraulics Pressure Indicator out of 2500–3500 PSI",
+      "possible_causes": [
+        "유압 압력 지시용 회로 차단기(Circuit Breaker)가 열려 있음",
+        "비행조종 유압 압력 지시계통 이상"
+      ],
+      "recommended_steps": [
+        "유압 압력 지시용 회로 차단기 닫힘 상태 확인",
+        "공개 교범 기준으로 압력 지시값이 약 2500–3500 psi 범위인지·과도 변동이 없는지 확인",
+        "범위 이탈 시 관련 고장탐구 절차로 진행"
+      ],
+      "component_codes": [
+        "HYDRAULIC_ZONE"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Task 8-7.3: 유압압력 지시 2500–3500 psi 범위 점검.",
+      "original_text": "8-7.3 HYDRAULIC PRESSURE INDICATING SYSTEM OPERATIONAL CHECK. Indicator shall indicate 2500 to 3500 psi and pointer shall not fluctuate more than 100 psi. If not, go to task 8-7.5.",
+      "keywords": [
+        "hydraulic pressure",
+        "2500",
+        "3500",
+        "8-7.3",
+        "유압",
+        "압력"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "SYSTEM HYDRAULIC_ZONE",
+      "td_grade": "SYSTEM",
+      "pdf_file": "TM_55-1520-240-T-2.pdf"
+    },
+    {
+      "id": "CH47-TM-T2-GEN-001",
+      "document_id": "CH47-TM-T2-GEN-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-2",
+      "title": "AC Power / Generator Caution — Symptom & Visual Check",
+      "chapter": "9",
+      "section": "AC Power System",
+      "page": 492,
+      "pdf_page": 492,
+      "printed_page": null,
+      "paragraph": "9-2.4",
+      "task": "9-2.4",
+      "system_code": "ELECTRICAL",
+      "subsystem": "AC_POWER",
+      "symptom_codes": [
+        "GEN_OFF",
+        "GEN_FAIL"
+      ],
+      "symptom_ko": "발전기 OFF/주의등(GEN capsule) 이상",
+      "symptom_en": "No. 1 or No. 2 Generator OFF Capsule / GEN Capsule",
+      "possible_causes": [
+        "발전기 스위치 또는 발전기 제어패널 풀림·손상",
+        "발전기 제어패널 배선·커넥터 이상"
+      ],
+      "recommended_steps": [
+        "교류 전원(AC Power) 고장증상 목록에서 발전기 OFF/GEN 관련 증상 확인",
+        "GEN NO.1·NO.2·APU 스위치 및 발전기 제어패널 육안 점검",
+        "손상된 커넥터·배선은 조이거나 교체 후 정비교범(TM 55-1520-240-23) 참조"
+      ],
+      "component_codes": [
+        "ELECTRICAL_ZONE"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Chapter 9 AC Power: GEN/GENERATOR OFF → Task 9-2.4, 육안 9-2.3.",
+      "original_text": "AC POWER SYSTEM: NO. 1 OR NO. 2 GENERATOR OFF CAPSULE ... 9-2.4. Task 9-2.3: Check GEN NO. 1, NO. 2, and APU switches; check generator control panels.",
+      "keywords": [
+        "generator",
+        "GEN",
+        "AC power",
+        "9-2.4",
+        "발전기"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "SYSTEM ELECTRICAL_ZONE",
+      "td_grade": "SYSTEM",
+      "pdf_file": "TM_55-1520-240-T-2.pdf"
+    },
+    {
+      "id": "CH47-TM-T1-XMSN-HOT-001",
+      "document_id": "CH47-TM-T1-XMSN-HOT-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-1",
+      "title": "Transmission Oil Hot — Failure Symptom List",
+      "chapter": "6",
+      "section": "Transmission Lubrication Systems",
+      "page": 569,
+      "pdf_page": 569,
+      "printed_page": null,
+      "paragraph": "6-1.3",
+      "task": "6-1.3",
+      "system_code": "DRIVE_SYSTEM",
+      "subsystem": "TRANSMISSION_LUBRICATION",
+      "symptom_codes": [
+        "XMSN_OIL_HOT",
+        "XMSN_OIL_TEMP_HIGH"
+      ],
+      "symptom_ko": "변속기 오일 온도 고온(XMSN OIL HOT)",
+      "symptom_en": "XMSN OIL HOT Capsule On, One Transmission Oil Temperature Indication High",
+      "possible_causes": [
+        "변속기 윤활계통 이상",
+        "온도 지시·경고계통 이상"
+      ],
+      "recommended_steps": [
+        "XMSN OIL HOT(변속기 오일 고온) 경고와 온도 지시 상태 확인",
+        "변속기 윤활계통 운용·육안 점검 수행",
+        "필요 시 온도 지시·경고계통 점검을 병행"
+      ],
+      "component_codes": [
+        "XMSN_ZONE"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Ch.6: XMSN OIL HOT capsule → Task 6-1.3.",
+      "original_text": "XMSN OIL HOT CAPSULE ON, ONE TRANSMISSION OIL TEMPERATURE INDICATION HIGH 6-1.3",
+      "keywords": [
+        "XMSN OIL HOT",
+        "transmission",
+        "6-1.3",
+        "변속기",
+        "오일 온도",
+        "고온"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "SYSTEM XMSN_ZONE",
+      "td_grade": "SYSTEM",
+      "pdf_file": "TM_55-1520-240-T-1.pdf"
+    },
+    {
+      "id": "CH47-TM-T2-ENG-OIL-TEMP-001",
+      "document_id": "CH47-TM-T2-ENG-OIL-TEMP-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-2",
+      "title": "Engine Oil Temperature Indicating — Operational Check",
+      "chapter": "8",
+      "section": "Engine Oil Temperature Indicating System",
+      "page": 140,
+      "pdf_page": 140,
+      "printed_page": null,
+      "paragraph": "8-4.3",
+      "task": "8-4.3",
+      "system_code": "ENGINE_OIL",
+      "subsystem": "OIL_TEMP_INDICATING",
+      "symptom_codes": [
+        "ENG_OIL_TEMP_ABNORMAL"
+      ],
+      "symptom_ko": "엔진 오일 온도 지시 이상",
+      "symptom_en": "Engine Oil Temperature Indicating System Operational Check",
+      "possible_causes": [
+        "ENGINE OIL TEMP 회로 차단기가 열려 있음",
+        "엔진 오일 온도 지시계통 이상"
+      ],
+      "recommended_steps": [
+        "엔진 오일 온도 지시계통 운용점검 수행",
+        "관련 회로 차단기 및 온도 지시값 확인",
+        "이상 시 관련 고장탐구 절차로 진행"
+      ],
+      "component_codes": [
+        "ENGINE_ZONE"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Task 8-4.3 엔진 오일온도 지시계통 운용점검.",
+      "original_text": "8-4.3 ENGINE OIL TEMPERATURE INDICATING SYSTEM OPERATIONAL CHECK. INITIAL SETUP References: TM 55-1520-240-23. Equipment Condition / Tools per task setup.",
+      "keywords": [
+        "oil temperature",
+        "8-4.3",
+        "ENGINE OIL TEMP",
+        "오일 온도"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "AREA ENGINE_ZONE",
+      "td_grade": "AREA",
+      "pdf_file": "TM_55-1520-240-T-2.pdf"
+    },
+    {
+      "id": "CH47-TM-T2-ENG-OIL-CB-001",
+      "document_id": "CH47-TM-T2-ENG-OIL-CB-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-2",
+      "title": "Engine Oil Press Circuit Breaker Will Not Stay Closed",
+      "chapter": "8",
+      "section": "Engine Oil Pressure Indicating System",
+      "page": 44,
+      "pdf_page": 44,
+      "printed_page": null,
+      "paragraph": "8-3.3",
+      "task": "8-3.3",
+      "system_code": "ENGINE_OIL",
+      "subsystem": "LUBRICATION_INDICATING",
+      "symptom_codes": [
+        "ENG_OIL_PRESS_CB"
+      ],
+      "symptom_ko": "엔진 오일 압력 차단기 유지 불량",
+      "symptom_en": "ENGINE OIL PRESS Circuit Breaker Does Not Stay Closed",
+      "possible_causes": [
+        "OIL PRESS 회로 차단기 자체 이상",
+        "단락 등으로 차단기가 다시 열리는 배선 이상"
+      ],
+      "recommended_steps": [
+        "OIL PRESS 회로 차단기가 닫힌 상태를 유지하는지 확인",
+        "운용점검 중 차단기가 다시 열리면 관련 고장탐구 절차로 진행"
+      ],
+      "component_codes": [
+        "ENGINE_ZONE"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Symptom list: OIL PRESS CB does not stay closed → Task 8-3.3/8-3.4.",
+      "original_text": "ENGINE OIL PRESS CIRCUIT BREAKER DOES NOT STAY CLOSED 8-3.3",
+      "keywords": [
+        "circuit breaker",
+        "OIL PRESS",
+        "8-3.3",
+        "차단기"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "AREA ENGINE_ZONE",
+      "td_grade": "AREA",
+      "pdf_file": "TM_55-1520-240-T-2.pdf"
+    },
+    {
+      "id": "CH47-TM-T1-XMSN-PRESS-001",
+      "document_id": "CH47-TM-T1-XMSN-PRESS-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-1",
+      "title": "XMSN Oil Press Capsule On — One Indication Low",
+      "chapter": "6",
+      "section": "Transmission Lubrication Systems",
+      "page": 581,
+      "pdf_page": 581,
+      "printed_page": null,
+      "paragraph": "6-1.4",
+      "task": "6-1.4",
+      "system_code": "DRIVE_SYSTEM",
+      "subsystem": "TRANSMISSION_LUBRICATION",
+      "symptom_codes": [
+        "XMSN_OIL_PRESS_LOW"
+      ],
+      "symptom_ko": "변속기 오일 압력 저하(XMSN OIL PRESS)",
+      "symptom_en": "XMSN OIL PRESS Capsule On And One Transmission Oil Pressure Indication Low",
+      "possible_causes": [
+        "메인 오일 필터 오염",
+        "오일 펌프 릴리프 밸브·쿨러·메인 오일 펌프 이상"
+      ],
+      "recommended_steps": [
+        "변속기 오일 압력 저하에 대한 고장분리 절차 착수",
+        "메인 오일 필터 교체 및 변속기 사용성 점검(TM 55-1520-240-23 참조)",
+        "압력이 회복되지 않으면 펌프·쿨러 등 후속 점검 경로 확인"
+      ],
+      "component_codes": [
+        "XMSN_ZONE",
+        "OIL_FILTER"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Task 6-1.4: XMSN OIL PRESS capsule + one indication low.",
+      "original_text": "6-1.4 XMSN OIL PRESS CAPSULE ON AND ONE TRANSMISSION OIL PRESSURE INDICATION LOW FAULT ISOLATION PROCEDURE. REPLACE MAIN OIL FILTER PERFORM TRANSMISSION SERVICEABILITY CHECK REFER TO TM 55-1520-240-23.",
+      "keywords": [
+        "XMSN OIL PRESS",
+        "6-1.4",
+        "transmission oil pressure",
+        "변속기 오일 압력"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "SYSTEM XMSN_ZONE",
+      "td_grade": "SYSTEM",
+      "pdf_file": "TM_55-1520-240-T-1.pdf"
+    },
+    {
+      "id": "CH47-TM-T1-HYD-FILTER-BTN-001",
+      "document_id": "CH47-TM-T1-HYD-FILTER-BTN-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-1",
+      "title": "Flight Control Hydraulic Filter Indicating Button Extended",
+      "chapter": "7",
+      "section": "Flight Control Hydraulic System",
+      "page": 679,
+      "pdf_page": 679,
+      "printed_page": null,
+      "paragraph": "7-1.6",
+      "task": "7-1.6",
+      "system_code": "HYDRAULIC",
+      "subsystem": "FLT_CONT_HYDRAULICS",
+      "symptom_codes": [
+        "HYD_FILTER_BUTTON"
+      ],
+      "symptom_ko": "비행조종 유압 필터 지시버튼 돌출",
+      "symptom_en": "Indicating Button On Flight Control Hydraulic Pressure Or Return Filter Is Extended",
+      "possible_causes": [
+        "압력/리턴 필터 막힘 또는 교체 시기",
+        "필터 지시 기구 이상"
+      ],
+      "recommended_steps": [
+        "비행조종 유압 필터 indicating button 돌출에 대한 고장분리 절차 수행",
+        "해당 압력/리턴 필터 상태 확인 후 정비교범(TM 55-1520-240-23) 참조"
+      ],
+      "component_codes": [
+        "HYDRAULIC_ZONE"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Task 7-1.6: FLT CONT hydraulic filter indicating button extended.",
+      "original_text": "7-1.6 INDICATING BUTTON ON FLIGHT CONTROL HYDRAULIC PRESSURE OR RETURN FILTER IS EXTENDED FAULT ISOLATION PROCEDURE.",
+      "keywords": [
+        "hydraulic filter",
+        "indicating button",
+        "7-1.6",
+        "유압 필터"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "SYSTEM HYDRAULIC_ZONE",
+      "td_grade": "SYSTEM",
+      "pdf_file": "TM_55-1520-240-T-1.pdf"
+    },
+    {
+      "id": "CH47-TM-T1-HYD-FILTER-LIGHT-001",
+      "document_id": "CH47-TM-T1-HYD-FILTER-LIGHT-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-1",
+      "title": "Flight Control No.1 Filter Change Light On",
+      "chapter": "7",
+      "section": "Flight Control Hydraulic System",
+      "page": 708,
+      "pdf_page": 708,
+      "printed_page": null,
+      "paragraph": "7-1.17",
+      "task": "7-1.17",
+      "system_code": "HYDRAULIC",
+      "subsystem": "FLT_CONT_HYDRAULICS",
+      "symptom_codes": [
+        "HYD_FILTER_CHANGE_LIGHT"
+      ],
+      "symptom_ko": "비행조종 1번 필터 교체 지시등 점등",
+      "symptom_en": "Flight Control No. 1 Pressure Or Return Filter Change Light Is On",
+      "possible_causes": [
+        "1번 압력/리턴 필터 교체 필요",
+        "필터 교체 지시등 회로 이상"
+      ],
+      "recommended_steps": [
+        "비행조종 1번 필터 교체 지시등 관련 고장분리 절차 진행",
+        "해당 필터 점검·교체 및 정비교범(TM 55-1520-240-23) 참조"
+      ],
+      "component_codes": [
+        "HYDRAULIC_ZONE"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Task 7-1.17: FLT CONT No.1 filter change light ON.",
+      "original_text": "7-1.17 FLIGHT CONTROL NO. 1 PRESSURE OR RETURN FILTER CHANGE LIGHT IS ON.",
+      "keywords": [
+        "filter change light",
+        "7-1.17",
+        "유압",
+        "필터 교체"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "SYSTEM HYDRAULIC_ZONE",
+      "td_grade": "SYSTEM",
+      "pdf_file": "TM_55-1520-240-T-1.pdf"
+    },
+    {
+      "id": "CH47-TM-T2-FUEL-QTY-001",
+      "document_id": "CH47-TM-T2-FUEL-QTY-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-2",
+      "title": "Fuel Quantity Indicating — Operational Check",
+      "chapter": "8",
+      "section": "Fuel Quantity Indicating System",
+      "page": 379,
+      "pdf_page": 379,
+      "printed_page": null,
+      "paragraph": "8-11.3",
+      "task": "8-11.3",
+      "system_code": "FUEL",
+      "subsystem": "FUEL_QUANTITY",
+      "symptom_codes": [
+        "FUEL_QTY_WRONG"
+      ],
+      "symptom_ko": "연료량 지시 이상",
+      "symptom_en": "Fuel Quantity Indicating System Operational Check / Wrong Indication",
+      "possible_causes": [
+        "FUEL QTY DC 회로 차단기가 열려 있음",
+        "연료량 지시계통 이상"
+      ],
+      "recommended_steps": [
+        "연료량 지시계통 운용점검 수행",
+        "FUEL QTY DC 회로 차단기 닫힘 상태 확인",
+        "선택 스위치 위치별 지시 확인 후 이상 시 관련 고장탐구로 진행"
+      ],
+      "component_codes": [
+        "FUEL_ZONE"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Task 8-11.3 연료량 지시계통 운용점검.",
+      "original_text": "8-11.3 FUEL QUANTITY INDICATING SYSTEM OPERATIONAL CHECK. Check that FUEL QTY DC circuit breaker (1) is closed.",
+      "keywords": [
+        "fuel quantity",
+        "8-11.3",
+        "FUEL QTY",
+        "연료량",
+        "연료"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "SYSTEM FUEL_ZONE",
+      "td_grade": "SYSTEM",
+      "pdf_file": "TM_55-1520-240-T-2.pdf"
+    },
+    {
+      "id": "CH47-TM-T3-FUEL-BOOST-001",
+      "document_id": "CH47-TM-T3-FUEL-BOOST-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-3",
+      "title": "Fuel Boost Pump System — Operational Check",
+      "chapter": "10",
+      "section": "Fuel Boost Pump System",
+      "page": 87,
+      "pdf_page": 87,
+      "printed_page": null,
+      "paragraph": "10-2.3",
+      "task": "10-2.3",
+      "system_code": "FUEL",
+      "subsystem": "FUEL_BOOST",
+      "symptom_codes": [
+        "FUEL_BOOST_FAULT"
+      ],
+      "symptom_ko": "연료 부스트 펌프 계통 이상",
+      "symptom_en": "Fuel Boost Pump System Operational Check",
+      "possible_causes": [
+        "연료 부스트 펌프 회로 차단기가 열려 있음",
+        "부스트 펌프 또는 제어 스위치 이상"
+      ],
+      "recommended_steps": [
+        "연료 부스트 펌프 계통 운용점검 수행",
+        "좌·우 MAIN/AUX 연료 펌프 회로 차단기 및 스위치 상태 확인",
+        "이상 시 관련 고장탐구 및 정비교범(TM 55-1520-240-23) 참조"
+      ],
+      "component_codes": [
+        "FUEL_ZONE"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Task 10-2.3 연료 부스트 펌프 운용점검.",
+      "original_text": "10-2.3 FUEL BOOST PUMP SYSTEM OPERATIONAL CHECK. INITIAL SETUP References: TM 55-1520-240-10 / TM 55-1520-240-23.",
+      "keywords": [
+        "fuel boost",
+        "fuel pump",
+        "10-2.3",
+        "부스트 펌프",
+        "연료 펌프"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "SYSTEM FUEL_ZONE",
+      "td_grade": "SYSTEM",
+      "pdf_file": "TM_55-1520-240-T-3.pdf"
+    },
+    {
+      "id": "CH47-TM-T2-DC-POWER-001",
+      "document_id": "CH47-TM-T2-DC-POWER-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-2",
+      "title": "DC Power System — Operational Check",
+      "chapter": "9",
+      "section": "DC Power System",
+      "page": 527,
+      "pdf_page": 527,
+      "printed_page": null,
+      "paragraph": "9-1.4",
+      "task": "9-1.4",
+      "system_code": "ELECTRICAL",
+      "subsystem": "DC_POWER",
+      "symptom_codes": [
+        "DC_POWER_FAULT",
+        "RECT_OFF"
+      ],
+      "symptom_ko": "DC 전원/정류기(RECT OFF) 계통 이상",
+      "symptom_en": "DC Power System Operational Check / RECT OFF Capsules",
+      "possible_causes": [
+        "배터리·외부전원 구성 이상",
+        "정류기(RECT) OFF 관련 지시 경로 이상"
+      ],
+      "recommended_steps": [
+        "DC 전원 계통 운용점검 수행",
+        "배터리 스위치 투입 시 MASTER CAUTION 및 RECT OFF 지시 거동 확인",
+        "이상 시 DC 전원 관련 고장탐구 절차로 진행"
+      ],
+      "component_codes": [
+        "ELECTRICAL_ZONE"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Task 9-1.4 DC Power 운용점검 (BATT/RECT OFF).",
+      "original_text": "9-1.4 DC POWER SYSTEM OPERATIONAL CHECK. Set BATT switch (14) to ON. MASTER CAUTION lights (15) shall come on. NO. 1 RECT OFF and NO. 2 RECT OFF ...",
+      "keywords": [
+        "DC power",
+        "RECT OFF",
+        "battery",
+        "9-1.4",
+        "배터리",
+        "정류기",
+        "DC"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "SYSTEM ELECTRICAL_ZONE",
+      "td_grade": "SYSTEM",
+      "pdf_file": "TM_55-1520-240-T-2.pdf"
+    },
+    {
+      "id": "CH47-TM-T1-XMSN-CHIP-001",
+      "document_id": "CH47-TM-T1-XMSN-CHIP-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-1",
+      "title": "Transmission Chip Detectors — Operational Check",
+      "chapter": "6",
+      "section": "Transmission Chip Detectors",
+      "page": 597,
+      "pdf_page": 597,
+      "printed_page": null,
+      "paragraph": "6-2.3",
+      "task": "6-2.3",
+      "system_code": "DRIVE_SYSTEM",
+      "subsystem": "CHIP_DETECTION",
+      "symptom_codes": [
+        "XMSN_CHIP_DET"
+      ],
+      "symptom_ko": "변속기 칩 탐지(CHIP DET) 이상",
+      "symptom_en": "Transmission Chip Detectors And Debris Screens Operational Check",
+      "possible_causes": [
+        "칩 탐지기(Chip Detector)·debris screen 지시 이상",
+        "배선 또는 경보등 회로 이상"
+      ],
+      "recommended_steps": [
+        "변속기 칩 탐지·debris screen 운용점검 수행",
+        "GND/RESET 및 각 변속기 칩 탐지기 설치 상태 확인",
+        "이상 시 관련 고장탐구 절차로 진행"
+      ],
+      "component_codes": [
+        "XMSN_ZONE"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Task 6-2.3 변속기 칩 탐지/debris screen 운용점검.",
+      "original_text": "6-2.3 TRANSMISSION CHIP DETECTORS AND DEBRIS SCREENS OPERATIONAL CHECK.",
+      "keywords": [
+        "chip detector",
+        "6-2.3",
+        "XMSN CHIP",
+        "칩",
+        "debris"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "SYSTEM XMSN_ZONE",
+      "td_grade": "SYSTEM",
+      "pdf_file": "TM_55-1520-240-T-1.pdf"
+    },
+    {
+      "id": "CH47-TM-T1-ENG-CHIP-001",
+      "document_id": "CH47-TM-T1-ENG-CHIP-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-1",
+      "title": "Engine Accessory Gearbox Chip Detectors — Operational Check",
+      "chapter": "4",
+      "section": "Engine Accessory Gearbox Chip Detectors",
+      "page": 407,
+      "pdf_page": 407,
+      "printed_page": null,
+      "paragraph": "4-7.3",
+      "task": "4-7.3",
+      "system_code": "ENGINE_OIL",
+      "subsystem": "ENGINE_CHIP",
+      "symptom_codes": [
+        "ENG_CHIP_DET"
+      ],
+      "symptom_ko": "엔진 액세서리 기어박스 칩 탐지 이상",
+      "symptom_en": "Engine Accessory Gearbox Chip Detectors Operational Check",
+      "possible_causes": [
+        "엔진 액세서리 기어박스 칩 탐지기 이상",
+        "관련 지시 회로 이상"
+      ],
+      "recommended_steps": [
+        "엔진 액세서리 기어박스 칩 탐지기 운용점검 수행",
+        "이상 시 관련 고장탐구 및 정비교범(TM 55-1520-240-23) 참조"
+      ],
+      "component_codes": [
+        "ENGINE_ZONE"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Task 4-7.3 엔진 액세서리 기어박스 칩 탐지 운용점검.",
+      "original_text": "4-7.3 ENGINE ACCESSORY GEARBOX CHIP DETECTORS OPERATIONAL CHECK.",
+      "keywords": [
+        "chip detector",
+        "gearbox",
+        "4-7.3",
+        "엔진 칩",
+        "기어박스"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "AREA ENGINE_ZONE",
+      "td_grade": "AREA",
+      "pdf_file": "TM_55-1520-240-T-1.pdf"
+    },
+    {
+      "id": "CH47-TM-T3-FUEL-SYS-OVERVIEW-001",
+      "document_id": "CH47-TM-T3-FUEL-SYS-OVERVIEW-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-3",
+      "title": "Fuel Systems Troubleshooting — Chapter Overview / Pump CB Symptoms",
+      "chapter": "10",
+      "section": "Fuel Systems",
+      "page": 41,
+      "pdf_page": 41,
+      "printed_page": null,
+      "paragraph": "10-2",
+      "task": "10-2",
+      "system_code": "FUEL",
+      "subsystem": "FUEL_SYSTEM",
+      "symptom_codes": [
+        "FUEL_PUMP_CB"
+      ],
+      "symptom_ko": "연료 펌프 차단기 유지 불량",
+      "symptom_en": "LH Fuel Pump AUX/MAIN Circuit Breaker Will Not Stay Closed",
+      "possible_causes": [
+        "연료 펌프 회로 차단기 이상",
+        "연료 펌프 제어회로 단락·과부하"
+      ],
+      "recommended_steps": [
+        "연료계통 고장증상 목록에서 해당 연료 펌프 차단기 증상 확인",
+        "육안점검 및 운용점검으로 펌프·스위치 상태 확인"
+      ],
+      "component_codes": [
+        "FUEL_ZONE"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Ch.10 Fuel: LH FUEL PUMP ... CIRCUIT BREAKER WILL NOT STAY CLOSED 등 증상목록.",
+      "original_text": "CHAPTER 10 FUEL SYSTEMS TROUBLESHOOTING. SYMPTOM: LH FUEL PUMP AUX AFT CIRCUIT BREAKER WILL NOT STAY CLOSED; LH FUEL PUMPS AUX FWD CIRCUIT BREAKER WILL NOT STAY CLOSED.",
+      "keywords": [
+        "fuel pump",
+        "circuit breaker",
+        "chapter 10",
+        "연료 펌프",
+        "차단기"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "SYSTEM FUEL_ZONE",
+      "td_grade": "SYSTEM",
+      "pdf_file": "TM_55-1520-240-T-3.pdf"
+    },
+    {
+      "id": "CH47-TM-T2-ELEC-OVERVIEW-001",
+      "document_id": "CH47-TM-T2-ELEC-OVERVIEW-001",
+      "manual_type": "T",
+      "source_manual": "TM 55-1520-240-T-2",
+      "title": "Electrical System Troubleshooting — Chapter Overview",
+      "chapter": "9",
+      "section": "Electrical System",
+      "page": 491,
+      "pdf_page": 491,
+      "printed_page": null,
+      "paragraph": "9-1",
+      "task": "9-1",
+      "system_code": "ELECTRICAL",
+      "subsystem": "ELECTRICAL_SYSTEM",
+      "symptom_codes": [
+        "ELEC_SYSTEM_FAULT"
+      ],
+      "symptom_ko": "전기계통 종합 이상(DC/AC Power)",
+      "symptom_en": "Electrical System Troubleshooting Chapter Overview (DC/AC Power)",
+      "possible_causes": [
+        "DC 전원계통 이상",
+        "AC 전원(발전기) 계통 이상"
+      ],
+      "recommended_steps": [
+        "전기계통에서 DC 전원과 AC 전원을 구분해 해당 경로 선택",
+        "증상에 맞는 육안·운용점검으로 진행"
+      ],
+      "component_codes": [
+        "ELECTRICAL_ZONE"
+      ],
+      "warning_cautions": [],
+      "content": "[DEMO/Public TM] Ch.9 Electrical: DC POWER SYSTEM 9-1, AC POWER SYSTEM 9-2.",
+      "original_text": "CHAPTER 9 ELECTRICAL SYSTEM TROUBLESHOOTING. SYSTEM PARA: DC POWER SYSTEM 9-1; AC POWER SYSTEM 9-2.",
+      "keywords": [
+        "electrical",
+        "DC power",
+        "AC power",
+        "chapter 9",
+        "전기"
+      ],
+      "language": "en",
+      "is_dummy": false,
+      "is_demo_public_tm": true,
+      "td_mapping": "SYSTEM ELECTRICAL_ZONE",
+      "td_grade": "SYSTEM",
+      "pdf_file": "TM_55-1520-240-T-2.pdf"
+    }
+  ]
+}

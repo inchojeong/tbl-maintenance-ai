@@ -1,0 +1,91 @@
+{
+  "version": "1.0",
+  "fault_code": "FAULT_AREA01_PART01",
+  "title": "AREA_01 부품1 점검 절차(모의)",
+  "is_dummy": true,
+  "steps": [
+    {
+      "step": 1,
+      "title": "항공기 전체에서 정비 위치 확인",
+      "camera": "AREA_01_OVERVIEW",
+      "load_area": true,
+      "transparent": [],
+      "highlight": ["AREA_01_HOTSPOT"],
+      "marker": null,
+      "explode": [],
+      "opacityPreset": null,
+      "manual_ref": "DUMMY-TM-AREA01-01"
+    },
+    {
+      "step": 2,
+      "title": "점검구역 확대",
+      "camera": "AREA_01_CLOSE",
+      "load_area": false,
+      "transparent": [],
+      "highlight": ["AREA_01_COVER_01"],
+      "marker": null,
+      "explode": [],
+      "opacityPreset": null
+    },
+    {
+      "step": 3,
+      "title": "COVER 강조",
+      "camera": "AREA_01_CLOSE",
+      "transparent": [],
+      "highlight": ["AREA_01_COVER_01"],
+      "marker": null,
+      "explode": []
+    },
+    {
+      "step": 4,
+      "title": "외피/커버 투명화",
+      "camera": "AREA_01_INTERNAL",
+      "transparent": ["AREA_01_COVER_01", "AIRCRAFT_BODY"],
+      "opacityPreset": "AREA_ENTER",
+      "highlight": ["AREA_01_PART_01"],
+      "marker": null,
+      "explode": [
+        { "mesh": "AREA_01_COVER_01", "offset": [0, 0, 0.45] }
+      ]
+    },
+    {
+      "step": 5,
+      "title": "대상 부품 강조",
+      "camera": "AREA_01_PART_01_VIEW",
+      "transparent": ["AREA_01_COVER_01", "AIRCRAFT_BODY"],
+      "opacityPreset": "PART_FOCUS",
+      "highlight": ["AREA_01_PART_01"],
+      "marker": null,
+      "explode": [
+        { "mesh": "AREA_01_COVER_01", "offset": [0, 0, 0.45] }
+      ]
+    },
+    {
+      "step": 6,
+      "title": "점검 Point 확대",
+      "camera": "AREA_01_CHECK_01_VIEW",
+      "transparent": ["AREA_01_COVER_01", "AIRCRAFT_BODY"],
+      "opacityPreset": "PART_FOCUS",
+      "highlight": ["AREA_01_PART_01"],
+      "marker": "AREA_01_CHECK_01",
+      "marker_label": "체결부·실링 이상 여부 확인(모의)",
+      "explode": [
+        { "mesh": "AREA_01_COVER_01", "offset": [0, 0, 0.45] }
+      ]
+    },
+    {
+      "step": 7,
+      "title": "점검방법 및 교범 표시",
+      "camera": "AREA_01_CHECK_01_VIEW",
+      "transparent": ["AREA_01_COVER_01", "AIRCRAFT_BODY"],
+      "highlight": ["AREA_01_PART_01"],
+      "marker": "AREA_01_CHECK_01",
+      "marker_label": "교범 근거 확인 후 조치 기록(모의)",
+      "show_manual_tab": true,
+      "manual_ref": "DUMMY-TM-AREA01-01",
+      "explode": [
+        { "mesh": "AREA_01_COVER_01", "offset": [0, 0, 0.45] }
+      ]
+    }
+  ]
+}

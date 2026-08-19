@@ -1,0 +1,21 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    volumes:
+      - ./backend/data:/app/data
+      - ./backend/app/data:/app/app/data:ro
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE_URL: http://localhost:8000
+        VITE_USE_PROXY_MODEL: "true"
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend

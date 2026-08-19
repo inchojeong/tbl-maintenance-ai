@@ -1,0 +1,137 @@
+{
+  "version": "1.2",
+  "targets": {
+    "AIRCRAFT_OVERVIEW": {
+      "level": "AIRCRAFT",
+      "label": "항공기 전체",
+      "cameraPosition": [8.5, 3.2, 9.0],
+      "cameraTarget": [0.0, 1.2, 0.0],
+      "highlightObjects": [],
+      "hideObjects": [],
+      "transparentObjects": [],
+      "openPanels": [],
+      "duration": 1.0
+    },
+    "ENGINE_OIL_SYSTEM": {
+      "level": "SYSTEM",
+      "label": "엔진 오일계통",
+      "cameraPosition": [5.2, 2.8, 7.5],
+      "cameraTarget": [0.7, 1.9, 0.0],
+      "highlightObjects": ["ENGINE_ZONE", "ENGINE_PANEL_LEFT", "ENGINE_PANEL_RIGHT"],
+      "hideObjects": [],
+      "transparentObjects": [],
+      "openPanels": [],
+      "duration": 1.2
+    },
+    "ENGINE_ACCESS_PANEL": {
+      "level": "SYSTEM",
+      "label": "엔진 접근패널",
+      "cameraPosition": [4.2, 2.5, 5.5],
+      "cameraTarget": [0.7, 1.85, 0.0],
+      "highlightObjects": ["ENGINE_PANEL_LEFT", "ENGINE_PANEL_RIGHT"],
+      "hideObjects": [],
+      "transparentObjects": ["AIRCRAFT_BODY"],
+      "openPanels": [],
+      "duration": 1.1
+    },
+    "ENGINE_INTERNAL_VIEW": {
+      "level": "SYSTEM",
+      "label": "엔진 내부 투시",
+      "cameraPosition": [3.4, 2.4, 4.2],
+      "cameraTarget": [0.75, 1.85, 0.05],
+      "highlightObjects": ["OIL_FILTER", "OIL_PUMP", "PRESSURE_SENSOR", "ENGINE_BLOCK"],
+      "hideObjects": ["ENGINE_PANEL_LEFT"],
+      "transparentObjects": ["AIRCRAFT_BODY"],
+      "openPanels": ["ENGINE_PANEL_LEFT"],
+      "duration": 1.2
+    },
+    "ENGINE_OIL_INTERNAL": {
+      "level": "SYSTEM",
+      "label": "엔진 오일계통 내부",
+      "cameraPosition": [3.4, 2.4, 4.2],
+      "cameraTarget": [0.75, 1.85, 0.05],
+      "highlightObjects": ["OIL_FILTER", "OIL_PUMP", "PRESSURE_SENSOR"],
+      "hideObjects": ["ENGINE_PANEL_LEFT"],
+      "transparentObjects": ["AIRCRAFT_BODY"],
+      "openPanels": ["ENGINE_PANEL_LEFT"],
+      "duration": 1.2
+    },
+    "ENGINE_OIL_FILTER": {
+      "level": "COMPONENT",
+      "label": "오일 필터",
+      "cameraPosition": [2.1, 2.2, 2.8],
+      "cameraTarget": [0.8, 1.8, 0.1],
+      "highlightObjects": ["OIL_FILTER"],
+      "hideObjects": ["ENGINE_PANEL_LEFT", "ENGINE_PANEL_RIGHT"],
+      "transparentObjects": ["AIRCRAFT_BODY", "ENGINE_ZONE"],
+      "openPanels": ["ENGINE_PANEL_LEFT", "ENGINE_PANEL_RIGHT"],
+      "duration": 1.0
+    },
+    "ENGINE_OIL_PUMP": {
+      "level": "COMPONENT",
+      "label": "오일 펌프",
+      "cameraPosition": [2.0, 2.0, 3.0],
+      "cameraTarget": [0.7, 1.7, -0.1],
+      "highlightObjects": ["OIL_PUMP"],
+      "hideObjects": ["ENGINE_PANEL_LEFT"],
+      "transparentObjects": ["AIRCRAFT_BODY"],
+      "openPanels": ["ENGINE_PANEL_LEFT"],
+      "duration": 1.0
+    },
+    "ENGINE_PRESSURE_SENSOR": {
+      "level": "COMPONENT",
+      "label": "압력센서",
+      "cameraPosition": [2.3, 2.3, 2.6],
+      "cameraTarget": [0.85, 1.9, 0.15],
+      "highlightObjects": ["PRESSURE_SENSOR"],
+      "hideObjects": ["ENGINE_PANEL_LEFT"],
+      "transparentObjects": ["AIRCRAFT_BODY"],
+      "openPanels": ["ENGINE_PANEL_LEFT"],
+      "duration": 1.0
+    },
+    "HYDRAULIC_SYSTEM": {
+      "level": "SYSTEM",
+      "label": "유압계통 Hotspot",
+      "cameraPosition": [4.5, 2.2, 6.0],
+      "cameraTarget": [0.2, 1.05, 0.0],
+      "highlightObjects": ["HYDRAULIC_ZONE"],
+      "hideObjects": [],
+      "transparentObjects": ["AIRCRAFT_BODY"],
+      "openPanels": [],
+      "duration": 1.1
+    },
+    "ELECTRICAL_SYSTEM": {
+      "level": "SYSTEM",
+      "label": "전기계통 Hotspot",
+      "cameraPosition": [4.0, 2.6, 5.5],
+      "cameraTarget": [-0.4, 1.55, 0.4],
+      "highlightObjects": ["ELECTRICAL_ZONE"],
+      "hideObjects": [],
+      "transparentObjects": ["AIRCRAFT_BODY"],
+      "openPanels": [],
+      "duration": 1.1
+    },
+    "DRIVE_SYSTEM_VIEW": {
+      "level": "SYSTEM",
+      "label": "구동/변속기 Hotspot",
+      "cameraPosition": [4.8, 3.4, 6.2],
+      "cameraTarget": [0.05, 2.15, 0.0],
+      "highlightObjects": ["XMSN_ZONE", "MAIN_ROTOR"],
+      "hideObjects": [],
+      "transparentObjects": ["AIRCRAFT_BODY"],
+      "openPanels": [],
+      "duration": 1.1
+    },
+    "FUEL_SYSTEM_VIEW": {
+      "level": "SYSTEM",
+      "label": "연료계통 Hotspot",
+      "cameraPosition": [5.0, 2.4, 6.5],
+      "cameraTarget": [-0.9, 1.15, 0.0],
+      "highlightObjects": ["FUEL_ZONE"],
+      "hideObjects": [],
+      "transparentObjects": ["AIRCRAFT_BODY"],
+      "openPanels": [],
+      "duration": 1.1
+    }
+  }
+}

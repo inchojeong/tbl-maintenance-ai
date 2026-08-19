@@ -1,0 +1,84 @@
+{
+  "version": "1.0",
+  "disclaimer": "All manuals are fictional dummy paragraphs for prototype demonstration only.",
+  "chunks": [
+    {
+      "id": "DUMMY-TM-ENG-03-P15",
+      "document_id": "DUMMY-TM-ENG-03",
+      "title": "엔진 오일 압력 저하 시 점검절차",
+      "chapter": "3",
+      "section": "2",
+      "page": 15,
+      "system_code": "ENGINE_OIL",
+      "symptom_codes": ["LOW_OIL_PRESSURE", "OIL_WARNING_LIGHT"],
+      "component_codes": ["OIL_FILTER", "OIL_PUMP", "PRESSURE_SENSOR"],
+      "content": "오일 압력이 기준 하한 미만이거나 경고등이 점등된 경우, 오일량·외부 누유·필터 차압·오일펌프·압력센서 순으로 확인한다. 본 문단은 시연용 더미 교범이다.",
+      "is_dummy": true
+    },
+    {
+      "id": "DUMMY-TM-ENG-03-P28",
+      "document_id": "DUMMY-TM-ENG-03",
+      "title": "오일 필터 점검 및 교체",
+      "chapter": "3",
+      "section": "4",
+      "page": 28,
+      "system_code": "ENGINE_OIL",
+      "symptom_codes": ["LOW_OIL_PRESSURE"],
+      "component_codes": ["OIL_FILTER"],
+      "content": "필터 차압이 모의 기준을 초과하면 필터를 교체한다. 체결 토크와 오일 보충량은 실교범이 아닌 더미 값을 사용한다. 교체 후 지상가동으로 압력 회복을 확인한다.",
+      "is_dummy": true
+    },
+    {
+      "id": "DUMMY-TM-ENG-03-P32",
+      "document_id": "DUMMY-TM-ENG-03",
+      "title": "오일 펌프 및 압력센서 점검",
+      "chapter": "3",
+      "section": "5",
+      "page": 32,
+      "system_code": "ENGINE_OIL",
+      "symptom_codes": ["LOW_OIL_PRESSURE"],
+      "component_codes": ["OIL_PUMP", "PRESSURE_SENSOR"],
+      "content": "필터 교체 후에도 압력이 회복되지 않으면 펌프 흡입측과 압력센서 신호를 점검한다. 수치와 절차는 모의이다.",
+      "is_dummy": true
+    },
+    {
+      "id": "DUMMY-TM-ENG-02-P09",
+      "document_id": "DUMMY-TM-ENG-02",
+      "title": "지상가동 중 압력 모니터링",
+      "chapter": "2",
+      "section": "1",
+      "page": 9,
+      "system_code": "ENGINE_OIL",
+      "symptom_codes": ["LOW_OIL_PRESSURE", "OIL_WARNING_LIGHT"],
+      "component_codes": ["PRESSURE_SENSOR"],
+      "content": "지상가동 시 오일 압력·온도 게이지를 확인하고 경고등 점등 시 즉시정지 기준을 따른다. 시연용 더미 기준이다.",
+      "is_dummy": true
+    },
+    {
+      "id": "DUMMY-TM-LG-01-P10",
+      "document_id": "DUMMY-TM-LG-01",
+      "title": "랜딩기어 이상 점검(모의)",
+      "chapter": "1",
+      "section": "1",
+      "page": 10,
+      "system_code": "LANDING_GEAR",
+      "symptom_codes": ["LG_NOT_DEPLOY"],
+      "component_codes": [],
+      "content": "랜딩기어가 정상 전개되지 않는 모의 증상 시 안전핀·지시등·유압을 확인한다. 실제 절차가 아니다.",
+      "is_dummy": true
+    },
+    {
+      "id": "DUMMY-TM-ROT-01-P05",
+      "document_id": "DUMMY-TM-ROT-01",
+      "title": "메인 로터 진동 점검(모의)",
+      "chapter": "1",
+      "section": "2",
+      "page": 5,
+      "system_code": "MAIN_ROTOR",
+      "symptom_codes": ["ROTOR_VIBRATION"],
+      "component_codes": [],
+      "content": "메인 로터 진동이 크게 느껴질 경우 모의 점검 순서를 안내한다. 실교범이 아니다.",
+      "is_dummy": true
+    }
+  ]
+}

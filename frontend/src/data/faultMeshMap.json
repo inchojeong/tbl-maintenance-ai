@@ -1,0 +1,132 @@
+{
+  "version": "1.2",
+  "faults": {
+    "FAULT_AREA01_PART01": {
+      "fault_code": "FAULT_AREA01_PART01",
+      "label_ko": "구역1 오일필터/압력 계열(모의)",
+      "area_id": "AREA_01",
+      "model": "Maintenance_Area_01.glb",
+      "target_mesh": "AREA_01_PART_01",
+      "cover_mesh": "AREA_01_COVER_01",
+      "inspection_point": "AREA_01_CHECK_01",
+      "default_view_target": "ENGINE_OIL_SYSTEM",
+      "component_focus_view": "ENGINE_OIL_FILTER",
+      "system_code": "ENGINE_OIL",
+      "td_grade": "COMPONENT",
+      "legacy_aliases": [
+        "ENGINE_OIL_FILTER",
+        "OIL_FILTER",
+        "ENGINE_OIL_SYSTEM",
+        "ENGINE_OIL_INTERNAL",
+        "ENGINE_INTERNAL_VIEW",
+        "ENGINE_ACCESS_PANEL",
+        "ENGINE_PRESSURE_SENSOR",
+        "ENG_OIL_PRESS_LOW",
+        "LOW_OIL_PRESSURE",
+        "OIL_FILTER_CONTAMINATION",
+        "OIL_FILTER_BYPASS",
+        "PRESSURE_SENSOR",
+        "ENG_OIL_TEMP_ABNORMAL",
+        "ENG_OIL_PRESS_CB",
+        "ENG_CHIP_DET",
+        "ENG_OIL_PRESS_INDICATOR",
+        "OIL_PUMP"
+      ],
+      "legacy_mesh_map": {
+        "AREA_01_HOTSPOT": "ENGINE_ZONE",
+        "AREA_01_COVER_01": "ENGINE_PANEL_LEFT",
+        "AREA_01_PART_01": "OIL_FILTER",
+        "AREA_01_PART_02": "OIL_PUMP",
+        "AREA_01_PART_03": "PRESSURE_SENSOR"
+      }
+    },
+    "FAULT_HYD_SYSTEM": {
+      "fault_code": "FAULT_HYD_SYSTEM",
+      "label_ko": "유압계통 Hotspot(모의)",
+      "area_id": "AREA_01",
+      "model": "Maintenance_Area_01.glb",
+      "target_mesh": "HYDRAULIC_ZONE",
+      "cover_mesh": "ENGINE_PANEL_LEFT",
+      "inspection_point": "HYDRAULIC_ZONE",
+      "default_view_target": "HYDRAULIC_SYSTEM",
+      "component_focus_view": "HYDRAULIC_SYSTEM",
+      "system_code": "HYDRAULIC",
+      "td_grade": "SYSTEM",
+      "legacy_aliases": [
+        "HYD_PRESS_LOW",
+        "HYD_PRESS_OUT_OF_RANGE",
+        "HYD_FILTER_BUTTON",
+        "HYD_FILTER_CHANGE_LIGHT",
+        "HYDRAULIC_ZONE",
+        "HYDRAULIC_SYSTEM"
+      ],
+      "legacy_mesh_map": {}
+    },
+    "FAULT_ELEC_SYSTEM": {
+      "fault_code": "FAULT_ELEC_SYSTEM",
+      "label_ko": "전기계통 Hotspot(모의)",
+      "area_id": "AREA_01",
+      "model": "Maintenance_Area_01.glb",
+      "target_mesh": "ELECTRICAL_ZONE",
+      "cover_mesh": "ENGINE_PANEL_LEFT",
+      "inspection_point": "ELECTRICAL_ZONE",
+      "default_view_target": "ELECTRICAL_SYSTEM",
+      "component_focus_view": "ELECTRICAL_SYSTEM",
+      "system_code": "ELECTRICAL",
+      "td_grade": "SYSTEM",
+      "legacy_aliases": [
+        "GEN_OFF",
+        "GEN_FAIL",
+        "DC_POWER_FAULT",
+        "RECT_OFF",
+        "ELEC_SYSTEM_FAULT",
+        "ELECTRICAL_ZONE",
+        "ELECTRICAL_SYSTEM"
+      ],
+      "legacy_mesh_map": {}
+    },
+    "FAULT_XMSN_SYSTEM": {
+      "fault_code": "FAULT_XMSN_SYSTEM",
+      "label_ko": "구동/변속기 Hotspot(모의)",
+      "area_id": "AREA_01",
+      "model": "Maintenance_Area_01.glb",
+      "target_mesh": "XMSN_ZONE",
+      "cover_mesh": "ENGINE_PANEL_LEFT",
+      "inspection_point": "XMSN_ZONE",
+      "default_view_target": "DRIVE_SYSTEM_VIEW",
+      "component_focus_view": "DRIVE_SYSTEM_VIEW",
+      "system_code": "DRIVE_SYSTEM",
+      "td_grade": "SYSTEM",
+      "legacy_aliases": [
+        "XMSN_OIL_HOT",
+        "XMSN_OIL_TEMP_HIGH",
+        "XMSN_OIL_PRESS_LOW",
+        "XMSN_CHIP_DET",
+        "XMSN_ZONE",
+        "DRIVE_SYSTEM_VIEW"
+      ],
+      "legacy_mesh_map": {}
+    },
+    "FAULT_FUEL_SYSTEM": {
+      "fault_code": "FAULT_FUEL_SYSTEM",
+      "label_ko": "연료계통 Hotspot(모의)",
+      "area_id": "AREA_01",
+      "model": "Maintenance_Area_01.glb",
+      "target_mesh": "FUEL_ZONE",
+      "cover_mesh": "ENGINE_PANEL_LEFT",
+      "inspection_point": "FUEL_ZONE",
+      "default_view_target": "FUEL_SYSTEM_VIEW",
+      "component_focus_view": "FUEL_SYSTEM_VIEW",
+      "system_code": "FUEL",
+      "td_grade": "SYSTEM",
+      "legacy_aliases": [
+        "FUEL_QTY_WRONG",
+        "FUEL_BOOST_FAULT",
+        "FUEL_PUMP_CB",
+        "FUEL_ZONE",
+        "FUEL_SYSTEM_VIEW"
+      ],
+      "legacy_mesh_map": {}
+    }
+  }
+}

@@ -1,0 +1,77 @@
+# --- Dependencies ---
+node_modules/
+**/node_modules/
+
+# --- Build / cache ---
+dist/
+**/dist/
+build/
+.vite/
+*.tsbuildinfo
+.cache/
+
+# --- Python ---
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+.venv/
+venv/
+.env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.eggs/
+
+# --- Secrets & local env (NEVER commit API keys / passwords / tokens) ---
+# Keep only *.example templates in the repo.
+.env
+.env.local
+.env.production
+.env.*
+!.env.example
+!.env.*.example
+.env.*.local
+*.pem
+*.key
+credentials.json
+secrets.json
+**/secrets/
+**/credentials/
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- Logs / temp ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.tmp/
+tmp/
+temp/
+
+# --- Coverage / test artifacts ---
+coverage/
+htmlcov/
+.coverage
+.nyc_output/
+
+# --- Local SQLite / runtime data (if created) ---
+*.db
+*.sqlite
+*.sqlite3
+
+# --- Large source manuals (Demo uses JSON excerpts only) ---
+*.pdf
+**/TM_55-1520-240*.pdf
+manual/raw/
+backend/manual/raw/**/*.pdf

@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #1e3a5f;
+  --color-navy-700: #152a45;
+  --color-brand: #2563eb;
+  --color-brand-600: #1d4ed8;
+  --color-danger: #dc2626;
+  --color-surface: #f1f5f9;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Segoe UI", "Noto Sans KR", system-ui, sans-serif;
+  background: var(--color-surface);
+  color: #0f172a;
+}

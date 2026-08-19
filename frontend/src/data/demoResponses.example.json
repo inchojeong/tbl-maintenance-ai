@@ -1,0 +1,84 @@
+{
+  "version": "1.0",
+  "note": "EXAMPLE fixed demo responses for offline presentation. Match by keywords (all listed tokens should appear loosely).",
+  "responses": [
+    {
+      "id": "DEMO-OIL-001",
+      "keywords": ["오일 압력", "경고등"],
+      "keywords_alt": ["오일 압력이 낮"],
+      "response": {
+        "system_code": "ENGINE_OIL",
+        "symptom_code": "LOW_OIL_PRESSURE",
+        "risk_level": "HIGH",
+        "suspected_components": [
+          "OIL_FILTER",
+          "OIL_PUMP",
+          "PRESSURE_SENSOR"
+        ],
+        "answer": "엔진 오일 압력 저하 및 경고등 점등으로 판단됩니다. 더미 교범(DUMMY-TM-ENG-03)에 따라 오일 필터를 우선 점검·교체하고, 이어서 오일 펌프와 압력센서를 확인하십시오. 본 답변은 시연용 모의 데이터입니다.",
+        "manual_ids": [
+          "DUMMY-TM-ENG-03-P15",
+          "DUMMY-TM-ENG-03-P28"
+        ],
+        "recommended_steps": [
+          "안전조치 및 경고계통 확인",
+          "오일 레벨·누유 육안점검",
+          "오일 필터 차압 확인 및 교체",
+          "지상가동 후 압력 회복 확인",
+          "정비결과 등록"
+        ],
+        "view_target_id": "ENGINE_OIL_SYSTEM",
+        "confidence": 0.94,
+        "is_demo": true
+      }
+    },
+    {
+      "id": "DEMO-OIL-002",
+      "keywords": ["오일 필터", "오염"],
+      "response": {
+        "system_code": "ENGINE_OIL",
+        "symptom_code": "LOW_OIL_PRESSURE",
+        "risk_level": "HIGH",
+        "suspected_components": [
+          "OIL_FILTER"
+        ],
+        "answer": "첨부/언급된 오일 필터 오염 가능성을 우선 점검 대상으로 설정했습니다. 3D에서 오일 필터 위치로 이동합니다. 모의 시나리오입니다.",
+        "manual_ids": [
+          "DUMMY-TM-ENG-03-P28"
+        ],
+        "recommended_steps": [
+          "필터 하우징 안전 분리",
+          "더미 필터 교체 및 토크 적용",
+          "지상가동 압력 확인"
+        ],
+        "view_target_id": "ENGINE_OIL_FILTER",
+        "confidence": 0.88,
+        "is_demo": true
+      }
+    },
+    {
+      "id": "DEMO-LG-001",
+      "keywords": ["랜딩기어", "전개"],
+      "response": {
+        "system_code": "LANDING_GEAR",
+        "symptom_code": "LG_NOT_DEPLOY",
+        "risk_level": "MEDIUM",
+        "suspected_components": [
+          "UNKNOWN"
+        ],
+        "answer": "랜딩기어 전개 이상 모의 시나리오입니다. 상세 3D 부품은 1차 범위 밖일 수 있으며 전체 기체에서 기어 위치를 표시합니다.",
+        "manual_ids": [
+          "DUMMY-TM-LG-01-P10"
+        ],
+        "recommended_steps": [
+          "안전핀·지상안전 확인",
+          "지시등·유압 모의값 확인",
+          "정비결과 등록"
+        ],
+        "view_target_id": "AIRCRAFT_OVERVIEW",
+        "confidence": 0.7,
+        "is_demo": true
+      }
+    }
+  ]
+}
