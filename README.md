@@ -59,27 +59,28 @@ API 문서: http://localhost:8000/docs
 Push to `main` → GitHub Actions (`.github/workflows/deploy-pages.yml`)가 `frontend`를 빌드해 Pages에 배포합니다.
 
 - **Backend / OpenAI 불필요** — Demo Mode + Proxy 3D만 사용
-- Base path는 Actions의 `configure-pages` → `VITE_BASE_PATH`로 주입 (저장소명 하드코딩 없음)
-- 공개 URL: `https://<account>.github.io/<repository>/`
+- Base path는 Actions에서 `/${{ github.repository 이름 }}/` 형태로 주입 (로컬은 `/`)
+- 공개 URL: `https://inchojeong.github.io/tbl-maintenance-ai/`
 
 로컬에서 Pages base로 미리 확인:
 
 ```bash
 cd frontend
 # Windows PowerShell
-$env:VITE_BASE_PATH="/your-repo-name/"; $env:VITE_USE_PROXY_MODEL="true"; npm run build; npm run preview
+$env:VITE_BASE_PATH="/tbl-maintenance-ai/"; $env:VITE_USE_PROXY_MODEL="true"; npm run build; npm run preview
 ```
 
 ### Repository Settings (최초 1회 — 필수)
 
-Actions가 `configure-pages` 없이 빌드되도록 구성했습니다. **배포 전에** Pages 소스를 Actions로 켜야 합니다.
+Pages 사이트가 아직 없으면 `configure-pages`가 404를 냅니다. 이 workflow는 그 단계를 제거하고, **Settings에서 Source만 켜면** 됩니다.
 
-1. https://github.com/inchojeong/tbl-marine-maintenance-ai/settings/pages
+1. https://github.com/inchojeong/tbl-maintenance-ai/settings/pages
 2. **Build and deployment → Source → GitHub Actions** 선택 후 저장
-3. **Actions** 탭에서 `Deploy GitHub Pages`를 다시 실행(또는 `main`에 push)
-4. 공개 URL: `https://inchojeong.github.io/tbl-marine-maintenance-ai/`
+3. **Actions** 탭에서 실패한 run을 **Re-run** 하거나 `main`에 push
+4. 공개 URL: `https://inchojeong.github.io/tbl-maintenance-ai/`
 
-> Source를 GitHub Actions로 설정하기 전에는 Deploy job이 실패할 수 있습니다.
+> Source를 GitHub Actions로 설정하기 전에는 Deploy job이 실패할 수 있습니다.  
+> OpenAI API Key 등 Secret을 Frontend / Pages에 넣지 마세요. `.env`는 commit하지 않습니다 (`.gitignore`).
 
 ## Docker 실행
 
