@@ -23,31 +23,34 @@ jobs:
         working-directory: frontend
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: "22"
           cache: npm
           cache-dependency-path: frontend/package-lock.json
 
-      - name: Configure Pages
-        id: pages
-        uses: actions/configure-pages@v5
+      # Do not call configure-pages before Pages is enabled in repo Settings
+      # (it returns 404 Not Found). Project Pages base = /<repository>/
+      - name: Resolve Vite base path
+        id: base
+        run: |
+          echo "path=/${GITHUB_REPOSITORY##*/}/" >> "$GITHUB_OUTPUT"
+          echo "Using VITE_BASE_PATH=/${GITHUB_REPOSITORY##*/}/"
 
       - name: Install dependencies
         run: npm ci
 
       - name: Build
         env:
-          # Project Pages base from configure-pages (e.g. /<repo>/); local default remains /
-          VITE_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          VITE_BASE_PATH: ${{ steps.base.outputs.path }}
           VITE_USE_PROXY_MODEL: "true"
         run: npm run build
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: frontend/dist
 

@@ -70,14 +70,16 @@ cd frontend
 $env:VITE_BASE_PATH="/your-repo-name/"; $env:VITE_USE_PROXY_MODEL="true"; npm run build; npm run preview
 ```
 
-### Repository Settings (최초 1회)
+### Repository Settings (최초 1회 — 필수)
 
-1. **Settings → Pages → Build and deployment → Source: GitHub Actions**
-2. `main`에 push (또는 Actions에서 workflow 수동 실행)
-3. Deploy 완료 후 Pages URL 접속
+Actions가 `configure-pages` 없이 빌드되도록 구성했습니다. **배포 전에** Pages 소스를 Actions로 켜야 합니다.
 
-> OpenAI API Key 등 Secret을 Frontend / Pages 환경에 넣지 마세요.
-> `.env`, API Key, 비밀번호, 토큰이 들어간 파일은 **절대 commit/push하지 마세요.** (`.gitignore`에 제외됨. 템플릿은 `.env.example`만 사용)
+1. https://github.com/inchojeong/tbl-marine-maintenance-ai/settings/pages
+2. **Build and deployment → Source → GitHub Actions** 선택 후 저장
+3. **Actions** 탭에서 `Deploy GitHub Pages`를 다시 실행(또는 `main`에 push)
+4. 공개 URL: `https://inchojeong.github.io/tbl-marine-maintenance-ai/`
+
+> Source를 GitHub Actions로 설정하기 전에는 Deploy job이 실패할 수 있습니다.
 
 ## Docker 실행
 
