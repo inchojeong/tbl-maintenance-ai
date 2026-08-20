@@ -24,7 +24,8 @@ export function Header() {
           AI 항공기 정비 어시스턴트
         </h1>
         <p className="text-xs text-slate-300">
-          {aircraftInfo?.display_name || aircraftId} · 시제품 · 모의 데이터
+          {aircraftInfo?.display_name ||
+            `${aircraftInfo?.aircraft_type ?? "MUH-1"} / 기체번호 ${aircraftInfo?.aircraft_number ?? "001"}`}
         </p>
       </div>
       <div className="flex flex-wrap items-center gap-2">
@@ -42,13 +43,16 @@ export function Header() {
             ))}
           </select>
         </label>
-        <label className="flex items-center gap-2 rounded border border-white/20 px-2 py-1 text-xs">
+        <label
+          className="flex items-center gap-2 rounded border border-white/20 px-2 py-1 text-xs"
+          title="실제 군 내부 데이터 및 실기체 기술교범을 사용하지 않습니다."
+        >
           <input
             type="checkbox"
             checked={isDemoMode}
             onChange={(e) => setDemoMode(e.target.checked)}
           />
-          데모모드
+          오프라인 데모
         </label>
         <button
           type="button"

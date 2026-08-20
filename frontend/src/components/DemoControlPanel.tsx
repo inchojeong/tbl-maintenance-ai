@@ -12,16 +12,17 @@ export function DemoControlPanel({ compact = false }: { compact?: boolean }) {
         <button
           type="button"
           className="rounded px-2 py-1 text-[10px] text-slate-600 hover:bg-slate-100"
+          title="실제 군 내부 데이터 및 실기체 기술교범을 사용하지 않습니다."
           onClick={() => setDemoMode(!isDemoMode)}
         >
-          Demo {isDemoMode ? "ON" : "OFF"}
+          오프라인 {isDemoMode ? "ON" : "OFF"}
         </button>
         <button
           type="button"
           className="rounded px-2 py-1 text-[10px] text-slate-600 hover:bg-slate-100"
           onClick={() => resetScene()}
         >
-          장면 리셋
+          3D 초기화
         </button>
       </div>
     );
@@ -34,7 +35,7 @@ export function DemoControlPanel({ compact = false }: { compact?: boolean }) {
         className="rounded border border-slate-200 px-2 py-1"
         onClick={() => setDemoMode(!isDemoMode)}
       >
-        데모모드 {isDemoMode ? "ON" : "OFF"}
+        오프라인 데모 {isDemoMode ? "ON" : "OFF"}
       </button>
       <button
         type="button"

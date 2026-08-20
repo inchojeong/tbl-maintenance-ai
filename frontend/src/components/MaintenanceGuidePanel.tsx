@@ -1,5 +1,6 @@
 import { GUIDE_STEPS, useAppStore } from "../stores/useAppStore";
 import type { GuideStep } from "../types/diagnosis";
+import { labelSystem } from "../services/displayLabels";
 
 export function MaintenanceGuidePanel() {
   const guideStep = useAppStore((s) => s.guideStep);
@@ -10,39 +11,42 @@ export function MaintenanceGuidePanel() {
   const applyViewTarget = useAppStore((s) => s.applyViewTarget);
   const openHistoryRegister = useAppStore((s) => s.openHistoryRegister);
 
-  const steps: GuideStep[] =
-    result?.recommended_steps?.length
-      ? result.recommended_steps.map((detail, i) => ({
-          n: i + 1,
-          title: `점검 ${i + 1}`,
-          detail,
-          viewTargetId: result.view_target_id || "AIRCRAFT_OVERVIEW",
-        }))
-      : GUIDE_STEPS;
+  const steps: GuideStep[] = result?.recommended_steps?.length
+    ? result.recommended_steps.map((detail, i) => ({
+        n: i + 1,
+        title: `점검 ${i + 1}`,
+        detail,
+        viewTargetId: result.view_target_id || "AIRCRAFT_OVERVIEW",
+      }))
+    : GUIDE_STEPS;
 
   return (
     <div className="space-y-3">
       {result ? (
         <div className="grid gap-2 md:grid-cols-3">
           <div className="rounded border border-slate-200 p-2 text-xs">
-            <div className="text-[11px] font-medium text-navy">① 현재 상태 분석</div>
+            <div className="text-[11px] font-medium text-navy">
+              ① 현재 상태 분석
+            </div>
             <p className="mt-1 text-slate-700">
               {labelCurrent(result.system_code, result.symptom_code)}
             </p>
           </div>
           <div className="rounded border border-slate-200 p-2 text-xs">
             <div className="text-[11px] font-medium text-navy">
-              ② 기술교범 근거 <span className="font-normal text-slate-400">(공식)</span>
+              ② 기술교범{" "}
+              <span className="font-normal text-slate-400">(공식 정비근거)</span>
             </div>
             <p className="mt-1 text-slate-700">
               {result.sources?.[0]
                 ? `${result.sources[0].manual_id} · Task ${result.sources[0].task ?? result.sources[0].paragraph ?? "—"}`
-                : "관련 공개 TM Chunk 참조"}
+                : "관련 기술교범을 확인하십시오."}
             </p>
           </div>
           <div className="rounded border border-amber-100 bg-amber-50/40 p-2 text-xs">
             <div className="text-[11px] font-medium text-navy">
-              ③ 과거 정비이력 <span className="font-normal text-slate-400">(참고)</span>
+              ③ 과거 정비이력{" "}
+              <span className="font-normal text-slate-400">(참고)</span>
             </div>
             <p className="mt-1 text-slate-700">
               {similar.length
@@ -63,7 +67,7 @@ export function MaintenanceGuidePanel() {
       <p className="text-xs text-slate-500">
         {result?.recommended_steps?.length
           ? "기술교범 기반 권장 확인 항목입니다. 정비이력은 참고용입니다."
-          : "기본 오일계통 가이드입니다. 질의 후 시나리오별 단계로 전환됩니다."}
+          : "질의 후 시나리오별 점검 단계가 표시됩니다."}
       </p>
       {steps.map((step) => (
         <button
@@ -105,13 +109,13 @@ export function MaintenanceGuidePanel() {
 
 function labelCurrent(system: string, symptom: string): string {
   if (system === "ENGINE_OIL" || symptom.includes("OIL")) {
-    return "현재 엔진오일 압력 관련 이상으로 분석되었습니다. (시연값 예: 31 PSI / 정상 45~65 PSI)";
+    return "엔진오일 압력 관련 이상으로 분석되었습니다. (측정값 예: 31 PSI / 정상 45~65 PSI)";
   }
   if (system === "HYDRAULIC") {
-    return "현재 비행조종 유압 압력 지시 이상으로 분석되었습니다.";
+    return "유압 압력 지시 이상으로 분석되었습니다.";
   }
   if (system === "ELECTRICAL") {
-    return "현재 발전기·전기계통 경고로 분석되었습니다.";
+    return "발전기·전기계통 이상으로 분석되었습니다.";
   }
-  return `현재 ${system} / ${symptom} 관련 이상으로 분석되었습니다.`;
+  return `${labelSystem(system)} 이상으로 분석되었습니다.`;
 }

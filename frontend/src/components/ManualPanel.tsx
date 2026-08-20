@@ -1,4 +1,5 @@
 import { useAppStore } from "../stores/useAppStore";
+import { tdLocationSentence } from "../services/displayLabels";
 
 export function ManualPanel() {
   const manuals = useAppStore((s) => s.manuals);
@@ -6,30 +7,22 @@ export function ManualPanel() {
   if (!manuals.length) {
     return (
       <p className="text-sm text-slate-500">
-        질의 후 관련 공개 교범이 표시됩니다.
+        질의 후 관련 기술교범이 표시됩니다.
       </p>
     );
   }
 
   return (
     <div className="space-y-2">
+      <p className="text-[11px] text-slate-500">
+        기술교범은 공식 정비근거입니다.
+      </p>
       {manuals.map((m) => (
         <article
           key={m.id}
           className="rounded border border-slate-200 p-2 text-sm"
         >
-          <div className="flex items-start justify-between gap-2">
-            <h3 className="font-medium text-navy">{m.title}</h3>
-            {m.is_demo_public_tm ? (
-              <span className="rounded bg-sky-100 px-1.5 text-[10px] text-sky-900">
-                Public TM
-              </span>
-            ) : m.is_dummy ? (
-              <span className="rounded bg-amber-100 px-1.5 text-[10px] text-amber-800">
-                더미
-              </span>
-            ) : null}
-          </div>
+          <h3 className="font-medium text-navy">{m.title}</h3>
           <p className="mt-1 text-[11px] font-medium text-slate-700">
             {m.source_manual ?? m.id}
           </p>
@@ -38,12 +31,9 @@ export function ManualPanel() {
               ? `Task ${m.paragraph ?? (m as { task?: string }).task}`
               : null}
             {(m as { pdf_page?: number }).pdf_page != null || m.page
-              ? ` · PDF Page ${(m as { pdf_page?: number }).pdf_page ?? m.page}`
+              ? ` · p.${(m as { pdf_page?: number }).pdf_page ?? m.page}`
               : null}
             {m.chapter ? ` · Ch.${m.chapter}` : ""}
-          </p>
-          <p className="text-[10px] text-slate-400">
-            Public Technical Manual / DEMO Reference
           </p>
           {m.symptom_ko || m.symptom_en ? (
             <p className="mt-1 text-xs text-slate-600">
@@ -61,28 +51,22 @@ export function ManualPanel() {
               </ul>
             </div>
           ) : null}
-          <p className="mt-1 text-slate-700">{m.content}</p>
+          <p className="mt-1 text-slate-700">
+            {(m.content || "").replace(/\[DEMO\/Public TM\]\s*/g, "")}
+          </p>
           {m.original_text ? (
             <details className="mt-1">
               <summary className="cursor-pointer text-[11px] text-slate-500">
-                Original English excerpt
+                원문 발췌
               </summary>
               <p className="mt-1 text-[11px] leading-relaxed text-slate-600">
                 {m.original_text}
               </p>
             </details>
           ) : null}
-          {m.td_grade === "COMPONENT" ? (
+          {m.td_grade ? (
             <p className="mt-1 text-[10px] text-slate-500">
-              관련 장비 위치를 3D 모델에 표시합니다.
-            </p>
-          ) : m.td_grade === "SYSTEM" ? (
-            <p className="mt-1 text-[10px] text-slate-500">
-              관련 계통의 위치를 3D 모델에 표시합니다.
-            </p>
-          ) : m.td_grade === "AREA" ? (
-            <p className="mt-1 text-[10px] text-slate-500">
-              관련 장비가 위치한 영역을 3D 모델에 표시합니다.
+              {tdLocationSentence(m.td_grade)}
             </p>
           ) : null}
         </article>

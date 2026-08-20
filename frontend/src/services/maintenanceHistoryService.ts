@@ -439,24 +439,24 @@ export function buildHistoryInsight(
   const parts: string[] = [];
   if (diagnosis?.system_code === "ENGINE_OIL") {
     parts.push(
-      "현재 엔진오일 압력은 정상범위보다 낮은 상태입니다(시연 예: 31 PSI / 정상 45~65 PSI).",
+      "현재 엔진오일 압력은 정상범위보다 낮은 상태입니다(31 PSI / 정상 45~65 PSI).",
     );
   } else if (diagnosis?.system_code === "HYDRAULIC") {
     parts.push("현재 유압 압력 지시가 정상 범위를 벗어난 것으로 분석되었습니다.");
   } else if (diagnosis?.system_code === "ELECTRICAL") {
-    parts.push("현재 발전기·전기계통 경고가 발생한 것으로 분석되었습니다.");
+    parts.push("현재 발전기·전기계통 이상이 발생한 것으로 분석되었습니다.");
   }
   const tm = diagnosis?.sources?.[0];
   if (tm) {
     parts.push(
-      `기술교범(${tm.manual_id}${tm.task ? ` / Task ${tm.task}` : ""})에 따른 점검·정비절차를 우선 적용해야 합니다.`,
+      `기술교범(${tm.manual_id}${tm.task ? ` / Task ${tm.task}` : ""})에 따른 점검·정비절차를 우선 적용하십시오.`,
     );
   } else {
-    parts.push("기술교범에 따른 점검·정비절차를 우선 적용해야 합니다.");
+    parts.push("기술교범에 따른 점검·정비절차를 우선 적용하십시오.");
   }
   if (filterN >= 2) {
     parts.push(
-      `해당 기체의 과거 유사사례 ${n}건 중 ${filterN}건에서 ` +
+      `과거 유사사례 ${n}건 중 ${filterN}건에서 ` +
         `${filterish[0].record.root_cause}이(가) 원인으로 확인되었으며, ` +
         `${filterish[0].record.maintenance_action} 후 ${filterish[0].record.maintenance_result} 사례가 있습니다.`,
     );
@@ -467,8 +467,6 @@ export function buildHistoryInsight(
         `결과「${top.record.maintenance_result}」이었습니다.`,
     );
   }
-  parts.push(
-    "※ 정비이력은 참고정보이며, 기술교범이 공식 정비근거입니다.",
-  );
+  parts.push("정비이력은 참고정보이며, 기술교범이 공식 정비근거입니다.");
   return parts.join(" ");
 }

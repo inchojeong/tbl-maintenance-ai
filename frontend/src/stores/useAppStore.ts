@@ -240,7 +240,7 @@ export const useAppStore = create<AppState>((set, get) => ({
     {
       id: "sys-1",
       role: "system",
-      text: "더미 데이터 시연 모드입니다. 예: 「엔진 오일 압력이 낮고 경고등이 점등되었어.」",
+      text: "고장 증상이나 계기값을 입력하십시오. 예: 「엔진오일 압력이 31 PSI로 떨어졌습니다」",
       time: nowTime(),
     },
   ],
@@ -616,7 +616,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         {
           id: `sys-${Date.now()}`,
           role: "system",
-          text: "시연 상태가 초기화되었습니다.",
+          text: "상태가 초기화되었습니다.",
           time: nowTime(),
         },
       ],

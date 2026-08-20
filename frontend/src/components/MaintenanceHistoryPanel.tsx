@@ -6,6 +6,7 @@ import {
   listAircraftLocal,
 } from "../services/maintenanceHistoryService";
 import { useAppStore } from "../stores/useAppStore";
+import { labelCategory } from "../services/displayLabels";
 import type {
   MaintenanceHistoryFilters,
   MaintenanceHistoryRecord,
@@ -66,14 +67,15 @@ export function MaintenanceHistoryPanel() {
 
   const prefill = {
     fault_code:
-      result?.fault_code ||
-      (result?.symptom_code === "ENG_OIL_PRESS_LOW"
+      result?.symptom_code === "ENG_OIL_PRESS_LOW"
         ? "ENG-OIL-P-01"
         : result?.symptom_code === "HYD_PRESS_LOW"
           ? "HYD-P-01"
           : result?.symptom_code === "GEN_OFF"
             ? "GEN-OFF-01"
-            : ""),
+            : result?.fault_code && !result.fault_code.startsWith("FAULT_")
+              ? result.fault_code
+              : "",
     symptom:
       result?.symptom_code === "ENG_OIL_PRESS_LOW"
         ? "엔진오일 압력 저하"
@@ -119,14 +121,22 @@ export function MaintenanceHistoryPanel() {
       <div className="flex flex-wrap items-start justify-between gap-2 rounded border border-slate-200 bg-slate-50 p-2">
         <div>
           <div className="text-xs font-medium text-navy">
+            {aircraftId} ·{" "}
             {aircraftInfo?.display_name ||
-              `${aircraftInfo?.aircraft_type || "MUH-1"} / 기체번호 ${aircraftInfo?.aircraft_number || "001"}`}
+              `${aircraftInfo?.aircraft_type || "MUH-1"} ${aircraftInfo?.aircraft_number || "001"}`}
           </div>
-          <div className="text-[11px] text-slate-600">
-            누적 비행시간{" "}
-            {(aircraftInfo?.total_flight_hours ?? 0).toLocaleString()} Hr · 누적
-            정비이력 {stats?.total ?? aircraftInfo?.maintenance_count ?? "—"}건
-          </div>
+          <ul className="mt-1 space-y-0.5 text-[11px] text-slate-600">
+            <li>
+              누적 정비이력{" "}
+              {stats?.total ?? aircraftInfo?.maintenance_count ?? "—"}건
+            </li>
+            <li>최근 30일 {stats?.last_30_days ?? "—"}건</li>
+            <li>반복 고장 {stats?.recurrence_count ?? "—"}건</li>
+            <li>
+              누적 비행시간{" "}
+              {(aircraftInfo?.total_flight_hours ?? 0).toLocaleString()} Hr
+            </li>
+          </ul>
         </div>
         <label className="text-[11px] text-slate-500">
           항공기
@@ -137,7 +147,7 @@ export function MaintenanceHistoryPanel() {
           >
             {aircraftOptions.map((a) => (
               <option key={a.aircraft_id} value={a.aircraft_id}>
-                {a.display_name || a.aircraft_id}
+                {a.aircraft_type}-{a.aircraft_number}
               </option>
             ))}
           </select>
@@ -282,12 +292,11 @@ export function MaintenanceHistoryPanel() {
         <table className="min-w-full text-left text-[11px]">
           <thead className="bg-slate-50 text-slate-500">
             <tr>
-              <th className="px-2 py-1.5">정비일자</th>
-              <th className="px-2 py-1.5">비행시간</th>
+              <th className="px-2 py-1.5">일자</th>
               <th className="px-2 py-1.5">계통</th>
-              <th className="px-2 py-1.5">고장증상</th>
+              <th className="px-2 py-1.5">증상</th>
               <th className="px-2 py-1.5">원인</th>
-              <th className="px-2 py-1.5">정비조치</th>
+              <th className="px-2 py-1.5">조치</th>
               <th className="px-2 py-1.5">결과</th>
             </tr>
           </thead>
@@ -305,10 +314,9 @@ export function MaintenanceHistoryPanel() {
                 <td className="px-2 py-1.5 whitespace-nowrap">
                   {r.maintenance_date}
                 </td>
-                <td className="px-2 py-1.5 text-right">
-                  {r.flight_hours?.toLocaleString()}
+                <td className="px-2 py-1.5">
+                  {labelCategory(r.system_category)}
                 </td>
-                <td className="px-2 py-1.5">{r.system_category}</td>
                 <td className="px-2 py-1.5">{r.symptom}</td>
                 <td className="px-2 py-1.5">{r.root_cause}</td>
                 <td className="px-2 py-1.5">{r.maintenance_action}</td>
@@ -318,7 +326,7 @@ export function MaintenanceHistoryPanel() {
             {!rows.length ? (
               <tr>
                 <td
-                  colSpan={7}
+                  colSpan={6}
                   className="px-2 py-4 text-center text-slate-500"
                 >
                   조건에 맞는 정비이력이 없습니다.

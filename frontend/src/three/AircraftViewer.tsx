@@ -1,6 +1,11 @@
 import { Canvas } from "@react-three/fiber";
 import { AircraftScene } from "./AircraftScene";
 import { useAppStore } from "../stores/useAppStore";
+import {
+  labelArea,
+  labelViewTarget,
+  viewerStatusLine,
+} from "../services/displayLabels";
 
 export function AircraftViewer() {
   const viewLevel = useAppStore((s) => s.viewLevel);
@@ -14,24 +19,30 @@ export function AircraftViewer() {
   const areaLoadProgress = useAppStore((s) => s.areaLoadProgress);
   const activeFault = useAppStore((s) => s.activeFault);
 
+  const status =
+    diagnosisResult?.system_code === "ENGINE_OIL"
+      ? viewerStatusLine({
+          viewLevel,
+          viewTargetId,
+          activeAreaId,
+        })
+      : labelViewTarget(viewTargetId) || "항공기 전체";
+
   return (
     <section className="flex h-full min-h-0 flex-col overflow-hidden rounded-lg border border-slate-700 bg-slate-900 shadow-inner">
       <div className="flex items-center justify-between border-b border-slate-700 px-3 py-2">
         <div>
-          <h2 className="text-sm font-semibold text-slate-100">디지털트윈 · 3D</h2>
+          <h2 className="text-sm font-semibold text-slate-100">
+            디지털트윈 · 3D
+          </h2>
           <p className="text-[11px] text-slate-400">
-            {viewLevel} · {viewTargetId}
-            {activeAreaId ? ` · ${activeAreaId}` : ""}
-            {import.meta.env.VITE_USE_PROXY_MODEL !== "false"
-              ? " · Proxy"
-              : " · GLB"}
-            {areaLoadStatus !== "idle" ? ` · ${areaLoadStatus}` : ""}
+            {status || "항공기 전체"}
           </p>
         </div>
         <div className="flex items-center gap-2">
           <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-medium text-emerald-400">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            LIVE
+            실시간
           </span>
         </div>
       </div>
@@ -47,13 +58,13 @@ export function AircraftViewer() {
 
         {modelWarning ? (
           <div className="absolute left-2 top-2 max-w-sm rounded bg-amber-500/90 px-2 py-1 text-[11px] text-slate-950">
-            {modelWarning}
+            {modelWarning.replace(/프록시/g, "대체").replace(/GLB/g, "상세 모델")}
           </div>
         ) : null}
 
         {areaLoadStatus === "loading" ? (
           <div className="absolute left-2 right-2 top-2 rounded bg-slate-950/80 px-2 py-1.5 text-[11px] text-slate-100">
-            AREA 모델 로딩 중… {areaLoadProgress}%
+            정비구역 모델 로딩 중… {areaLoadProgress}%
             <div className="mt-1 h-1 overflow-hidden rounded bg-slate-700">
               <div
                 className="h-full bg-brand transition-all"
@@ -65,7 +76,10 @@ export function AircraftViewer() {
 
         {activeFault && areaLoadStatus === "proxy" ? (
           <div className="absolute right-2 top-2 rounded bg-slate-800/90 px-2 py-1 text-[10px] text-slate-300 ring-1 ring-slate-600">
-            {activeFault.fault.fault_code} · Proxy Detail
+            점검 위치 상세
+            {labelArea(activeFault.area.area_id)
+              ? ` · ${labelArea(activeFault.area.area_id)}`
+              : ""}
           </div>
         ) : null}
 
@@ -96,7 +110,7 @@ export function AircraftViewer() {
             </>
           ) : (
             <span className="rounded bg-slate-800/80 px-2 py-1 text-[11px] text-slate-300">
-              질의를 전송하면 접근 구역이 표시됩니다
+              질의를 전송하면 점검 위치가 표시됩니다
             </span>
           )}
         </div>

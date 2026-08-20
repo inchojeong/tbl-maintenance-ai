@@ -8,9 +8,9 @@ import { MaintenanceHistoryPanel } from "./MaintenanceHistoryPanel";
 import { DemoControlPanel } from "./DemoControlPanel";
 
 const TABS: { id: BottomTab; label: string }[] = [
-  { id: "manual", label: "교범" },
-  { id: "failure", label: "유사 고장" },
-  { id: "phm", label: "PHM" },
+  { id: "manual", label: "기술교범" },
+  { id: "failure", label: "유사 정비사례" },
+  { id: "phm", label: "상태예측(PHM)" },
   { id: "guide", label: "정비 가이드" },
   { id: "history", label: "정비이력" },
 ];
@@ -20,8 +20,8 @@ export function BottomTabPanel() {
   const setActiveBottomTab = useAppStore((s) => s.setActiveBottomTab);
 
   return (
-    <section className="flex h-full min-h-0 flex-col rounded-lg border border-slate-200 bg-white shadow-sm">
-      <div className="flex flex-wrap items-center gap-1 border-b border-slate-100 px-2 py-1.5">
+    <section className="rounded-lg border border-slate-200 bg-white shadow-sm">
+      <div className="sticky top-0 z-20 flex flex-wrap items-center gap-1 border-b border-slate-100 bg-white px-2 py-1.5">
         {TABS.map((t) => (
           <button
             key={t.id}
@@ -40,7 +40,7 @@ export function BottomTabPanel() {
           <DemoControlPanel compact />
         </div>
       </div>
-      <div className="min-h-0 flex-1 overflow-y-auto p-3">
+      <div className="min-h-[300px] p-3">
         {active === "manual" && <ManualPanel />}
         {active === "failure" && <FailureCasePanel />}
         {active === "phm" && <PHMPanel />}
