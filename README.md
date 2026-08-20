@@ -19,13 +19,17 @@
 
 ```text
 2차 프로토타입/
-├─ docs/                 # 설계 문서 (기존 유지)
+├─ docs/                 # 설계 문서 · 시스템 구성도(drawio)
 ├─ frontend/             # Vite React 앱
 ├─ backend/              # FastAPI
+├─ .github/workflows/    # GitHub Pages 배포
 ├─ docker-compose.yml
 ├─ .env.example
 └─ README.md
 ```
+
+시스템 솔루션 구성도(기능·데이터·화면·유스케이스):  
+`docs/system_solution_architecture.drawio` — diagrams.net / VS Code Draw.io 확장으로 열기
 
 ## 로컬 실행
 

@@ -6,9 +6,11 @@ import {
   relatedEquipmentHeading,
   tdLocationSentence,
 } from "../services/displayLabels";
+import { SimilarMaintenanceCases } from "./SimilarMaintenanceCases";
 
 export function DiagnosisPanel() {
   const result = useAppStore((s) => s.diagnosisResult);
+  const historyInsight = useAppStore((s) => s.historyInsight);
   const applyViewTarget = useAppStore((s) => s.applyViewTarget);
   const setActiveBottomTab = useAppStore((s) => s.setActiveBottomTab);
   const openPanel = useAppStore((s) => s.openPanel);
@@ -55,7 +57,9 @@ export function DiagnosisPanel() {
               </ul>
             </div>
             <div>
-              <div className="text-[11px] text-slate-500">정비교범 근거</div>
+              <div className="text-[11px] text-slate-500">
+                기술교범 근거 <span className="text-slate-400">(공식)</span>
+              </div>
               {result.sources && result.sources.length > 0 ? (
                 <ul className="mt-1 space-y-2">
                   {result.sources.map((s) => {
@@ -91,6 +95,15 @@ export function DiagnosisPanel() {
                 <div className="mt-1 text-slate-800">교범 근거 없음</div>
               )}
             </div>
+            <SimilarMaintenanceCases />
+            {historyInsight ? (
+              <div className="rounded border border-amber-100 bg-amber-50/60 p-2 text-xs text-slate-800">
+                <div className="text-[11px] font-medium text-navy">
+                  AI 종합 판단
+                </div>
+                <p className="mt-1 leading-relaxed">{historyInsight}</p>
+              </div>
+            ) : null}
             {result.td_grade ? (
               <div>
                 <div className="text-[11px] text-slate-500">3D 위치</div>

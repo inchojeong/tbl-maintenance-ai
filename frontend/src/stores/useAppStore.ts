@@ -23,10 +23,36 @@ import {
 import { matchDemoResponse } from "../services/demoService";
 import publicManualChunks from "../data/publicManualChunks.json";
 import {
+  fetchSimilarMaintenance,
+  similarQueryFromDiagnosis,
+  buildHistoryInsight,
+  fetchAircraft,
+  searchSimilarLocal,
+  listHistoryLocal,
+} from "../services/maintenanceHistoryService";
+import type {
+  AircraftInfo,
+  SimilarMaintenanceItem,
+} from "../types/maintenance";
+import {
   expandMeshIds,
   resolveFromDiagnosis,
   resolveFault,
 } from "../services/faultResolver";
+
+function failuresFromSimilar(
+  similar: SimilarMaintenanceItem[],
+): FailureCase[] {
+  return similar.map((s) => ({
+    id: s.record.maintenance_id,
+    symptom: s.record.symptom,
+    cause: s.record.root_cause,
+    actions: s.record.maintenance_action,
+    result: s.record.maintenance_result,
+    similarity: s.similarity,
+    is_dummy: s.record.is_dummy ?? true,
+  }));
+}
 
 function manualsFromDiagnosis(
   result: DiagnosisResult | null | undefined,
@@ -94,6 +120,7 @@ function nowTime() {
 
 interface AppState {
   aircraftId: string;
+  aircraftInfo: AircraftInfo | null;
   viewLevel: ViewLevel;
   selectedSystem: string | null;
   selectedComponent: string | null;
@@ -108,6 +135,9 @@ interface AppState {
   messages: ChatMessage[];
   manuals: ManualChunk[];
   failures: FailureCase[];
+  similarHistory: SimilarMaintenanceItem[];
+  historyInsight: string | null;
+  historyRegisterPending: boolean;
   phm: PhmStatus | null;
   isLoading: boolean;
   error: string | null;
@@ -122,11 +152,15 @@ interface AppState {
   areaForceProxy: boolean;
 
   setDiagnosisResult: (r: DiagnosisResult | null) => void;
+  setAircraftId: (id: string) => void;
   applyViewTarget: (id: string) => void;
   selectObject: (objectId: string) => void;
   openPanel: (panelId?: string) => void;
   setGuideStep: (step: number) => void;
   setActiveBottomTab: (tab: BottomTab) => void;
+  setSimilarHistory: (items: SimilarMaintenanceItem[]) => void;
+  openHistoryRegister: () => void;
+  clearHistoryRegisterPending: () => void;
   resetScene: () => void;
   setDemoMode: (v: boolean) => void;
   setLoading: (v: boolean) => void;
@@ -140,6 +174,7 @@ interface AppState {
   applyResolvedFault: (resolved: ResolvedFault, viewOverride?: string) => void;
   submitQuery: (text: string) => Promise<void>;
   loadRelatedData: () => Promise<void>;
+  refreshAircraft: () => Promise<void>;
   fullReset: () => Promise<void>;
 }
 
@@ -188,7 +223,8 @@ function buildTargetFields(
 }
 
 export const useAppStore = create<AppState>((set, get) => ({
-  aircraftId: "DEMO-KUH-01",
+  aircraftId: "AC-001",
+  aircraftInfo: null,
   viewLevel: "AIRCRAFT",
   selectedSystem: null,
   selectedComponent: null,
@@ -210,6 +246,9 @@ export const useAppStore = create<AppState>((set, get) => ({
   ],
   manuals: [],
   failures: [],
+  similarHistory: [],
+  historyInsight: null,
+  historyRegisterPending: false,
   phm: null,
   isLoading: false,
   error: null,
@@ -224,10 +263,27 @@ export const useAppStore = create<AppState>((set, get) => ({
   areaForceProxy: false,
 
   setDiagnosisResult: (r) => set({ diagnosisResult: r }),
+  setAircraftId: (id) => {
+    set({ aircraftId: id });
+    void get().refreshAircraft();
+  },
+  refreshAircraft: async () => {
+    const info = await fetchAircraft(get().aircraftId);
+    set({ aircraftInfo: info });
+  },
   setLoading: (v) => set({ isLoading: v }),
   setError: (e) => set({ error: e }),
   setDemoMode: (v) => set({ isDemoMode: v }),
   setActiveBottomTab: (tab) => set({ activeBottomTab: tab }),
+  setSimilarHistory: (items) =>
+    set({
+      similarHistory: items,
+      failures: failuresFromSimilar(items),
+      historyInsight: buildHistoryInsight(items, get().diagnosisResult),
+    }),
+  openHistoryRegister: () =>
+    set({ activeBottomTab: "history", historyRegisterPending: true }),
+  clearHistoryRegisterPending: () => set({ historyRegisterPending: false }),
   setCameraAnimating: (v) => set({ cameraAnimating: v }),
   setModelWarning: (w) => set({ modelWarning: w }),
   setAreaLoadStatus: (s) => set({ areaLoadStatus: s }),
@@ -388,25 +444,76 @@ export const useAppStore = create<AppState>((set, get) => ({
   loadRelatedData: async () => {
     const { aircraftId, diagnosisResult, isDemoMode } = get();
     const localManuals = manualsFromDiagnosis(diagnosisResult);
-    // Demo / GitHub Pages: prefer local JSON — avoid localhost:8000 console errors
+
+    // Always load similar maintenance history (local JSON works offline)
+    let similar: SimilarMaintenanceItem[] = [];
+    let insight: string | null = null;
+    if (diagnosisResult) {
+      const q = similarQueryFromDiagnosis(diagnosisResult, aircraftId);
+      try {
+        // Demo / Pages: never wait on backend — local JSON is the source of truth
+        if (isDemoMode) {
+          similar = searchSimilarLocal(q, q.top_k ?? 7);
+        } else {
+          similar = await fetchSimilarMaintenance(q);
+        }
+        insight = buildHistoryInsight(similar, diagnosisResult);
+        if (similar.length === 0 && get().similarHistory.length > 0) {
+          // Keep sync results from submitQuery if re-search somehow empty
+          similar = get().similarHistory;
+          insight = get().historyInsight;
+        }
+        if (import.meta.env.DEV) {
+          const seedN = listHistoryLocal({}).length;
+          // eslint-disable-next-line no-console
+          console.info(
+            `[MaintenanceHistory] loaded records: ${seedN}`,
+            `\n[SimilarCases] query symptom_code: ${q.symptom_code}`,
+            `\n[SimilarCases] returned: ${similar.length}`,
+          );
+        }
+      } catch {
+        similar = searchSimilarLocal(q, q.top_k ?? 7);
+        insight = buildHistoryInsight(similar, diagnosisResult);
+      }
+    }
+
+    const failureCases = failuresFromSimilar(similar);
+
     if (isDemoMode) {
-      set({ manuals: localManuals, failures: [], phm: null });
+      set({
+        manuals: localManuals,
+        failures: failureCases,
+        phm: null,
+        similarHistory: similar,
+        historyInsight: insight,
+      });
+      void get().refreshAircraft();
       return;
     }
     try {
-      const [manuals, failures, phm] = await Promise.all([
+      const [manuals, _legacyFailures, phm] = await Promise.all([
         fetchManuals(diagnosisResult?.system_code ?? "ENGINE_OIL"),
-        fetchFailures(diagnosisResult?.symptom_code),
+        fetchFailures(diagnosisResult?.symptom_code).catch(() => []),
         fetchPhm(aircraftId),
       ]);
       set({
         manuals: manuals.length ? manuals : localManuals,
-        failures,
+        // Prefer maintenance-history similar cases over legacy /api/failures
+        failures: failureCases.length ? failureCases : _legacyFailures,
         phm,
+        similarHistory: similar,
+        historyInsight: insight,
       });
     } catch {
-      set({ manuals: localManuals });
+      set({
+        manuals: localManuals,
+        failures: failureCases,
+        similarHistory: similar,
+        historyInsight: insight,
+      });
     }
+    void get().refreshAircraft();
   },
 
   submitQuery: async (text) => {
@@ -444,6 +551,13 @@ export const useAppStore = create<AppState>((set, get) => ({
         }
       }
 
+      // Sync similar search BEFORE any async side-effects (3D / API).
+      // Demo/Pages must never depend on backend for this tab.
+      const similarQ = similarQueryFromDiagnosis(result, get().aircraftId);
+      const similar = searchSimilarLocal(similarQ, similarQ.top_k ?? 7);
+      const insight = buildHistoryInsight(similar, result);
+      const failureCases = failuresFromSimilar(similar);
+
       const resolved = resolveFromDiagnosis(result);
       set({
         diagnosisResult: result,
@@ -459,15 +573,29 @@ export const useAppStore = create<AppState>((set, get) => ({
         ],
         activeBottomTab: "guide",
         guideStep: 1,
+        similarHistory: similar,
+        historyInsight: insight,
+        failures: failureCases,
       });
+
+      if (import.meta.env.DEV) {
+        // eslint-disable-next-line no-console
+        console.info(
+          `[SimilarCases] symptom=${result.symptom_code} matched=${similar.length}`,
+          similar.slice(0, 5).map((s) => s.record.maintenance_id),
+        );
+      }
 
       if (resolved) {
         get().applyResolvedFault(resolved, result.view_target_id);
       } else {
         get().applyViewTarget(result.view_target_id);
       }
+      // manuals / PHM etc. (similarHistory already set above)
       void get().loadRelatedData();
-    } catch {
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error("[submitQuery] failed", err);
       set({
         isLoading: false,
         error: "질의 처리 중 오류가 발생했습니다. 데모모드를 확인해 주세요.",
@@ -494,6 +622,9 @@ export const useAppStore = create<AppState>((set, get) => ({
       ],
       manuals: [],
       failures: [],
+      similarHistory: [],
+      historyInsight: null,
+      historyRegisterPending: false,
       phm: null,
       guideStep: 0,
       diagnosisResult: null,

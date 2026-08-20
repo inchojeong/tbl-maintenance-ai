@@ -29,4 +29,12 @@ def init_db() -> None:
         """
     )
     conn.commit()
+    # Seed full maintenance history table (prototype dummy data)
+    from app.services.maintenance_history_service import (
+        ensure_maintenance_schema,
+        seed_maintenance_history_if_empty,
+    )
+
+    ensure_maintenance_schema(conn)
+    seed_maintenance_history_if_empty(conn)
     conn.close()

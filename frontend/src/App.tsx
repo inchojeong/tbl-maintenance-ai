@@ -8,7 +8,7 @@ export default function App() {
   return (
     <div className="flex h-full min-h-screen min-w-[1100px] flex-col bg-surface">
       <Header />
-      <main className="grid min-h-0 flex-1 grid-cols-[22%_53%_25%] grid-rows-[minmax(0,1fr)_220px] gap-3 p-3">
+      <main className="grid min-h-0 flex-1 grid-cols-[22%_53%_25%] grid-rows-[minmax(0,1fr)_280px] gap-3 p-3">
         <div className="min-h-0">
           <AIQueryPanel />
         </div>

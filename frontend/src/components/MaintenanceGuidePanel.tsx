@@ -5,7 +5,10 @@ export function MaintenanceGuidePanel() {
   const guideStep = useAppStore((s) => s.guideStep);
   const setGuideStep = useAppStore((s) => s.setGuideStep);
   const result = useAppStore((s) => s.diagnosisResult);
+  const similar = useAppStore((s) => s.similarHistory);
+  const historyInsight = useAppStore((s) => s.historyInsight);
   const applyViewTarget = useAppStore((s) => s.applyViewTarget);
+  const openHistoryRegister = useAppStore((s) => s.openHistoryRegister);
 
   const steps: GuideStep[] =
     result?.recommended_steps?.length
@@ -18,10 +21,48 @@ export function MaintenanceGuidePanel() {
       : GUIDE_STEPS;
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-3">
+      {result ? (
+        <div className="grid gap-2 md:grid-cols-3">
+          <div className="rounded border border-slate-200 p-2 text-xs">
+            <div className="text-[11px] font-medium text-navy">① 현재 상태 분석</div>
+            <p className="mt-1 text-slate-700">
+              {labelCurrent(result.system_code, result.symptom_code)}
+            </p>
+          </div>
+          <div className="rounded border border-slate-200 p-2 text-xs">
+            <div className="text-[11px] font-medium text-navy">
+              ② 기술교범 근거 <span className="font-normal text-slate-400">(공식)</span>
+            </div>
+            <p className="mt-1 text-slate-700">
+              {result.sources?.[0]
+                ? `${result.sources[0].manual_id} · Task ${result.sources[0].task ?? result.sources[0].paragraph ?? "—"}`
+                : "관련 공개 TM Chunk 참조"}
+            </p>
+          </div>
+          <div className="rounded border border-amber-100 bg-amber-50/40 p-2 text-xs">
+            <div className="text-[11px] font-medium text-navy">
+              ③ 과거 정비이력 <span className="font-normal text-slate-400">(참고)</span>
+            </div>
+            <p className="mt-1 text-slate-700">
+              {similar.length
+                ? `유사 ${similar.length}건 · 최고 ${similar[0].similarity_percent}%`
+                : "유사 이력 없음"}
+            </p>
+          </div>
+        </div>
+      ) : null}
+
+      {historyInsight ? (
+        <div className="rounded border border-slate-200 bg-slate-50 p-2 text-xs text-slate-800">
+          <div className="font-medium text-navy">AI 종합 판단</div>
+          <p className="mt-1 leading-relaxed">{historyInsight}</p>
+        </div>
+      ) : null}
+
       <p className="text-xs text-slate-500">
         {result?.recommended_steps?.length
-          ? "현재 진단의 권장 확인 항목을 가이드로 표시합니다."
+          ? "기술교범 기반 권장 확인 항목입니다. 정비이력은 참고용입니다."
           : "기본 오일계통 가이드입니다. 질의 후 시나리오별 단계로 전환됩니다."}
       </p>
       {steps.map((step) => (
@@ -49,6 +90,28 @@ export function MaintenanceGuidePanel() {
           </span>
         </button>
       ))}
+      {result ? (
+        <button
+          type="button"
+          className="w-full rounded bg-navy py-2 text-xs font-medium text-white hover:bg-navy-700"
+          onClick={() => openHistoryRegister()}
+        >
+          정비 결과 등록
+        </button>
+      ) : null}
     </div>
   );
+}
+
+function labelCurrent(system: string, symptom: string): string {
+  if (system === "ENGINE_OIL" || symptom.includes("OIL")) {
+    return "현재 엔진오일 압력 관련 이상으로 분석되었습니다. (시연값 예: 31 PSI / 정상 45~65 PSI)";
+  }
+  if (system === "HYDRAULIC") {
+    return "현재 비행조종 유압 압력 지시 이상으로 분석되었습니다.";
+  }
+  if (system === "ELECTRICAL") {
+    return "현재 발전기·전기계통 경고로 분석되었습니다.";
+  }
+  return `현재 ${system} / ${symptom} 관련 이상으로 분석되었습니다.`;
 }

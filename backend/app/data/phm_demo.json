@@ -1,8 +1,8 @@
 {
   "version": "1.0",
   "disclaimer": "Simulated PHM values for prototype demo only. Not real aircraft sensor data.",
-  "aircraft_id": "DEMO-KUH-01",
-  "tail_no": "Surion-KUH-01",
+  "aircraft_id": "AC-001",
+  "tail_no": "MUH-1-001",
   "recorded_at": "2026-08-05T09:00:00+09:00",
   "oil_pressure_psi": 28,
   "oil_temperature_c": 98,
