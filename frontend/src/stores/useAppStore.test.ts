@@ -39,12 +39,13 @@ describe("demoService", () => {
 });
 
 describe("useAppStore applyViewTarget", () => {
-  it("applies ENGINE_OIL_SYSTEM highlights", () => {
+  it("applies ENGINE_OIL_SYSTEM highlights with exterior x-ray", () => {
     useAppStore.getState().resetScene();
     useAppStore.getState().applyViewTarget("ENGINE_OIL_SYSTEM");
     const s = useAppStore.getState();
     expect(s.viewTargetId).toBe("ENGINE_OIL_SYSTEM");
-    expect(s.highlightedObjects).toContain("ENGINE_ZONE");
+    expect(s.highlightedObjects).toContain("PRESSURE_SENSOR");
+    expect(s.transparentObjects).toContain("EXTERIOR");
     expect(s.viewLevel).toBe("SYSTEM");
   });
 

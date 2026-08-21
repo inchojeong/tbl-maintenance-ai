@@ -1,4 +1,7 @@
-import { GUIDE_STEPS, useAppStore } from "../stores/useAppStore";
+import {
+  guideStepsForSystem,
+  useAppStore,
+} from "../stores/useAppStore";
 import type { GuideStep } from "../types/diagnosis";
 import { labelSystem } from "../services/displayLabels";
 
@@ -11,14 +14,18 @@ export function MaintenanceGuidePanel() {
   const applyViewTarget = useAppStore((s) => s.applyViewTarget);
   const openHistoryRegister = useAppStore((s) => s.openHistoryRegister);
 
-  const steps: GuideStep[] = result?.recommended_steps?.length
-    ? result.recommended_steps.map((detail, i) => ({
-        n: i + 1,
-        title: `점검 ${i + 1}`,
-        detail,
-        viewTargetId: result.view_target_id || "AIRCRAFT_OVERVIEW",
-      }))
-    : GUIDE_STEPS;
+  const curated = guideStepsForSystem(result?.system_code);
+  const steps: GuideStep[] =
+    result && curated.length
+      ? curated
+      : result?.recommended_steps?.length
+        ? result.recommended_steps.map((detail, i) => ({
+            n: i + 1,
+            title: `점검 ${i + 1}`,
+            detail,
+            viewTargetId: result.view_target_id || "AIRCRAFT_OVERVIEW",
+          }))
+        : curated;
 
   return (
     <div className="space-y-3">
@@ -65,8 +72,8 @@ export function MaintenanceGuidePanel() {
       ) : null}
 
       <p className="text-xs text-slate-500">
-        {result?.recommended_steps?.length
-          ? "기술교범 기반 권장 확인 항목입니다. 정비이력은 참고용입니다."
+        {result
+          ? "점검 단계를 선택하면 3D 모델에서 해당 위치로 이동합니다."
           : "질의 후 시나리오별 점검 단계가 표시됩니다."}
       </p>
       {steps.map((step) => (

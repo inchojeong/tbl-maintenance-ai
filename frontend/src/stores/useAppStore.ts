@@ -77,41 +77,84 @@ const FALLBACK_ID = "AIRCRAFT_OVERVIEW";
 export const GUIDE_STEPS: GuideStep[] = [
   {
     n: 1,
-    title: "항공기 전체에서 엔진 위치 확인",
-    detail: "엔진 오일계통 접근 구역을 확인합니다.",
-    viewTargetId: "ENGINE_OIL_SYSTEM",
+    title: "엔진 위치 확인",
+    detail: "항공기에서 엔진 오일계통 위치를 확인합니다.",
+    viewTargetId: "ENGINE_OVERVIEW",
   },
   {
     n: 2,
-    title: "엔진 접근패널 확인",
-    detail: "좌·우측 접근패널 상태를 확인합니다.",
-    viewTargetId: "ENGINE_ACCESS_PANEL",
+    title: "오일 압력 센서 확인",
+    detail: "오일 압력 센서 상태를 확인합니다.",
+    viewTargetId: "ENGINE_PRESSURE_SENSOR",
   },
   {
     n: 3,
-    title: "접근패널 개방",
-    detail: "접근패널을 개방하고 내부를 투시합니다.",
-    viewTargetId: "ENGINE_INTERNAL_VIEW",
-  },
-  {
-    n: 4,
     title: "오일 필터 점검",
     detail: "오일 필터 외관 및 차압을 확인합니다.",
     viewTargetId: "ENGINE_OIL_FILTER",
   },
   {
-    n: 5,
+    n: 4,
     title: "오일 펌프 확인",
     detail: "오일 펌프 상태를 확인합니다.",
     viewTargetId: "ENGINE_OIL_PUMP",
   },
+];
+
+export const GUIDE_STEPS_HYDRAULIC: GuideStep[] = [
   {
-    n: 6,
-    title: "압력센서 확인",
-    detail: "압력센서 신호를 확인합니다.",
-    viewTargetId: "ENGINE_PRESSURE_SENSOR",
+    n: 1,
+    title: "유압 계통 확인",
+    detail: "유압계통 전체 위치를 확인합니다.",
+    viewTargetId: "HYDRAULIC_OVERVIEW",
+  },
+  {
+    n: 2,
+    title: "유압 펌프 점검",
+    detail: "유압 펌프 상태를 확인합니다.",
+    viewTargetId: "HYDRAULIC_PUMP",
+  },
+  {
+    n: 3,
+    title: "유압 배관 확인",
+    detail: "유압 배관 누유·손상 여부를 확인합니다.",
+    viewTargetId: "HYDRAULIC_LINE",
+  },
+  {
+    n: 4,
+    title: "유압 센서 확인",
+    detail: "유압 압력 센서 신호를 확인합니다.",
+    viewTargetId: "HYDRAULIC_SENSOR",
   },
 ];
+
+export const GUIDE_STEPS_ELECTRICAL: GuideStep[] = [
+  {
+    n: 1,
+    title: "발전기 위치 확인",
+    detail: "발전기 장착 위치를 확인합니다.",
+    viewTargetId: "GENERATOR_OVERVIEW",
+  },
+  {
+    n: 2,
+    title: "발전기 점검",
+    detail: "발전기 외관 및 커넥터 상태를 확인합니다.",
+    viewTargetId: "GENERATOR_DETAIL",
+  },
+  {
+    n: 3,
+    title: "전기 배선 확인",
+    detail: "관련 전기 배선·커넥터를 확인합니다.",
+    viewTargetId: "GENERATOR_WIRING",
+  },
+];
+
+export function guideStepsForSystem(systemCode?: string | null): GuideStep[] {
+  if (systemCode === "HYDRAULIC") return GUIDE_STEPS_HYDRAULIC;
+  if (systemCode === "ELECTRICAL") return GUIDE_STEPS_ELECTRICAL;
+  if (systemCode === "ENGINE_OIL") return GUIDE_STEPS;
+  return GUIDE_STEPS;
+}
 
 function nowTime() {
   const d = new Date();
@@ -201,6 +244,16 @@ function buildTargetFields(
   const rawOpen = [...cfg.openPanels];
   const entry = fault?.fault ?? null;
 
+  // EXTERIOR token → also mark legacy proxy shell parts for fallback path
+  if (
+    rawTransparent.includes("EXTERIOR") ||
+    rawTransparent.includes("AIRCRAFT_BODY")
+  ) {
+    for (const t of ["EXTERIOR", "AIRCRAFT_BODY", "COCKPIT", "ENGINE_ZONE"]) {
+      if (!rawTransparent.includes(t)) rawTransparent.push(t);
+    }
+  }
+
   return {
     viewTargetId: resolvedId,
     viewLevel: cfg.level as ViewLevel,
@@ -209,7 +262,15 @@ function buildTargetFields(
     transparentObjects: expandMeshIds(rawTransparent, entry),
     openedPanels: expandMeshIds(rawOpen, entry),
     xrayMode: cfg.transparentObjects.length > 0,
-    selectedSystem: cfg.level !== "AIRCRAFT" ? "ENGINE_OIL" : null,
+    selectedSystem:
+      cfg.level !== "AIRCRAFT"
+        ? (fault?.fault.system_code ??
+          (rawHighlight.some((h) => h.startsWith("HYDRAULIC"))
+            ? "HYDRAULIC"
+            : rawHighlight.some((h) => h.startsWith("GENERATOR") || h === "ELECTRICAL_ZONE")
+              ? "ELECTRICAL"
+              : "ENGINE_OIL"))
+        : null,
     selectedComponent:
       expandMeshIds(rawHighlight, entry).find((o) =>
         [
@@ -217,6 +278,12 @@ function buildTargetFields(
           "AREA_01_PART_01",
           "OIL_PUMP",
           "PRESSURE_SENSOR",
+          "HYDRAULIC_PUMP",
+          "HYDRAULIC_SENSOR",
+          "HYDRAULIC_LINE",
+          "GENERATOR",
+          "GENERATOR_WIRING",
+          "ENGINE_BLOCK",
         ].includes(o),
       ) ?? null,
   };
@@ -352,19 +419,15 @@ export const useAppStore = create<AppState>((set, get) => ({
                 ? "OIL_PUMP"
                 : objectId === "AREA_01_PART_03"
                   ? "PRESSURE_SENSOR"
-                  : objectId;
+                  : objectId === "HYDRAULIC_ZONE"
+                    ? "HYDRAULIC_PUMP"
+                    : objectId === "ELECTRICAL_ZONE"
+                      ? "GENERATOR"
+                      : objectId;
 
     if (objectId === "AREA_01_HOTSPOT" || legacy === "ENGINE_ZONE") {
       get().ensureAreaLoaded("AREA_01");
-      const { viewTargetId } = get();
-      if (
-        viewTargetId === "ENGINE_OIL_SYSTEM" ||
-        viewTargetId === "AREA_01_OVERVIEW"
-      ) {
-        get().applyViewTarget("ENGINE_ACCESS_PANEL");
-        return;
-      }
-      get().applyViewTarget("ENGINE_OIL_SYSTEM");
+      get().applyViewTarget("ENGINE_OVERVIEW");
       return;
     }
 
@@ -377,25 +440,34 @@ export const useAppStore = create<AppState>((set, get) => ({
 
     if (!entry?.clickable && !objectId.startsWith("AREA_01_")) return;
 
-    const { viewTargetId } = get();
-
-    if (
-      (legacy === "ENGINE_PANEL_LEFT" ||
-        legacy === "ENGINE_PANEL_RIGHT" ||
-        objectId.startsWith("AREA_01_COVER_")) &&
-      (viewTargetId === "ENGINE_ACCESS_PANEL" ||
-        viewTargetId === "ENGINE_OIL_SYSTEM")
-    ) {
-      get().openPanel(
-        objectId === "AREA_01_COVER_02" || legacy === "ENGINE_PANEL_RIGHT"
-          ? "ENGINE_PANEL_RIGHT"
-          : "ENGINE_PANEL_LEFT",
+    if (legacy === "OIL_FILTER" || objectId === "AREA_01_PART_01") {
+      get().applyViewTarget("ENGINE_OIL_FILTER");
+      return;
+    }
+    if (legacy === "PRESSURE_SENSOR") {
+      get().applyViewTarget("ENGINE_PRESSURE_SENSOR");
+      return;
+    }
+    if (legacy === "OIL_PUMP") {
+      get().applyViewTarget("ENGINE_OIL_PUMP");
+      return;
+    }
+    if (legacy === "HYDRAULIC_PUMP" || legacy === "HYDRAULIC_SENSOR") {
+      get().applyViewTarget(
+        legacy === "HYDRAULIC_SENSOR" ? "HYDRAULIC_SENSOR" : "HYDRAULIC_PUMP",
       );
       return;
     }
-
-    if (legacy === "OIL_FILTER" || objectId === "AREA_01_PART_01") {
-      get().applyViewTarget("ENGINE_OIL_FILTER");
+    if (legacy === "HYDRAULIC_LINE") {
+      get().applyViewTarget("HYDRAULIC_LINE");
+      return;
+    }
+    if (legacy === "GENERATOR") {
+      get().applyViewTarget("GENERATOR_DETAIL");
+      return;
+    }
+    if (legacy === "GENERATOR_WIRING") {
+      get().applyViewTarget("GENERATOR_WIRING");
       return;
     }
     if (entry?.viewTargetId) get().applyViewTarget(entry.viewTargetId);
@@ -409,10 +481,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       openedPanels: Array.from(new Set([...get().openedPanels, ...expanded])),
       hiddenObjects: Array.from(new Set([...get().hiddenObjects, ...expanded])),
       transparentObjects: Array.from(
-        new Set([
-          ...get().transparentObjects,
-          ...expandMeshIds(["AIRCRAFT_BODY"], fault?.fault ?? null),
-        ]),
+        new Set([...get().transparentObjects, "EXTERIOR", "AIRCRAFT_BODY"]),
       ),
       xrayMode: true,
     });
@@ -420,7 +489,9 @@ export const useAppStore = create<AppState>((set, get) => ({
   },
 
   setGuideStep: (step) => {
-    const s = GUIDE_STEPS.find((g) => g.n === step);
+    const system = get().diagnosisResult?.system_code;
+    const steps = guideStepsForSystem(system);
+    const s = steps.find((g) => g.n === step);
     set({ guideStep: step, activeBottomTab: "guide" });
     if (s) {
       if (step >= 1) get().ensureAreaLoaded("AREA_01");

@@ -50,7 +50,7 @@ describe("faultResolver", () => {
   it("resolves HYD_PRESS_LOW to hydraulic system hotspot", () => {
     expect(resolveFaultCode("HYD_PRESS_LOW")).toBe("FAULT_HYD_SYSTEM");
     const r = resolveFault("HYD_PRESS_LOW");
-    expect(r?.fault.target_mesh).toBe("HYDRAULIC_ZONE");
+    expect(r?.fault.target_mesh).toBe("HYDRAULIC_SENSOR");
     expect(r?.viewTargetId).toBe("HYDRAULIC_SYSTEM");
   });
 

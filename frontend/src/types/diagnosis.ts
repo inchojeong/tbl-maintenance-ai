@@ -88,6 +88,7 @@ export interface ManualChunk {
   score?: number;
   document_id?: string;
   paragraph?: string | null;
+  task?: string | null;
   source_manual?: string | null;
   original_text?: string | null;
   symptom_ko?: string | null;
@@ -98,6 +99,14 @@ export interface ManualChunk {
   is_demo_public_tm?: boolean;
   td_mapping?: string | null;
   td_grade?: string | null;
+  /** Filename under public/manuals/ (e.g. TM_55-1520-240-T-2.pdf) */
+  pdf_file?: string | null;
+  /** 1-based PDF Viewer page index (not printed page) */
+  pdf_page?: number | null;
+  /** Printed page only if verified against the paper TM */
+  printed_page?: number | string | null;
+  /** Path under public/ for Hybrid page image (e.g. manual-pages/T2_p114.webp) */
+  page_image?: string | null;
 }
 
 export interface FailureCase {

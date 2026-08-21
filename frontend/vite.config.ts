@@ -19,6 +19,10 @@ export default defineConfig({
   server: {
     port: 5173,
     host: true,
+    watch: {
+      // Large OneDrive-synced PDFs can throw EBUSY on fs.watch
+      ignored: ["**/public/manuals/**/*.pdf"],
+    },
   },
   test: {
     environment: "node",

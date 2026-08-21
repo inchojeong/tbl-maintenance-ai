@@ -55,7 +55,8 @@
       "is_demo_public_tm": true,
       "td_mapping": "COMPONENT",
       "td_grade": "COMPONENT",
-      "pdf_file": "TM_55-1520-240-T-2.pdf"
+      "pdf_file": "TM_55-1520-240-T-2.pdf",
+      "page_image": "manual-pages/T2_p114.webp"
     },
     {
       "id": "CH47-TM-T1-OIL-FILTER-001",
@@ -157,18 +158,19 @@
       "is_demo_public_tm": true,
       "td_mapping": "SYSTEM HYDRAULIC_ZONE",
       "td_grade": "SYSTEM",
-      "pdf_file": "TM_55-1520-240-T-2.pdf"
+      "pdf_file": "TM_55-1520-240-T-2.pdf",
+      "page_image": "manual-pages/T2_p227.webp"
     },
     {
       "id": "CH47-TM-T2-GEN-001",
       "document_id": "CH47-TM-T2-GEN-001",
       "manual_type": "T",
       "source_manual": "TM 55-1520-240-T-2",
-      "title": "AC Power / Generator Caution — Symptom & Visual Check",
+      "title": "AC Power System — Operational Check (Generator)",
       "chapter": "9",
       "section": "AC Power System",
-      "page": 492,
-      "pdf_page": 492,
+      "page": 586,
+      "pdf_page": 586,
       "printed_page": null,
       "paragraph": "9-2.4",
       "task": "9-2.4",
@@ -193,8 +195,8 @@
         "ELECTRICAL_ZONE"
       ],
       "warning_cautions": [],
-      "content": "[DEMO/Public TM] Chapter 9 AC Power: GEN/GENERATOR OFF → Task 9-2.4, 육안 9-2.3.",
-      "original_text": "AC POWER SYSTEM: NO. 1 OR NO. 2 GENERATOR OFF CAPSULE ... 9-2.4. Task 9-2.3: Check GEN NO. 1, NO. 2, and APU switches; check generator control panels.",
+      "content": "[DEMO/Public TM] Task 9-2.4 AC POWER SYSTEM OPERATIONAL CHECK (validated PDF p.586). Symptom list refs at p.492; visual check 9-2.3 at p.584.",
+      "original_text": "9-2.4 AC POWER SYSTEM OPERATIONAL CHECK. Check circuit breakers; operate GEN NO. 1 / NO. 2 / APU generator switches per task steps. If capsules do not respond correctly, continue fault isolation.",
       "keywords": [
         "generator",
         "GEN",
@@ -207,7 +209,8 @@
       "is_demo_public_tm": true,
       "td_mapping": "SYSTEM ELECTRICAL_ZONE",
       "td_grade": "SYSTEM",
-      "pdf_file": "TM_55-1520-240-T-2.pdf"
+      "pdf_file": "TM_55-1520-240-T-2.pdf",
+      "page_image": "manual-pages/T2_p586.webp"
     },
     {
       "id": "CH47-TM-T1-XMSN-HOT-001",

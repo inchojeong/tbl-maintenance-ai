@@ -14,13 +14,15 @@ const areas = maintenanceAreasData.areas as MaintenanceAreaConfig[];
 
 /** New AREA_01 names → existing Proxy mesh names */
 const DEFAULT_LEGACY_MESH_MAP: Record<string, string> = {
-  AREA_01_HOTSPOT: "ENGINE_ZONE",
-  AREA_01_COVER_01: "ENGINE_PANEL_LEFT",
-  AREA_01_COVER_02: "ENGINE_PANEL_RIGHT",
+  AREA_01_HOTSPOT: "ENGINE_BLOCK",
+  AREA_01_COVER_01: "ENGINE_BLOCK",
+  AREA_01_COVER_02: "ENGINE_BLOCK",
   AREA_01_PART_01: "OIL_FILTER",
   AREA_01_PART_02: "OIL_PUMP",
   AREA_01_PART_03: "PRESSURE_SENSOR",
-  AREA_01_CHECK_01: "OIL_FILTER",
+  AREA_01_CHECK_01: "PRESSURE_SENSOR",
+  HYDRAULIC_ZONE: "HYDRAULIC_PUMP",
+  ELECTRICAL_ZONE: "GENERATOR",
 };
 
 function buildAliasIndex(): Map<string, string> {

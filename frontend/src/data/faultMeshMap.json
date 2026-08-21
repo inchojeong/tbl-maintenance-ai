@@ -9,8 +9,8 @@
       "target_mesh": "AREA_01_PART_01",
       "cover_mesh": "AREA_01_COVER_01",
       "inspection_point": "AREA_01_CHECK_01",
-      "default_view_target": "ENGINE_OIL_SYSTEM",
-      "component_focus_view": "ENGINE_OIL_FILTER",
+      "default_view_target": "ENGINE_PRESSURE_SENSOR",
+      "component_focus_view": "ENGINE_PRESSURE_SENSOR",
       "system_code": "ENGINE_OIL",
       "td_grade": "COMPONENT",
       "legacy_aliases": [
@@ -21,6 +21,7 @@
         "ENGINE_INTERNAL_VIEW",
         "ENGINE_ACCESS_PANEL",
         "ENGINE_PRESSURE_SENSOR",
+        "ENGINE_OVERVIEW",
         "ENG_OIL_PRESS_LOW",
         "LOW_OIL_PRESSURE",
         "OIL_FILTER_CONTAMINATION",
@@ -33,8 +34,8 @@
         "OIL_PUMP"
       ],
       "legacy_mesh_map": {
-        "AREA_01_HOTSPOT": "ENGINE_ZONE",
-        "AREA_01_COVER_01": "ENGINE_PANEL_LEFT",
+        "AREA_01_HOTSPOT": "ENGINE_BLOCK",
+        "AREA_01_COVER_01": "ENGINE_BLOCK",
         "AREA_01_PART_01": "OIL_FILTER",
         "AREA_01_PART_02": "OIL_PUMP",
         "AREA_01_PART_03": "PRESSURE_SENSOR"
@@ -42,14 +43,14 @@
     },
     "FAULT_HYD_SYSTEM": {
       "fault_code": "FAULT_HYD_SYSTEM",
-      "label_ko": "유압계통 Hotspot(모의)",
+      "label_ko": "유압계통(모의)",
       "area_id": "AREA_01",
       "model": "Maintenance_Area_01.glb",
-      "target_mesh": "HYDRAULIC_ZONE",
-      "cover_mesh": "ENGINE_PANEL_LEFT",
-      "inspection_point": "HYDRAULIC_ZONE",
+      "target_mesh": "HYDRAULIC_SENSOR",
+      "cover_mesh": "HYDRAULIC_PUMP",
+      "inspection_point": "HYDRAULIC_SENSOR",
       "default_view_target": "HYDRAULIC_SYSTEM",
-      "component_focus_view": "HYDRAULIC_SYSTEM",
+      "component_focus_view": "HYDRAULIC_PUMP",
       "system_code": "HYDRAULIC",
       "td_grade": "SYSTEM",
       "legacy_aliases": [
@@ -58,20 +59,26 @@
         "HYD_FILTER_BUTTON",
         "HYD_FILTER_CHANGE_LIGHT",
         "HYDRAULIC_ZONE",
-        "HYDRAULIC_SYSTEM"
+        "HYDRAULIC_SYSTEM",
+        "HYDRAULIC_PUMP",
+        "HYDRAULIC_SENSOR",
+        "HYDRAULIC_LINE",
+        "HYDRAULIC_OVERVIEW"
       ],
-      "legacy_mesh_map": {}
+      "legacy_mesh_map": {
+        "HYDRAULIC_ZONE": "HYDRAULIC_PUMP"
+      }
     },
     "FAULT_ELEC_SYSTEM": {
       "fault_code": "FAULT_ELEC_SYSTEM",
-      "label_ko": "전기계통 Hotspot(모의)",
+      "label_ko": "전기계통(모의)",
       "area_id": "AREA_01",
       "model": "Maintenance_Area_01.glb",
-      "target_mesh": "ELECTRICAL_ZONE",
-      "cover_mesh": "ENGINE_PANEL_LEFT",
-      "inspection_point": "ELECTRICAL_ZONE",
-      "default_view_target": "ELECTRICAL_SYSTEM",
-      "component_focus_view": "ELECTRICAL_SYSTEM",
+      "target_mesh": "GENERATOR",
+      "cover_mesh": "GENERATOR_WIRING",
+      "inspection_point": "GENERATOR",
+      "default_view_target": "GENERATOR_DETAIL",
+      "component_focus_view": "GENERATOR_DETAIL",
       "system_code": "ELECTRICAL",
       "td_grade": "SYSTEM",
       "legacy_aliases": [
@@ -81,9 +88,15 @@
         "RECT_OFF",
         "ELEC_SYSTEM_FAULT",
         "ELECTRICAL_ZONE",
-        "ELECTRICAL_SYSTEM"
+        "ELECTRICAL_SYSTEM",
+        "GENERATOR",
+        "GENERATOR_WIRING",
+        "GENERATOR_OVERVIEW",
+        "GENERATOR_DETAIL"
       ],
-      "legacy_mesh_map": {}
+      "legacy_mesh_map": {
+        "ELECTRICAL_ZONE": "GENERATOR"
+      }
     },
     "FAULT_XMSN_SYSTEM": {
       "fault_code": "FAULT_XMSN_SYSTEM",

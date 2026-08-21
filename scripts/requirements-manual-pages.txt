@@ -1,0 +1,9 @@
+# Dev-only dependencies for scripts/generate_manual_pages.py
+# Not installed into the Vite/React runtime.
+#
+#   pip install -r scripts/requirements-manual-pages.txt
+#
+pymupdf>=1.24.0
+pypdfium2>=4.30.0
+Pillow>=10.0.0
+pypdf>=4.0.0

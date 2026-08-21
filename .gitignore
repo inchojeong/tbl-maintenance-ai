@@ -75,3 +75,6 @@ htmlcov/
 **/TM_55-1520-240*.pdf
 manual/raw/
 backend/manual/raw/**/*.pdf
+# Allow only the small Demo T-2 PDF shipped for GitHub Pages hybrid viewer
+!frontend/public/manuals/
+!frontend/public/manuals/TM_55-1520-240-T-2.pdf
