@@ -45,8 +45,10 @@ jobs:
 
       - name: Build
         env:
+          # Match local demo: UH-60 exterior GLB + maintenance overlay (not proxy airframe)
           VITE_BASE_PATH: ${{ steps.base.outputs.path }}
-          VITE_USE_PROXY_MODEL: "true"
+          VITE_USE_PROXY_MODEL: "false"
+          VITE_GLTF_MODEL_PATH: "models/sikorsky_uh-60m_blackhawk.glb"
         run: npm run build
 
       - name: Upload Pages artifact
