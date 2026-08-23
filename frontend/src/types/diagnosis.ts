@@ -1,4 +1,22 @@
 export type ViewLevel = "AIRCRAFT" | "SYSTEM" | "COMPONENT";
+/** Digital-twin drill-down depth (Aircraft → System → Assembly → Component). */
+export type InspectionLevel =
+  | "EXTERIOR"
+  | "SYSTEM"
+  | "ASSEMBLY"
+  | "COMPONENT";
+export type InspectionAssembly =
+  | "ENGINE_LEFT"
+  | "ENGINE_RIGHT"
+  | "GENERATOR_ASSEMBLY"
+  | "HYDRAULIC_ASSEMBLY"
+  | null;
+
+/** 3D Digital Twin active maintenance system (ELECTRICAL diagnosis → GENERATOR). */
+export type ActiveMaintenanceSystem =
+  | "ENGINE_OIL"
+  | "HYDRAULIC"
+  | "GENERATOR";
 export type RiskLevel = "LOW" | "MEDIUM" | "HIGH";
 export type SystemCode =
   | "ENGINE_OIL"
@@ -17,7 +35,7 @@ export type ComponentCode =
   | "ACCESS_PANEL"
   | "UNKNOWN";
 
-export type BottomTab = "manual" | "failure" | "phm" | "guide" | "history";
+export type BottomTab = "manual" | "failure" | "guide" | "history";
 
 export interface SourceRef {
   manual_id: string;
@@ -116,18 +134,6 @@ export interface FailureCase {
   actions: string;
   result: string;
   similarity: number;
-  is_dummy: boolean;
-}
-
-export interface PhmStatus {
-  aircraft_id: string;
-  oil_pressure_psi: number;
-  oil_temperature_c: number;
-  filter_differential_pressure_psi: number;
-  vibration_g: number;
-  health_score: number;
-  estimated_rul_fh?: number;
-  sensors?: { label: string; value: string; status: string }[];
   is_dummy: boolean;
 }
 

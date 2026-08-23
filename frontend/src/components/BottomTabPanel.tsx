@@ -2,7 +2,6 @@ import { useAppStore } from "../stores/useAppStore";
 import type { BottomTab } from "../types/diagnosis";
 import { ManualPanel } from "./ManualPanel";
 import { FailureCasePanel } from "./FailureCasePanel";
-import { PHMPanel } from "./PHMPanel";
 import { MaintenanceGuidePanel } from "./MaintenanceGuidePanel";
 import { MaintenanceHistoryPanel } from "./MaintenanceHistoryPanel";
 import { DemoControlPanel } from "./DemoControlPanel";
@@ -10,7 +9,6 @@ import { DemoControlPanel } from "./DemoControlPanel";
 const TABS: { id: BottomTab; label: string }[] = [
   { id: "manual", label: "기술교범" },
   { id: "failure", label: "유사 정비사례" },
-  { id: "phm", label: "상태예측(PHM)" },
   { id: "guide", label: "정비 가이드" },
   { id: "history", label: "정비이력" },
 ];
@@ -43,7 +41,6 @@ export function BottomTabPanel() {
       <div className="min-h-[300px] p-3">
         {active === "manual" && <ManualPanel />}
         {active === "failure" && <FailureCasePanel />}
-        {active === "phm" && <PHMPanel />}
         {active === "guide" && <MaintenanceGuidePanel />}
         {active === "history" && <MaintenanceHistoryPanel />}
       </div>

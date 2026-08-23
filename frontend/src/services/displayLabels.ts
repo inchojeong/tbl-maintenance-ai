@@ -5,7 +5,7 @@ const COMPONENT_LABELS: Record<string, string> = {
   OIL_FILTER: "엔진 오일 필터",
   OIL_PUMP: "오일 펌프",
   OIL_PIPE_MAIN: "메인 오일 배관",
-  ENGINE_BLOCK: "엔진 블록",
+  ENGINE_BLOCK: "No.1 엔진",
   ACCESS_PANEL: "접근 패널",
   ENGINE_ZONE: "엔진 계통",
   HYDRAULIC_ZONE: "유압계통",
@@ -14,6 +14,7 @@ const COMPONENT_LABELS: Record<string, string> = {
   HYDRAULIC_SENSOR: "유압 센서",
   ELECTRICAL_ZONE: "발전기·전기계통",
   GENERATOR: "발전기",
+  GENERATOR_CONTROL: "발전기 제어·커넥터",
   GENERATOR_WIRING: "전기 배선",
   XMSN_ZONE: "변속기 계통",
   FUEL_ZONE: "연료계통",
@@ -44,6 +45,9 @@ const RISK_LABELS: Record<string, string> = {
 
 const VIEW_TARGET_LABELS: Record<string, string> = {
   AIRCRAFT_OVERVIEW: "항공기 전체",
+  ENGINE_ZONE_GUIDE: "엔진 위치 안내",
+  ENGINE_SYSTEM: "엔진 계통",
+  ENGINE_LEFT_ASSEMBLY: "No.1 엔진",
   ENGINE_OVERVIEW: "엔진 위치",
   ENGINE_OIL_SYSTEM: "엔진 오일계통",
   ENGINE_ACCESS_PANEL: "엔진 접근패널",

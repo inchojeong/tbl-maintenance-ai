@@ -8,11 +8,9 @@ import { MaintenanceInternalOverlay } from "./maintenance/MaintenanceInternalOve
 import { CameraController } from "./CameraController";
 import { HighlightController } from "./HighlightController";
 import { XRayController } from "./XRayController";
-import { MaintenancePath } from "./MaintenancePath";
-import { ObjectLabel } from "./ObjectLabel";
+import { AnnotationProjector } from "./AnnotationProjector";
 import { publicUrl } from "../utils/publicUrl";
-import { labelComponent } from "../services/displayLabels";
-import { MAINTENANCE_OBJECTS } from "./maintenance/maintenanceRegistry";
+import { Debug3DHelpers } from "./maintenance/Debug3DHelpers";
 
 function resolveGlbPath(envPath?: string): string {
   const fallback = "models/sikorsky_uh-60m_blackhawk.glb";
@@ -39,7 +37,6 @@ class ModelErrorBoundary extends Component<
 }
 
 function ModelSwitcher() {
-  // Prefer UH-60 exterior unless explicitly forced to proxy.
   const preferProxy = import.meta.env.VITE_USE_PROXY_MODEL === "true";
   const glbPath = resolveGlbPath(import.meta.env.VITE_GLTF_MODEL_PATH);
   const [useProxy, setUseProxy] = useState(preferProxy);
@@ -81,95 +78,26 @@ function ModelSwitcher() {
   );
 }
 
-function labelPositionForHighlight(
-  id: string,
-): [number, number, number] | null {
-  const map: Record<string, [number, number, number]> = {
-    OIL_FILTER: [0.95, 2.05, 0.22],
-    OIL_PUMP: [0.42, 1.95, -0.18],
-    PRESSURE_SENSOR: [1.12, 2.2, 0.06],
-    ENGINE_BLOCK: [0.55, 2.25, 0],
-    OIL_PIPE_MAIN: [0.75, 2.0, 0.05],
-    HYDRAULIC_PUMP: [0.18, 1.45, 0],
-    HYDRAULIC_SENSOR: [0.42, 1.55, 0.22],
-    HYDRAULIC_LINE: [0.25, 1.4, 0.1],
-    GENERATOR: [-0.45, 1.95, 0.4],
-    GENERATOR_WIRING: [-0.25, 1.95, 0.35],
-  };
-  return map[id] ?? null;
-}
-
 export function AircraftScene() {
   const controlsRef = useRef<OrbitControlsImpl>(null);
-  const viewTargetId = useAppStore((s) => s.viewTargetId);
-  const diagnosisResult = useAppStore((s) => s.diagnosisResult);
-  const highlightedObjects = useAppStore((s) => s.highlightedObjects);
-
-  let label: {
-    pos: [number, number, number];
-    title: string;
-    subtitle?: string;
-  } | null = null;
-
-  const primaryHighlight =
-    highlightedObjects.find((id) => id in MAINTENANCE_OBJECTS) ??
-    highlightedObjects[0];
-
-  if (primaryHighlight && primaryHighlight in MAINTENANCE_OBJECTS) {
-    const pos = labelPositionForHighlight(primaryHighlight);
-    if (pos) {
-      label = {
-        pos,
-        title: labelComponent(primaryHighlight),
-        subtitle: "우선 점검 대상",
-      };
-    }
-  } else if (
-    viewTargetId !== "AIRCRAFT_OVERVIEW" &&
-    diagnosisResult?.system_code
-  ) {
-    const sys = diagnosisResult.system_code;
-    const pos: [number, number, number] =
-      sys === "HYDRAULIC"
-        ? [0.2, 1.55, 0]
-        : sys === "ELECTRICAL"
-          ? [-0.4, 2.0, 0.4]
-          : [0.55, 2.35, 0];
-    label = {
-      pos,
-      title:
-        sys === "HYDRAULIC"
-          ? "유압계통"
-          : sys === "ELECTRICAL"
-            ? "전기계통"
-            : "엔진 오일계통",
-      subtitle: "정비 점검 위치",
-    };
-  }
 
   return (
     <>
       <color attach="background" args={["#0f172a"]} />
-      <ambientLight intensity={0.55} />
-      <directionalLight position={[6, 10, 4]} intensity={1.1} castShadow />
-      <hemisphereLight intensity={0.35} groundColor="#1e293b" />
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[6, 10, 4]} intensity={1.15} castShadow />
+      <hemisphereLight intensity={0.3} groundColor="#1e293b" />
       <Environment preset="city" />
       <ModelSwitcher />
-      {label ? (
-        <ObjectLabel
-          position={label.pos}
-          title={label.title}
-          subtitle={label.subtitle}
-        />
-      ) : null}
-      <MaintenancePath visible={viewTargetId !== "AIRCRAFT_OVERVIEW"} />
-      <ContactShadows opacity={0.35} scale={16} blur={2.5} far={8} />
+      <Debug3DHelpers />
+      <AnnotationProjector />
+      <ContactShadows opacity={0.3} scale={16} blur={2.5} far={8} />
       <OrbitControls
         ref={controlsRef}
         makeDefault
         enableDamping
         maxPolarAngle={Math.PI * 0.49}
-        minDistance={1.5}
+        minDistance={0.55}
         maxDistance={20}
       />
       <CameraController controlsRef={controlsRef} />

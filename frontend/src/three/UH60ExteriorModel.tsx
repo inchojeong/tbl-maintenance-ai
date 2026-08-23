@@ -7,25 +7,33 @@ import {
   EXTERIOR_TRANSPARENCY_TOKENS,
   isRawExteriorMeshName,
 } from "./maintenance/maintenanceRegistry";
+import {
+  EXTERIOR_OPACITY_BY_LEVEL,
+  ROTOR_EXTRA_OPACITY_FACTOR,
+  EXTERIOR_RENDER_ORDER,
+  UH60_TARGET_SIZE,
+} from "./maintenance/uh60Fit";
+import { isDebug3DEnabled, logDebugPick } from "./maintenance/Debug3DHelpers";
+import { useAppStore } from "../stores/useAppStore";
 
 interface UH60ExteriorModelProps extends AircraftModelProps {
   url: string;
-  /** Target longest-axis length after normalization (proxy-compatible). */
   targetSize?: number;
 }
 
 /**
  * UH-60 exterior visualization only.
- * Maintenance interaction lives in MaintenanceInternalOverlay — do not map Object_* to part IDs.
+ * Ghost opacity follows inspectionLevel (drill-down).
  */
 export function UH60ExteriorModel({
   url,
   transparentObjectIds,
   onObjectClick,
-  targetSize = 5.8,
+  targetSize = UH60_TARGET_SIZE,
 }: UH60ExteriorModelProps) {
   const { scene } = useGLTF(url);
   const cloned = useMemo(() => scene.clone(true), [scene]);
+  const inspectionLevel = useAppStore((s) => s.inspectionLevel);
 
   const fit = useMemo(() => {
     const box = new THREE.Box3().setFromObject(cloned);
@@ -35,7 +43,6 @@ export function UH60ExteriorModel({
     box.getCenter(center);
     const longest = Math.max(size.x, size.y, size.z, 0.001);
     const scale = targetSize / longest;
-    // Lift so belly sits near ground / matches overlay Y (~1.2 body center)
     const yLift = 1.15 - center.y * scale;
     return {
       scale,
@@ -48,65 +55,83 @@ export function UH60ExteriorModel({
   }, [cloned, targetSize]);
 
   useEffect(() => {
-    if (import.meta.env.DEV) {
-      const names: string[] = [];
-      cloned.traverse((obj) => {
-        if (obj.name) names.push(obj.name);
-      });
-      console.info(
-        "[UH60Exterior] mesh names (exterior-only, not maintenance IDs):",
-        [...new Set(names)].slice(0, 40),
-      );
-    }
-  }, [cloned]);
-
-  useEffect(() => {
-    const exteriorXray = transparentObjectIds.some((id) =>
-      EXTERIOR_TRANSPARENCY_TOKENS.has(id),
-    );
+    const forceGhost =
+      inspectionLevel !== "EXTERIOR" ||
+      transparentObjectIds.some((id) => EXTERIOR_TRANSPARENCY_TOKENS.has(id));
+    const baseOpacity = forceGhost
+      ? EXTERIOR_OPACITY_BY_LEVEL[
+          inspectionLevel === "EXTERIOR" ? "SYSTEM" : inspectionLevel
+        ]
+      : 1;
+    const rotorFactor = ROTOR_EXTRA_OPACITY_FACTOR[inspectionLevel];
 
     cloned.traverse((obj) => {
       if (!(obj instanceof THREE.Mesh)) return;
+      obj.renderOrder = EXTERIOR_RENDER_ORDER;
+      obj.raycast =
+        inspectionLevel === "EXTERIOR"
+          ? THREE.Mesh.prototype.raycast
+          : () => undefined;
+
       const mats = Array.isArray(obj.material) ? obj.material : [obj.material];
+      const localBox = new THREE.Box3().setFromObject(obj);
+      const localCenter = localBox.getCenter(new THREE.Vector3());
+      const worldY = localCenter.y * fit.scale + fit.position[1];
+      const isHigh = worldY > 1.65;
+
       mats.forEach((raw) => {
         if (!raw || typeof raw !== "object") return;
-        const mat = raw as THREE.Material & {
-          opacity?: number;
-          transparent?: boolean;
-          depthWrite?: boolean;
-          needsUpdate?: boolean;
+        const mat = raw as THREE.MeshStandardMaterial & {
+          userData: Record<string, unknown>;
         };
         if (mat.userData.__baseOpacity == null) {
           mat.userData.__baseOpacity = mat.opacity ?? 1;
           mat.userData.__baseTransparent = Boolean(mat.transparent);
           mat.userData.__baseDepthWrite = mat.depthWrite ?? true;
+          mat.userData.__baseColor = mat.color?.clone?.() ?? null;
         }
-        if (exteriorXray) {
+        if (forceGhost) {
           mat.transparent = true;
-          mat.opacity = 0.22;
-          if ("depthWrite" in mat) mat.depthWrite = false;
+          mat.opacity = baseOpacity * (isHigh ? rotorFactor : 1);
+          if (mat.color && mat.userData.__baseColor instanceof THREE.Color) {
+            mat.color
+              .copy(mat.userData.__baseColor as THREE.Color)
+              .lerp(new THREE.Color("#1e293b"), 0.55);
+          }
+          mat.depthWrite = false;
         } else {
           mat.transparent = Boolean(mat.userData.__baseTransparent);
-          mat.opacity = mat.userData.__baseOpacity ?? 1;
-          if ("depthWrite" in mat) {
-            mat.depthWrite = mat.userData.__baseDepthWrite ?? true;
+          mat.opacity = (mat.userData.__baseOpacity as number) ?? 1;
+          if (mat.color && mat.userData.__baseColor instanceof THREE.Color) {
+            mat.color.copy(mat.userData.__baseColor as THREE.Color);
           }
+          mat.depthWrite = (mat.userData.__baseDepthWrite as boolean) ?? true;
         }
         mat.needsUpdate = true;
       });
     });
-  }, [cloned, transparentObjectIds]);
+  }, [cloned, transparentObjectIds, inspectionLevel, fit]);
 
   const handleClick = (e: ThreeEvent<MouseEvent>) => {
+    if (inspectionLevel !== "EXTERIOR") return;
     e.stopPropagation();
+    logDebugPick(e.object, e.point);
+    // Upper-deck click → engine zone drill-down
+    if (e.point.y > 1.35 && Math.abs(e.point.z) < 1.2) {
+      onObjectClick("ENGINE_ZONE");
+      return;
+    }
     let obj: THREE.Object3D | null = e.object;
     while (obj) {
       if (obj.name && !isRawExteriorMeshName(obj.name)) {
         onObjectClick(obj.name);
         break;
       }
-      // Skip Object_* — exterior click is low priority for demo
       if (obj.name && isRawExteriorMeshName(obj.name)) {
+        if (isDebug3DEnabled()) {
+          // eslint-disable-next-line no-console
+          console.info("[DEBUG_3D] exterior mesh", obj.name);
+        }
         break;
       }
       obj = obj.parent;
@@ -125,7 +150,7 @@ export function UH60ExteriorModel({
   );
 }
 
-/** @deprecated Prefer UH60ExteriorModel — kept for imports during transition. */
+/** @deprecated Prefer UH60ExteriorModel */
 export function GLBAircraftModel(props: UH60ExteriorModelProps) {
   return <UH60ExteriorModel {...props} />;
 }

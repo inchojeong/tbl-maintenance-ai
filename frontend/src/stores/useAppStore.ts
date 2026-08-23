@@ -5,8 +5,9 @@ import type {
   DiagnosisResult,
   FailureCase,
   GuideStep,
+  InspectionAssembly,
+  InspectionLevel,
   ManualChunk,
-  PhmStatus,
   ViewLevel,
   ViewTargetConfig,
 } from "../types/diagnosis";
@@ -17,7 +18,6 @@ import {
   postQuery,
   fetchManuals,
   fetchFailures,
-  fetchPhm,
   postDemoReset,
 } from "../services/queryService";
 import { matchDemoResponse } from "../services/demoService";
@@ -39,6 +39,16 @@ import {
   resolveFromDiagnosis,
   resolveFault,
 } from "../services/faultResolver";
+import { inspectionStateFromViewTarget } from "../three/maintenance/inspectionState";
+import { COMPONENT_VIEW_TARGET } from "../three/maintenance/maintenanceAnchors";
+import { SYSTEM_REGISTRY } from "../three/maintenance/maintenanceRegistry";
+import {
+  defaultRecommendedPart,
+  toActiveMaintenanceSystem,
+  toLegacyInspectionSystem,
+} from "../three/maintenance/activeMaintenanceSystem";
+import type { ActiveMaintenanceSystem } from "../types/diagnosis";
+import { useAnnotationStore } from "../three/annotationStore";
 
 function failuresFromSimilar(
   similar: SimilarMaintenanceItem[],
@@ -79,25 +89,25 @@ export const GUIDE_STEPS: GuideStep[] = [
     n: 1,
     title: "엔진 위치 확인",
     detail: "항공기에서 엔진 오일계통 위치를 확인합니다.",
-    viewTargetId: "ENGINE_OVERVIEW",
+    viewTargetId: "ENGINE_SYSTEM",
   },
   {
     n: 2,
+    title: "좌측 엔진 확인",
+    detail: "정비 대상 엔진 Assembly를 확인합니다.",
+    viewTargetId: "ENGINE_LEFT_ASSEMBLY",
+  },
+  {
+    n: 3,
     title: "오일 압력 센서 확인",
     detail: "오일 압력 센서 상태를 확인합니다.",
     viewTargetId: "ENGINE_PRESSURE_SENSOR",
   },
   {
-    n: 3,
+    n: 4,
     title: "오일 필터 점검",
     detail: "오일 필터 외관 및 차압을 확인합니다.",
     viewTargetId: "ENGINE_OIL_FILTER",
-  },
-  {
-    n: 4,
-    title: "오일 펌프 확인",
-    detail: "오일 펌프 상태를 확인합니다.",
-    viewTargetId: "ENGINE_OIL_PUMP",
   },
 ];
 
@@ -138,8 +148,8 @@ export const GUIDE_STEPS_ELECTRICAL: GuideStep[] = [
   {
     n: 2,
     title: "발전기 점검",
-    detail: "발전기 외관 및 커넥터 상태를 확인합니다.",
-    viewTargetId: "GENERATOR_DETAIL",
+    detail: "발전기 Assembly 외관 및 커넥터 상태를 확인합니다.",
+    viewTargetId: "GENERATOR_ASSEMBLY",
   },
   {
     n: 3,
@@ -173,6 +183,16 @@ interface AppState {
   transparentObjects: string[];
   openedPanels: string[];
   xrayMode: boolean;
+  /** Digital-twin drill-down: EXTERIOR → SYSTEM → ASSEMBLY → COMPONENT */
+  inspectionLevel: InspectionLevel;
+  /** Explicit 3D system — ENGINE_OIL | HYDRAULIC | GENERATOR */
+  activeMaintenanceSystem: ActiveMaintenanceSystem | null;
+  /** Legacy alias (ELECTRICAL for GENERATOR) */
+  inspectionSystem: string | null;
+  selectedAssembly: InspectionAssembly;
+  selectedMaintenancePart: string | null;
+  recommendedMaintenancePart: string | null;
+  hoveredMaintenancePart: string | null;
   guideStep: number;
   diagnosisResult: DiagnosisResult | null;
   messages: ChatMessage[];
@@ -181,7 +201,6 @@ interface AppState {
   similarHistory: SimilarMaintenanceItem[];
   historyInsight: string | null;
   historyRegisterPending: boolean;
-  phm: PhmStatus | null;
   isLoading: boolean;
   error: string | null;
   isDemoMode: boolean;
@@ -215,10 +234,33 @@ interface AppState {
   setAreaForceProxy: (v: boolean) => void;
   ensureAreaLoaded: (areaId: AreaId) => void;
   applyResolvedFault: (resolved: ResolvedFault, viewOverride?: string) => void;
+  beginEngineOilInspection: (recommendedPart?: string) => void;
+  beginHydraulicInspection: (recommendedPart?: string) => void;
+  beginGeneratorInspection: (recommendedPart?: string) => void;
+  enterInspectionSystem: () => void;
+  enterInspectionAssembly: (assembly?: InspectionAssembly) => void;
+  enterInspectionComponent: (partId: string) => void;
+  goInspectionLevel: (level: InspectionLevel) => void;
+  setHoveredMaintenancePart: (id: string | null) => void;
   submitQuery: (text: string) => Promise<void>;
   loadRelatedData: () => Promise<void>;
   refreshAircraft: () => Promise<void>;
   fullReset: () => Promise<void>;
+}
+
+const EMPTY_INSPECTION = {
+  inspectionLevel: "EXTERIOR" as InspectionLevel,
+  activeMaintenanceSystem: null as ActiveMaintenanceSystem | null,
+  inspectionSystem: null as string | null,
+  selectedAssembly: null as InspectionAssembly,
+  selectedMaintenancePart: null as string | null,
+  recommendedMaintenancePart: null as string | null,
+  hoveredMaintenancePart: null as string | null,
+};
+
+function clearAnnotationBridge() {
+  useAnnotationStore.getState().setSpecs([]);
+  useAnnotationStore.getState().setScreens({});
 }
 
 function buildTargetFields(
@@ -301,6 +343,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   transparentObjects: [],
   openedPanels: [],
   xrayMode: false,
+  ...EMPTY_INSPECTION,
   guideStep: 0,
   diagnosisResult: null,
   messages: [
@@ -316,7 +359,6 @@ export const useAppStore = create<AppState>((set, get) => ({
   similarHistory: [],
   historyInsight: null,
   historyRegisterPending: false,
-  phm: null,
   isLoading: false,
   error: null,
   isDemoMode: true,
@@ -373,6 +415,225 @@ export const useAppStore = create<AppState>((set, get) => ({
     get().applyViewTarget(viewOverride ?? resolved.viewTargetId);
   },
 
+  beginEngineOilInspection: (recommendedPart = "PRESSURE_SENSOR") => {
+    clearAnnotationBridge();
+    get().ensureAreaLoaded("AREA_01");
+    const fault =
+      get().activeFault ??
+      resolveFromDiagnosis(get().diagnosisResult) ??
+      resolveFault("ENGINE_PRESSURE_SENSOR");
+    if (fault) set({ activeFault: fault });
+    set({
+      error: null,
+      activeMaintenanceSystem: "ENGINE_OIL",
+      inspectionSystem: "ENGINE_OIL",
+      recommendedMaintenancePart: recommendedPart,
+      selectedAssembly: null,
+      selectedMaintenancePart: null,
+      hoveredMaintenancePart: null,
+      inspectionLevel: "EXTERIOR",
+      guideStep: 1,
+      ...buildTargetFields("ENGINE_ZONE_GUIDE", fault),
+    });
+  },
+
+  beginHydraulicInspection: (recommendedPart = "HYDRAULIC_PUMP") => {
+    clearAnnotationBridge();
+    set({
+      error: null,
+      activeMaintenanceSystem: "HYDRAULIC",
+      inspectionSystem: "HYDRAULIC",
+      recommendedMaintenancePart: recommendedPart,
+      selectedAssembly: null,
+      selectedMaintenancePart: null,
+      hoveredMaintenancePart: null,
+      inspectionLevel: "SYSTEM",
+      guideStep: 1,
+    });
+    get().applyViewTarget(SYSTEM_REGISTRY.HYDRAULIC.systemViewTarget);
+  },
+
+  beginGeneratorInspection: (recommendedPart = "GENERATOR") => {
+    clearAnnotationBridge();
+    set({
+      error: null,
+      activeMaintenanceSystem: "GENERATOR",
+      inspectionSystem: "ELECTRICAL",
+      recommendedMaintenancePart: recommendedPart,
+      selectedAssembly: null,
+      selectedMaintenancePart: null,
+      hoveredMaintenancePart: null,
+      inspectionLevel: "SYSTEM",
+      guideStep: 1,
+    });
+    get().applyViewTarget(SYSTEM_REGISTRY.GENERATOR.systemViewTarget);
+  },
+
+  enterInspectionSystem: () => {
+    const active = get().activeMaintenanceSystem;
+    if (active === "GENERATOR") {
+      get().applyViewTarget(SYSTEM_REGISTRY.GENERATOR.systemViewTarget);
+      set({
+        inspectionLevel: "SYSTEM",
+        selectedAssembly: null,
+        selectedMaintenancePart: null,
+        activeMaintenanceSystem: "GENERATOR",
+        inspectionSystem: "ELECTRICAL",
+      });
+      return;
+    }
+    if (active === "HYDRAULIC") {
+      get().applyViewTarget(SYSTEM_REGISTRY.HYDRAULIC.systemViewTarget);
+      set({
+        inspectionLevel: "SYSTEM",
+        selectedAssembly: null,
+        selectedMaintenancePart: null,
+        activeMaintenanceSystem: "HYDRAULIC",
+        inspectionSystem: "HYDRAULIC",
+      });
+      return;
+    }
+    if (active && active !== "ENGINE_OIL") return;
+    get().ensureAreaLoaded("AREA_01");
+    set({
+      inspectionLevel: "SYSTEM",
+      activeMaintenanceSystem: "ENGINE_OIL",
+      inspectionSystem: "ENGINE_OIL",
+      selectedAssembly: null,
+      selectedMaintenancePart: null,
+    });
+    get().applyViewTarget("ENGINE_SYSTEM");
+  },
+
+  enterInspectionAssembly: (assembly = "ENGINE_LEFT") => {
+    const active = get().activeMaintenanceSystem;
+    if (active === "GENERATOR" || assembly === "GENERATOR_ASSEMBLY") {
+      get().applyViewTarget(SYSTEM_REGISTRY.GENERATOR.assemblyViewTarget);
+      set({
+        inspectionLevel: "ASSEMBLY",
+        selectedAssembly: "GENERATOR_ASSEMBLY",
+        selectedMaintenancePart: null,
+        activeMaintenanceSystem: "GENERATOR",
+        inspectionSystem: "ELECTRICAL",
+      });
+      return;
+    }
+    if (active === "HYDRAULIC" || assembly === "HYDRAULIC_ASSEMBLY") {
+      get().applyViewTarget(SYSTEM_REGISTRY.HYDRAULIC.assemblyViewTarget);
+      set({
+        inspectionLevel: "ASSEMBLY",
+        selectedAssembly: "HYDRAULIC_ASSEMBLY",
+        selectedMaintenancePart: null,
+        activeMaintenanceSystem: "HYDRAULIC",
+        inspectionSystem: "HYDRAULIC",
+      });
+      return;
+    }
+    if (active && active !== "ENGINE_OIL") return;
+    get().ensureAreaLoaded("AREA_01");
+    get().applyViewTarget(
+      assembly === "ENGINE_RIGHT" ? "ENGINE_SYSTEM" : "ENGINE_LEFT_ASSEMBLY",
+    );
+    set({
+      inspectionLevel: "ASSEMBLY",
+      selectedAssembly: assembly === "ENGINE_RIGHT" ? "ENGINE_RIGHT" : "ENGINE_LEFT",
+      selectedMaintenancePart: null,
+      activeMaintenanceSystem: "ENGINE_OIL",
+      inspectionSystem: "ENGINE_OIL",
+    });
+  },
+
+  enterInspectionComponent: (partId) => {
+    const active = get().activeMaintenanceSystem;
+    const viewId = COMPONENT_VIEW_TARGET[partId];
+    if (!viewId) return;
+
+    if (
+      ["GENERATOR", "GENERATOR_CONTROL", "GENERATOR_WIRING"].includes(partId)
+    ) {
+      if (active && active !== "GENERATOR") return;
+      get().applyViewTarget(viewId);
+      set({
+        inspectionLevel: "COMPONENT",
+        selectedAssembly: "GENERATOR_ASSEMBLY",
+        selectedMaintenancePart: partId,
+        activeMaintenanceSystem: "GENERATOR",
+        inspectionSystem: "ELECTRICAL",
+        highlightedObjects: [partId],
+      });
+      return;
+    }
+
+    if (
+      ["HYDRAULIC_PUMP", "HYDRAULIC_SENSOR", "HYDRAULIC_LINE"].includes(partId)
+    ) {
+      if (active && active !== "HYDRAULIC") return;
+      get().applyViewTarget(viewId);
+      set({
+        inspectionLevel: "COMPONENT",
+        selectedAssembly: "HYDRAULIC_ASSEMBLY",
+        selectedMaintenancePart: partId,
+        activeMaintenanceSystem: "HYDRAULIC",
+        inspectionSystem: "HYDRAULIC",
+        highlightedObjects: [partId],
+      });
+      return;
+    }
+
+    if (active && active !== "ENGINE_OIL") return;
+    get().ensureAreaLoaded("AREA_01");
+    get().applyViewTarget(viewId);
+    set({
+      inspectionLevel: "COMPONENT",
+      selectedAssembly: get().selectedAssembly ?? "ENGINE_LEFT",
+      selectedMaintenancePart: partId,
+      activeMaintenanceSystem: "ENGINE_OIL",
+      inspectionSystem: "ENGINE_OIL",
+      highlightedObjects: [partId],
+    });
+  },
+
+  goInspectionLevel: (level) => {
+    const active = get().activeMaintenanceSystem;
+    if (level === "EXTERIOR") {
+      if (active === "ENGINE_OIL") {
+        get().beginEngineOilInspection(
+          get().recommendedMaintenancePart ?? "PRESSURE_SENSOR",
+        );
+      } else if (active === "GENERATOR") {
+        get().beginGeneratorInspection(
+          get().recommendedMaintenancePart ?? "GENERATOR",
+        );
+      } else if (active === "HYDRAULIC") {
+        get().beginHydraulicInspection(
+          get().recommendedMaintenancePart ?? "HYDRAULIC_PUMP",
+        );
+      } else {
+        get().resetScene();
+      }
+      return;
+    }
+    if (level === "SYSTEM") {
+      get().enterInspectionSystem();
+      return;
+    }
+    if (level === "ASSEMBLY") {
+      if (active === "GENERATOR") {
+        get().enterInspectionAssembly("GENERATOR_ASSEMBLY");
+      } else if (active === "HYDRAULIC") {
+        get().enterInspectionAssembly("HYDRAULIC_ASSEMBLY");
+      } else {
+        get().enterInspectionAssembly(get().selectedAssembly ?? "ENGINE_LEFT");
+      }
+      return;
+    }
+    const part =
+      get().selectedMaintenancePart ?? get().recommendedMaintenancePart;
+    if (part) get().enterInspectionComponent(part);
+  },
+
+  setHoveredMaintenancePart: (id) => set({ hoveredMaintenancePart: id }),
+
   applyViewTarget: (id) => {
     let fault = get().activeFault;
     if (!fault) {
@@ -388,21 +649,58 @@ export const useAppStore = create<AppState>((set, get) => ({
       set({
         error: `알 수 없는 시점(${id})이라 전체 보기로 이동합니다.`,
         ...buildTargetFields(FALLBACK_ID, fault),
+        ...EMPTY_INSPECTION,
       });
       return;
     }
 
     const current = get().viewTargetId;
     const next = buildTargetFields(id, fault);
+    const insp = inspectionStateFromViewTarget(id);
     if (
       current === next.viewTargetId &&
       JSON.stringify(next.highlightedObjects) ===
         JSON.stringify(get().highlightedObjects) &&
-      JSON.stringify(next.hiddenObjects) === JSON.stringify(get().hiddenObjects)
+      JSON.stringify(next.hiddenObjects) === JSON.stringify(get().hiddenObjects) &&
+      get().inspectionLevel === insp.inspectionLevel &&
+      get().selectedMaintenancePart === insp.selectedMaintenancePart
     ) {
       return;
     }
-    set({ error: null, ...next });
+    set({
+      error: null,
+      ...next,
+      inspectionLevel: insp.inspectionLevel,
+      selectedAssembly: insp.selectedAssembly,
+      selectedMaintenancePart: insp.selectedMaintenancePart,
+      activeMaintenanceSystem: (() => {
+        const fromDiag = toActiveMaintenanceSystem(
+          get().diagnosisResult?.system_code,
+        );
+        if (fromDiag) return fromDiag;
+        if (get().activeMaintenanceSystem) return get().activeMaintenanceSystem;
+        if (id.includes("GENERATOR") || id.includes("ELECTRICAL")) {
+          return "GENERATOR";
+        }
+        if (id.includes("HYDRAULIC")) return "HYDRAULIC";
+        if (
+          id.includes("ENGINE") ||
+          id.includes("OIL") ||
+          id === "AREA_01_OVERVIEW"
+        ) {
+          return "ENGINE_OIL";
+        }
+        return null;
+      })(),
+      inspectionSystem: (() => {
+        const active =
+          toActiveMaintenanceSystem(get().diagnosisResult?.system_code) ??
+          get().activeMaintenanceSystem;
+        if (active) return toLegacyInspectionSystem(active);
+        return next.selectedSystem ?? get().inspectionSystem;
+      })(),
+      recommendedMaintenancePart: get().recommendedMaintenancePart,
+    });
   },
 
   selectObject: (objectId) => {
@@ -425,9 +723,97 @@ export const useAppStore = create<AppState>((set, get) => ({
                       ? "GENERATOR"
                       : objectId;
 
-    if (objectId === "AREA_01_HOTSPOT" || legacy === "ENGINE_ZONE") {
-      get().ensureAreaLoaded("AREA_01");
-      get().applyViewTarget("ENGINE_OVERVIEW");
+    const level = get().inspectionLevel;
+
+    if (
+      legacy === "ENGINE_ZONE" ||
+      objectId === "ENGINE_ZONE_MARKER" ||
+      objectId === "AREA_01_HOTSPOT"
+    ) {
+      get().enterInspectionSystem();
+      return;
+    }
+
+    if (
+      legacy === "ENGINE_BLOCK" ||
+      objectId === "ENGINE_LEFT" ||
+      objectId === "ENGINE_LEFT_HIT"
+    ) {
+      if (level === "EXTERIOR" || level === "SYSTEM") {
+        get().enterInspectionAssembly("ENGINE_LEFT");
+        return;
+      }
+      if (level === "ASSEMBLY" || level === "COMPONENT") {
+        get().enterInspectionAssembly("ENGINE_LEFT");
+        return;
+      }
+    }
+
+    if (objectId === "ENGINE_RIGHT" || objectId === "ENGINE_RIGHT_HIT") {
+      get().enterInspectionAssembly("ENGINE_RIGHT");
+      return;
+    }
+
+    const oilParts = [
+      "OIL_FILTER",
+      "PRESSURE_SENSOR",
+      "OIL_PUMP",
+      "OIL_PIPE_MAIN",
+    ];
+    if (oilParts.includes(legacy)) {
+      if (get().activeMaintenanceSystem !== "ENGINE_OIL") return;
+      if (level === "EXTERIOR" || level === "SYSTEM") {
+        set({
+          selectedAssembly: "ENGINE_LEFT",
+          activeMaintenanceSystem: "ENGINE_OIL",
+          inspectionSystem: "ENGINE_OIL",
+        });
+      }
+      get().enterInspectionComponent(legacy);
+      return;
+    }
+
+    const genParts = ["GENERATOR", "GENERATOR_CONTROL", "GENERATOR_WIRING"];
+    if (genParts.includes(legacy) || legacy === "ELECTRICAL_ZONE") {
+      if (
+        get().activeMaintenanceSystem &&
+        get().activeMaintenanceSystem !== "GENERATOR"
+      ) {
+        return;
+      }
+      set({
+        activeMaintenanceSystem: "GENERATOR",
+        inspectionSystem: "ELECTRICAL",
+      });
+      if (level === "SYSTEM" || level === "EXTERIOR") {
+        get().enterInspectionAssembly("GENERATOR_ASSEMBLY");
+        return;
+      }
+      get().enterInspectionComponent(
+        legacy === "ELECTRICAL_ZONE" ? "GENERATOR" : legacy,
+      );
+      return;
+    }
+
+    const hydParts = ["HYDRAULIC_PUMP", "HYDRAULIC_SENSOR", "HYDRAULIC_LINE"];
+    if (hydParts.includes(legacy) || legacy === "HYDRAULIC_ZONE") {
+      if (
+        get().activeMaintenanceSystem &&
+        get().activeMaintenanceSystem !== "HYDRAULIC"
+      ) {
+        return;
+      }
+      set({
+        activeMaintenanceSystem: "HYDRAULIC",
+        inspectionSystem: "HYDRAULIC",
+      });
+      if (level === "SYSTEM" || level === "EXTERIOR") {
+        get().enterInspectionAssembly("HYDRAULIC_ASSEMBLY");
+        return;
+      }
+      get().enterInspectionComponent(
+        legacy === "HYDRAULIC_ZONE" ? "HYDRAULIC_PUMP" : legacy,
+      );
       return;
     }
 
@@ -437,39 +823,7 @@ export const useAppStore = create<AppState>((set, get) => ({
         { clickable?: boolean; viewTargetId?: string | null }
       >
     )[legacy];
-
     if (!entry?.clickable && !objectId.startsWith("AREA_01_")) return;
-
-    if (legacy === "OIL_FILTER" || objectId === "AREA_01_PART_01") {
-      get().applyViewTarget("ENGINE_OIL_FILTER");
-      return;
-    }
-    if (legacy === "PRESSURE_SENSOR") {
-      get().applyViewTarget("ENGINE_PRESSURE_SENSOR");
-      return;
-    }
-    if (legacy === "OIL_PUMP") {
-      get().applyViewTarget("ENGINE_OIL_PUMP");
-      return;
-    }
-    if (legacy === "HYDRAULIC_PUMP" || legacy === "HYDRAULIC_SENSOR") {
-      get().applyViewTarget(
-        legacy === "HYDRAULIC_SENSOR" ? "HYDRAULIC_SENSOR" : "HYDRAULIC_PUMP",
-      );
-      return;
-    }
-    if (legacy === "HYDRAULIC_LINE") {
-      get().applyViewTarget("HYDRAULIC_LINE");
-      return;
-    }
-    if (legacy === "GENERATOR") {
-      get().applyViewTarget("GENERATOR_DETAIL");
-      return;
-    }
-    if (legacy === "GENERATOR_WIRING") {
-      get().applyViewTarget("GENERATOR_WIRING");
-      return;
-    }
     if (entry?.viewTargetId) get().applyViewTarget(entry.viewTargetId);
   },
 
@@ -485,7 +839,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       ),
       xrayMode: true,
     });
-    get().applyViewTarget("ENGINE_INTERNAL_VIEW");
+    get().enterInspectionAssembly("ENGINE_LEFT");
   },
 
   setGuideStep: (step) => {
@@ -502,6 +856,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   resetScene: () => {
     set({
       ...buildTargetFields(FALLBACK_ID, null),
+      ...EMPTY_INSPECTION,
       guideStep: 0,
       error: null,
       activeAreaId: null,
@@ -555,7 +910,6 @@ export const useAppStore = create<AppState>((set, get) => ({
       set({
         manuals: localManuals,
         failures: failureCases,
-        phm: null,
         similarHistory: similar,
         historyInsight: insight,
       });
@@ -563,16 +917,14 @@ export const useAppStore = create<AppState>((set, get) => ({
       return;
     }
     try {
-      const [manuals, _legacyFailures, phm] = await Promise.all([
+      const [manuals, _legacyFailures] = await Promise.all([
         fetchManuals(diagnosisResult?.system_code ?? "ENGINE_OIL"),
         fetchFailures(diagnosisResult?.symptom_code).catch(() => []),
-        fetchPhm(aircraftId),
       ]);
       set({
         manuals: manuals.length ? manuals : localManuals,
         // Prefer maintenance-history similar cases over legacy /api/failures
         failures: failureCases.length ? failureCases : _legacyFailures,
-        phm,
         similarHistory: similar,
         historyInsight: insight,
       });
@@ -658,11 +1010,37 @@ export const useAppStore = create<AppState>((set, get) => ({
       }
 
       if (resolved) {
+        get().ensureAreaLoaded(resolved.area.area_id);
+        set({ activeFault: resolved });
+      }
+
+      const active = toActiveMaintenanceSystem(result.system_code);
+      const recommended = active
+        ? defaultRecommendedPart(active, result.suspected_components)
+        : null;
+
+      // Hard reset prior scenario 3D selection before applying the new system
+      clearAnnotationBridge();
+      set({
+        ...EMPTY_INSPECTION,
+        activeMaintenanceSystem: active,
+        inspectionSystem: toLegacyInspectionSystem(active),
+        recommendedMaintenancePart: recommended,
+        inspectionLevel: active === "ENGINE_OIL" ? "EXTERIOR" : "SYSTEM",
+      });
+
+      if (active === "ENGINE_OIL") {
+        get().beginEngineOilInspection(recommended ?? "PRESSURE_SENSOR");
+      } else if (active === "HYDRAULIC") {
+        get().beginHydraulicInspection(recommended ?? "HYDRAULIC_PUMP");
+      } else if (active === "GENERATOR") {
+        get().beginGeneratorInspection(recommended ?? "GENERATOR");
+      } else if (resolved) {
         get().applyResolvedFault(resolved, result.view_target_id);
       } else {
         get().applyViewTarget(result.view_target_id);
       }
-      // manuals / PHM etc. (similarHistory already set above)
+      // manuals / similar history (already set above)
       void get().loadRelatedData();
     } catch (err) {
       // eslint-disable-next-line no-console
@@ -696,7 +1074,6 @@ export const useAppStore = create<AppState>((set, get) => ({
       similarHistory: [],
       historyInsight: null,
       historyRegisterPending: false,
-      phm: null,
       guideStep: 0,
       diagnosisResult: null,
       error: null,
@@ -705,6 +1082,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       areaLoadStatus: "idle",
       areaLoadProgress: 0,
       areaForceProxy: false,
+      ...EMPTY_INSPECTION,
       ...buildTargetFields(FALLBACK_ID, null),
     });
   },

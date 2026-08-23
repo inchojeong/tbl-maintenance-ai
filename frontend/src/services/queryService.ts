@@ -3,7 +3,6 @@ import type {
   DiagnosisResult,
   FailureCase,
   ManualChunk,
-  PhmStatus,
   ViewTargetConfig,
 } from "../types/diagnosis";
 
@@ -43,11 +42,6 @@ export async function fetchFailures(
     { params: { symptom_code: symptomCode, top_k: 5 } },
   );
   return data.items;
-}
-
-export async function fetchPhm(aircraftId: string): Promise<PhmStatus> {
-  const { data } = await api.get<PhmStatus>(`/api/phm/${aircraftId}`);
-  return data;
 }
 
 export async function fetchViewMap(
