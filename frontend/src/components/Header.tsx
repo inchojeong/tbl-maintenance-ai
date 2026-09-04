@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useAppStore } from "../stores/useAppStore";
 import { listAircraftLocal } from "../services/maintenanceHistoryService";
+import { publicUrl } from "../utils/publicUrl";
 
 export function Header() {
   const isDemoMode = useAppStore((s) => s.isDemoMode);
@@ -54,6 +55,14 @@ export function Header() {
           />
           오프라인 데모
         </label>
+        <a
+          href={publicUrl("presentation/")}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded border border-white/20 px-3 py-1.5 text-xs font-medium hover:bg-white/10"
+        >
+          발표자료
+        </a>
         <button
           type="button"
           onClick={() => void fullReset()}

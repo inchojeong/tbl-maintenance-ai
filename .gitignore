@@ -78,3 +78,9 @@ backend/manual/raw/**/*.pdf
 # Allow only the small Demo T-2 PDF shipped for GitHub Pages hybrid viewer
 !frontend/public/manuals/
 !frontend/public/manuals/TM_55-1520-240-T-2.pdf
+# Presentation export (web deck → single PDF)
+!presentation/*.pdf
+!presentation/aircraft-maintenance-ai-deck.pdf
+
+# Presentation PDF export tooling
+presentation/scripts/node_modules/

@@ -50,6 +50,7 @@ jobs:
           VITE_USE_PROXY_MODEL: "false"
           VITE_GLTF_MODEL_PATH: "models/sikorsky_uh-60m_blackhawk.glb"
         run: npm run build
+        # Vite plugin copies ../presentation → dist/presentation (own CSS/JS/assets)
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4

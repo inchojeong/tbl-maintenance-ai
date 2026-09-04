@@ -65,6 +65,10 @@ Push to `main` → GitHub Actions (`.github/workflows/deploy-pages.yml`)가 `fro
 - **Backend / OpenAI 불필요** — Demo Mode + Proxy 3D만 사용
 - Base path는 Actions에서 `/${{ github.repository 이름 }}/` 형태로 주입 (로컬은 `/`)
 - 공개 URL: `https://inchojeong.github.io/tbl-maintenance-ai/`
+- 발표자료: `https://inchojeong.github.io/tbl-maintenance-ai/presentation/`
+- 발표 PDF: `https://inchojeong.github.io/tbl-maintenance-ai/presentation/aircraft-maintenance-ai-deck.pdf`
+
+시제품과 발표자료는 같은 Pages 사이트에 올리되 **경로를 분리**합니다. 발표 덱의 CSS/JS는 `presentation/` 전용이며 프론트엔드 번들과 섞이지 않습니다.
 
 로컬에서 Pages base로 미리 확인:
 

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>항공기 통합 정비 지능형 AI 어시스턴트 · 시제품 발표</title>
+<link rel="stylesheet" href="css/deck.css" />
+</head>
+<body>
+<div id="progress"></div>
+
+<div id="viewport">
+  <div id="stage">
+
+  <!-- ============================================================ 01 COVER -->
+  <section class="slide cover slide--plain" data-title="표지">
+    <div class="cover-band"></div>
+    <div class="cover-inner">
+      <div class="cv-eyebrow">AIRCRAFT INTEGRATED MAINTENANCE AI · PROTOTYPE</div>
+      <h1>항공기 통합 정비<br><span class="accent">지능형 AI 어시스턴트</span></h1>
+      <p class="cv-sub">기술교범 · 고장사례 · 상태정보를<br>하나의 정비 판단 흐름으로 <b>연결</b>하는 근거 기반 정비지원 시제품</p>
+      <div class="cv-rule"></div>
+      <div class="cv-org">박정환 &nbsp;×&nbsp; 주식회사 티벨 &nbsp;×&nbsp; GIST</div>
+      <div class="cv-event">제1회 해병대 인공지능 아이디어 시제품 개발 공모전 · 2026</div>
+    </div>
+  </section>
+
+  <!-- ============================================================ 03 PROBLEM 1 -->
+  <section class="slide" data-title="기획 의도 · 문제" data-max-steps="4">
+    <div class="eyebrow">01 <span class="sep">/</span> PROBLEM DEFINITION</div>
+    <h1 class="slide-title">기획 의도 : 정비정보의 <span class="hl">파편화</span>로 인한 결함 <span class="u">진단·정비</span> 간 연계 활용에 한계 존재</h1>
+    <div class="rule"></div>
+    <div class="slide-body" style="display:flex; flex-direction:column;">
+      <div class="grid g3 stretch" style="margin-bottom:18px;">
+        <div class="card" data-step="1"><div class="kicker">01 · 진단 역량의 비균질성</div><h3>경험지식 의존적 고장 원인 추론</h3><p style="font-size:18px; line-height:1.55;">정비인력별 경험지식의 축적 수준에 따라 고장 징후의 해석과 원인 추론 과정이 상이하여, <span class="strong">진단 효율성과 의사결정의 일관성</span>이 저하될 수 있습니다.</p></div>
+        <div class="card" data-step="1"><div class="kicker">02 · 경험의 소실</div><h3>숙련 정비사의 암묵지 소실</h3><p style="font-size:18px; line-height:1.55;">숙련 정비사가 축적한 고장 징후 식별, 원인 추론 및 조치 경험이 체계적으로 기록되지 않을 경우, 전역·퇴직과 함께 <span class="strong">조직의 정비 지식이 소실</span>될 수 있습니다.</p></div>
+        <div class="card" data-step="1"><div class="kicker">03 · 반복되는 진단</div><h3>정비 경험의 데이터화 필요</h3><p style="font-size:18px; line-height:1.55;">과거 결함의 증상·원인·점검 과정·조치 결과와 경험칙(經驗則)을 데이터로 <span class="strong">구조화·축적</span>하여, 동일·유사 고장 발생 시 재활용할 수 있어야 합니다.</p></div>
+      </div>
+      <div class="callout amber" data-step="2" style="padding:16px 26px; font-size:18px;">개인에게 축적된 정비 경험을 <b>조직의 지식자산으로 전환</b>하여, 인력 교체에도 정비 전문성과 대응 역량이 <b>지속적으로 계승</b>되는 체계 구축 필요</div>
+
+      <div class="flow-process">
+        <div class="proc-cap" data-step="3">정보 <b>파편화</b>에서 <b>AI 통합 정비지원</b>까지의 흐름</div>
+        <div class="flow flow-2tier flow-big flow-rows">
+          <div class="pgroup" data-step="3">
+            <div class="node"><span class="mn">정비정보가 흩어져 있다</span><span class="sb">분산된 정비정보</span></div>
+            <span class="arw">→</span>
+            <div class="node"><span class="mn">찾고 연결하기 어렵다</span><span class="sb">관련 정보 탐색·연계의 어려움</span></div>
+            <span class="arw">→</span>
+            <div class="node ink"><span class="mn">AI가 하나의 맥락으로 연결</span><span class="sb">AI 기반 통합·맥락화</span></div>
+          </div>
+          <div class="pgroup" data-step="4">
+            <span class="arw gap">→</span>
+            <div class="node blue"><span class="mn">유사 정비사례 및 근거자료 제시</span><span class="sb">유사 정비사례 및 판단근거 제시</span></div>
+            <span class="arw">→</span>
+            <div class="node accent"><span class="mn">정비사 최종 판단 지원</span><span class="sb">정비사의 최종 판단 지원</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="runhead"><span>AIRCRAFT INTEGRATED MAINTENANCE AI</span><span>PROPOSAL · 제안 배경</span></div>
+    <div class="footline"><b>㈜티벨</b> · 해병대 AI 아이디어 시제품</div>
+    <div class="pagenum">02</div>
+  </section>
+
+  <!-- ============================================================ 07 AI COPILOT / XAI -->
+  <section class="slide tone-dark" data-title="AI Copilot · XAI">
+    <div class="eyebrow">02 <span class="sep">/</span> AI AS COPILOT</div>
+    <h1 class="slide-title">AI 기반 정비근거 통합 → <span class="hl">정비사 승인 중심</span> 최종 작업 수행 체계</h1>
+    <div class="rule"></div>
+    <div class="slide-body" style="display:flex; flex-direction:column; gap:16px;">
+      <div class="grid g2 stretch" data-step="1" style="gap:20px;">
+        <div class="card" style="padding:16px 24px;">
+          <h3 style="margin-bottom:8px;">AI 기반 정비지원</h3>
+          <ul>
+            <li>관련 기술교범의 <span class="strong">Task와 원문 페이지</span> 제시</li>
+            <li>과거 유사 정비사례 및 조치결과 <span class="strong">비교·분석</span></li>
+            <li>이상 계통 식별 및 점검 <span class="strong">우선순위</span> 제안</li>
+          </ul>
+        </div>
+        <div class="card card--ink" style="padding:16px 24px;">
+          <h3 style="margin-bottom:8px;">정비사의 최종 판단 · Human-in-the-loop</h3>
+          <ul>
+            <li>고장 원인에 대한 <span style="color:var(--amber)">최종 판단</span></li>
+            <li>정비 적합성 판단</li>
+            <li>실제 정비 수행</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout" data-step="1" style="padding:13px 24px; font-size:17px;">
+        생성형 AI 활용 시 발생할 수 있는 <b>환각(Hallucination)</b>을 최소화하기 위해, 모든 정비지원 정보에 <b>근거 출처</b>를 함께 제시하고 최종 의사결정은 정비사가 수행하는 <b>Human-in-the-loop</b> 구조로 설계하였습니다.
+      </div>
+
+      <div class="copilot-diagram" data-step="2">
+        <svg class="cd-links" aria-hidden="true" preserveAspectRatio="none"></svg>
+        <!-- LEFT · 정비사 (사람이 관여하는 행: 질의 · 정비 수행) -->
+        <div class="cd-side cd-actor">
+          <svg viewBox="0 0 190 250" width="100%" height="220" aria-label="정비사">
+            <!-- thought bubble -->
+            <rect x="70" y="6" width="112" height="66" rx="16" fill="#1b2a47" stroke="#4f78b8" stroke-width="2"/>
+            <g stroke="#8fb6e6" stroke-width="6" stroke-linecap="round">
+              <line x1="98" y1="30" x2="132" y2="52"/><circle cx="96" cy="27" r="7" fill="none"/>
+              <line x1="150" y1="26" x2="120" y2="54"/>
+            </g>
+            <circle cx="66" cy="80" r="6" fill="#1b2a47" stroke="#4f78b8" stroke-width="2"/>
+            <circle cx="56" cy="96" r="4" fill="#1b2a47" stroke="#4f78b8" stroke-width="2"/>
+            <!-- person -->
+            <g fill="#2a3f66">
+              <path d="M20 150 a34 34 0 0 1 68 0 v14 h-68 Z"/>
+              <circle cx="54" cy="120" r="26"/>
+              <path d="M30 116 a24 24 0 0 1 48 0 l-6 -4 a20 18 0 0 0 -36 0 Z" fill="#35507e"/>
+            </g>
+            <!-- document box -->
+            <g transform="translate(96,150)">
+              <rect x="0" y="24" width="86" height="66" rx="6" fill="#22345a" stroke="#4f78b8" stroke-width="2"/>
+              <rect x="14" y="6" width="58" height="40" rx="4" fill="#e9f0fb" stroke="#4f78b8" stroke-width="2"/>
+              <line x1="24" y1="18" x2="62" y2="18" stroke="#8aa7cf" stroke-width="3"/>
+              <line x1="24" y1="28" x2="62" y2="28" stroke="#8aa7cf" stroke-width="3"/>
+              <line x1="24" y1="38" x2="50" y2="38" stroke="#8aa7cf" stroke-width="3"/>
+            </g>
+          </svg>
+          <div class="cd-cap">정비사 질의 · 현장 상태정보</div>
+        </div>
+
+        <!-- CENTER · AI pipeline panel -->
+        <div class="cd-panel">
+          <div class="cd-row" data-src="user"><span class="cd-badge usr">1</span><div class="cd-t">정비사 질의<small>텍스트 기반 증상 및 상태정보 입력</small></div></div>
+          <div class="cd-row" data-src="data"><span class="cd-badge">2</span><div class="cd-t">정비정보 통합<small>교범 · 정비이력 · 고장사례 · 상태정보 연계</small></div></div>
+          <div class="cd-row" data-src="data"><span class="cd-badge">3</span><div class="cd-t">AI Orchestrator<small>질의 의도 분석 및 적합한 지식원 · 처리모듈 연결</small></div></div>
+          <div class="cd-row" data-src="data"><span class="cd-badge">4</span><div class="cd-t">RAG · 검색 · 분석<small>해당 가이드를 제공할 수 있는 교범 문서 검색 및 유사사례 · 상태정보 분석</small></div></div>
+          <div class="cd-row" data-src="data"><span class="cd-badge">5</span><div class="cd-t">근거 기반 정비지원<small>교범 원문 · Task · 유사사례 및 우선 점검순서 제시</small></div></div>
+          <div class="cd-row" data-src="data"><span class="cd-badge">6</span><div class="cd-t">3D Digital Twin<small>이상 계통 및 관련 부품 위치의 직관적 시각화</small></div></div>
+          <div class="cd-row human" data-src="user"><span class="cd-badge usr">7</span><div class="cd-t">정비 수행<small>정비사 최종 판단에 따른 작업 수행 및 결과 기록</small></div></div>
+        </div>
+
+        <!-- RIGHT · 데이터/장비 (AI 처리 행: DB · AI · RAG · 근거 · 3D) -->
+        <div class="cd-side cd-equip">
+          <svg viewBox="0 0 200 250" width="100%" height="220" aria-label="교범·상태·이력 데이터">
+            <!-- engine -->
+            <g transform="translate(6,18)">
+              <circle cx="46" cy="46" r="40" fill="none" stroke="#8fb6e6" stroke-width="8"/>
+              <circle cx="46" cy="46" r="15" fill="#e4922e"/>
+              <g stroke="#8fb6e6" stroke-width="8"><line x1="46" y1="4" x2="46" y2="18"/><line x1="46" y1="74" x2="46" y2="88"/><line x1="4" y1="46" x2="18" y2="46"/><line x1="74" y1="46" x2="88" y2="46"/></g>
+            </g>
+            <!-- monitor + chart -->
+            <g transform="translate(96,20)">
+              <rect x="0" y="0" width="100" height="70" rx="8" fill="#12203a" stroke="#4f78b8" stroke-width="3"/>
+              <rect x="40" y="70" width="20" height="10" fill="#4f78b8"/>
+              <polyline points="10,54 34,32 54,44 76,20 90,26" fill="none" stroke="#38bdf8" stroke-width="4"/>
+              <g fill="#2e5285"><rect x="10" y="44" width="12" height="16"/><rect x="30" y="34" width="12" height="26"/><rect x="50" y="40" width="12" height="20"/></g>
+            </g>
+            <!-- shield -->
+            <g transform="translate(58,120)">
+              <path d="M42 0 L84 17 V56 C84 88 64 108 42 116 C20 108 0 88 0 56 V17 Z" fill="#2e7bc4"/>
+              <path d="M22 58 L37 73 L64 40" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+            </g>
+          </svg>
+          <div class="cd-cap">AI · 교범 · 정비이력 통합 시스템</div>
+        </div>
+      </div>
+    </div>
+    <div class="runhead"><span>AIRCRAFT INTEGRATED MAINTENANCE AI</span><span>XAI · HUMAN-IN-THE-LOOP</span></div>
+    <div class="pagenum">03</div>
+  </section>
+
+  <!-- ============================================================ 08 PROTOTYPE ONE-SCREEN -->
+  <section class="slide tone-dark" data-title="시제품 · One-Screen">
+    <div class="eyebrow">03 <span class="sep">/</span> WHAT WE BUILT</div>
+    <h1 class="slide-title">멀티모달 질의 · AI 추론 · <span class="hl">디지털트윈 시각화</span>의 통합 인터랙션 체계</h1>
+    <div class="rule"></div>
+    <div class="slide-body" style="display:flex; flex-direction:column; gap:26px;">
+      <div style="display:grid; grid-template-columns:420px 1fr 420px; gap:20px; height:420px; flex:none;">
+        <!-- left: 정비 질의 -->
+        <div class="card" data-step="1" style="padding:22px; display:flex; flex-direction:column; gap:14px;">
+          <div class="kicker">01 · 정비 질의</div>
+          <div style="background:var(--paper-2); border:1px solid var(--line); border-radius:10px; padding:14px 16px; font-size:18px; color:var(--ink);">
+            “엔진오일 압력에 <b style="color:var(--amber-deep)">이상징후</b>가 있습니다”
+          </div>
+          <div style="background:var(--ink); color:#dfe7f4; border-radius:10px; padding:14px 16px; font-size:16px; line-height:1.5;">
+            <b style="color:var(--amber)">엔진오일 압력 이상징후</b>로 인식하여, 관련 <b>교범 점검절차</b>와 <b>유사 정비사례 · 근거자료</b>를 함께 제시합니다. <span style="color:#9fb4d6;">(최종 판정은 정비사가 수행)</span>
+          </div>
+        </div>
+        <!-- center: 3D Digital Twin (prototype-style 2D viewer) -->
+        <div class="card twin2d" data-step="2" style="padding:0; overflow:hidden; position:relative;">
+          <div class="twin2d-kicker">02 · 3D DIGITAL TWIN</div>
+          <svg class="twin2d-svg" viewBox="0 0 640 460" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+            <defs>
+              <radialGradient id="t2glow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ff5a3c" stop-opacity=".9"/>
+                <stop offset="55%" stop-color="#ff5a3c" stop-opacity=".28"/>
+                <stop offset="100%" stop-color="#ff5a3c" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="t2body" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#8b8c60"/>
+                <stop offset="100%" stop-color="#585b3c"/>
+              </linearGradient>
+            </defs>
+
+            <!-- floor reflection -->
+            <ellipse cx="360" cy="392" rx="230" ry="20" fill="#0a1018" opacity=".6"/>
+
+            <!-- main rotor -->
+            <line x1="150" y1="118" x2="560" y2="118" stroke="#c7d0dd" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+            <rect x="352" y="112" width="30" height="12" rx="3" fill="#3a3f30"/>
+            <line x1="367" y1="124" x2="367" y2="168" stroke="#3a3f30" stroke-width="9"/>
+
+            <!-- tail boom + tail rotor (left) -->
+            <path d="M120 190 L300 202 L300 226 L128 212 Z" fill="url(#t2body)"/>
+            <path d="M120 192 L96 152 L114 152 L136 188 Z" fill="#585b3c"/>
+            <path d="M122 212 L102 238 L116 242 L138 216 Z" fill="#585b3c"/>
+            <line x1="100" y1="150" x2="100" y2="188" stroke="#c7d0dd" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="100" cy="169" r="5" fill="#3a3f30"/>
+
+            <!-- fuselage -->
+            <path d="M282 168 Q302 150 362 148 Q452 148 502 190 Q518 210 502 250 Q470 282 380 284 Q300 284 282 252 Q272 210 282 168 Z" fill="url(#t2body)" stroke="#40432e" stroke-width="2"/>
+            <!-- camo patches -->
+            <path d="M300 176 Q342 160 382 172 Q362 212 320 212 Q300 196 300 176 Z" fill="#4f5336" opacity=".85"/>
+            <path d="M432 176 Q472 186 488 212 Q462 236 432 226 Q422 200 432 176 Z" fill="#787c54" opacity=".7"/>
+            <path d="M332 248 Q382 262 432 252 Q402 278 352 272 Q332 262 332 248 Z" fill="#4a4d33" opacity=".7"/>
+            <!-- engine cowling hump -->
+            <path d="M330 158 Q366 138 412 156 L412 174 Q372 158 330 174 Z" fill="#6b6f4a"/>
+
+            <!-- cockpit windows (nose, right) -->
+            <path d="M472 180 Q500 198 498 226 L472 238 Q468 206 472 180 Z" fill="#16324f" stroke="#0d2036" stroke-width="2"/>
+            <path d="M452 178 L470 180 L470 238 L452 234 Z" fill="#1d3f61"/>
+            <rect x="360" y="198" width="22" height="18" rx="3" fill="#16324f"/>
+            <rect x="392" y="198" width="22" height="18" rx="3" fill="#16324f"/>
+            <rect x="328" y="200" width="22" height="18" rx="3" fill="#16324f"/>
+
+            <!-- landing gear -->
+            <line x1="332" y1="284" x2="322" y2="326" stroke="#33372a" stroke-width="6"/>
+            <line x1="432" y1="284" x2="442" y2="326" stroke="#33372a" stroke-width="6"/>
+            <circle cx="320" cy="332" r="12" fill="#20231a" stroke="#0d0f0a" stroke-width="3"/>
+            <circle cx="444" cy="332" r="12" fill="#20231a" stroke="#0d0f0a" stroke-width="3"/>
+            <line x1="488" y1="252" x2="492" y2="302" stroke="#33372a" stroke-width="5"/>
+            <circle cx="492" cy="308" r="9" fill="#20231a" stroke="#0d0f0a" stroke-width="3"/>
+
+            <!-- anomaly highlight (engine / oil area) -->
+            <circle cx="362" cy="176" r="64" fill="url(#t2glow)"/>
+            <ellipse cx="362" cy="184" rx="48" ry="30" fill="none" stroke="#ff6a4d" stroke-width="3"/>
+            <ellipse cx="362" cy="184" rx="39" ry="23" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="5 5" opacity=".9"/>
+
+            <!-- callout -->
+            <line x1="394" y1="150" x2="452" y2="86" stroke="#ff6a4d" stroke-width="2"/>
+            <circle cx="394" cy="150" r="4" fill="#ff6a4d"/>
+            <rect x="450" y="52" width="184" height="62" rx="12" fill="#14202f" stroke="#ff6a4d" stroke-width="2"/>
+            <text x="468" y="80" font-size="18" font-weight="800" fill="#ffffff">엔진 · 오일계통</text>
+            <text x="468" y="101" font-size="13" fill="#ffb3a1">압력 이상징후 · 필터 점검 권고</text>
+          </svg>
+
+          <!-- HUD overlays -->
+          <div class="twin2d-nav">‹</div>
+          <div class="twin2d-hud left">Surion-KUH-01</div>
+          <div class="twin2d-btn">이상 부위 매핑</div>
+          <div class="twin2d-hud right">Twin · 시연 모드</div>
+        </div>
+        <!-- right: 근거 기반 정비정보 -->
+        <div class="card" data-step="3" style="padding:22px; display:flex; flex-direction:column; gap:12px;">
+          <div class="kicker">03 · 근거 기반 정비정보</div>
+          <table class="tbl" style="font-size:17px;">
+            <tr><td>인식 결과</td><td><b>엔진오일 압력 이상징후</b></td></tr>
+            <tr><td>교범 근거</td><td><b class="mono">Task 8-3.3 · p.114</b></td></tr>
+            <tr><td>유사 사례</td><td><b>7건 · 최고 79%</b></td></tr>
+            <tr><td>점검 제안</td><td>압력센서 → 라인 → 배선</td></tr>
+          </table>
+          <div class="tag ok" data-step="4">04 · 정비 가이드 — 단계별 작업 흐름 제시</div>
+        </div>
+      </div>
+
+      <!-- 실제 정비지원 흐름 : horizontal process diagram -->
+      <div class="proc5" data-step="5">
+        <div class="proc5-cap">실제 정비지원 흐름</div>
+        <div class="proc5-track">
+          <div class="p5">
+            <div class="p5-num">01</div>
+            <div class="p5-ttl">현장 증상 입력</div>
+            <div class="p5-desc">증상 · 계기값 · 상태정보 입력</div>
+          </div>
+          <div class="p5-arw">→</div>
+          <div class="p5">
+            <div class="p5-num">02</div>
+            <div class="p5-ttl">공식 정비근거 탐색</div>
+            <div class="p5-desc">관련 교범 Task · 점검절차 · 원문 페이지 연계</div>
+          </div>
+          <div class="p5-arw">→</div>
+          <div class="p5">
+            <div class="p5-num">03</div>
+            <div class="p5-ttl">유사 정비사례 분석</div>
+            <div class="p5-desc">과거 증상 · 원인 · 점검 · 조치결과 비교</div>
+          </div>
+          <div class="p5-arw">→</div>
+          <div class="p5">
+            <div class="p5-num">04</div>
+            <div class="p5-ttl">이상계통 시각화</div>
+            <div class="p5-desc">관련 계통 · 부품 위치를 3D Digital Twin과 연계</div>
+          </div>
+          <div class="p5-arw">→</div>
+          <div class="p5 human">
+            <div class="p5-num">05</div>
+            <div class="p5-ttl">정비사 최종 판단</div>
+            <div class="p5-desc">제시된 근거 검증 후 점검 · 정비 수행</div>
+            <div class="p5-hil">Human-in-the-loop</div>
+          </div>
+        </div>
+        <div class="proc5-msg">분산된 정비정보를 하나의 업무 흐름으로 연결하여, <b>정보 탐색에서 현장 판단까지 연속적으로 지원</b></div>
+      </div>
+    </div>
+    <div class="runhead"><span>AIRCRAFT INTEGRATED MAINTENANCE AI</span><span>PROTOTYPE INTERFACE</span></div>
+    <div class="footline"><b>㈜티벨</b> · 시제품 실화면 구성 (개념 재현)</div>
+    <div class="pagenum">04</div>
+  </section>
+
+  <!-- ============================================================ 09 DEMO SCENARIO -->
+  <section class="slide" data-title="데모 · 엔진오일 이상징후" data-max-steps="2">
+    <div class="eyebrow">04 <span class="sep">/</span> ANALYSIS FLOW · DEMO</div>
+    <h1 class="slide-title">이상징후 기반 정비 컨텍스트 분석 및 <span class="hl">근거정보 구조화</span></h1>
+    <div class="rule"></div>
+    <div class="slide-body" style="display:flex; flex-direction:column;">
+      <div class="demo-flow">
+        <div class="demo-flow-row">
+          <div class="card card--ink demo-flow-input" data-step="1">
+            <div class="kicker" style="color:var(--amber)">INPUT</div>
+            <div class="demo-flow-quote">엔진오일 압력이<br><span class="metric" data-step="1" data-count="31" data-suffix=" PSI" data-dur="1000" style="color:var(--amber); font-size:56px;">0 PSI</span><br>로 떨어졌습니다</div>
+          </div>
+          <div class="demo-flow-grid">
+            <div class="card card--accent" data-step="2">
+              <div class="kicker">이상징후 분석</div>
+              <h3>엔진오일 압력 이상징후</h3>
+              <p>입력된 증상과 상태정보를 분석하여 관련 이상계통을 식별합니다.</p>
+            </div>
+            <div class="card card--blue" data-step="3">
+              <div class="kicker">공식 정비근거 탐색</div>
+              <h3 class="mono">TM 55-1520-240-T-2<br>Task 8-3.3 · p.114</h3>
+              <p>관련 Task와 원문 페이지를 연결하여 해당하는 교본 페이지를 즉각 찾아 시스템에 출력합니다.</p>
+            </div>
+            <div class="card" data-step="4">
+              <div class="kicker">유사 정비사례 분석</div>
+              <h3>7건 · 최고 유사도 <span class="metric" data-count="79" data-suffix="%" data-dur="900">0%</span></h3>
+              <p>현재 증상과 유사한 과거 정비사례의 원인·점검·조치결과를 비교합니다.</p>
+            </div>
+            <div class="card" data-step="5">
+              <div class="kicker">우선 점검 순서</div>
+              <h3>압력센서 → 라인 → 배선</h3>
+              <p>교범 근거와 유사사례를 바탕으로 점검 후보와 우선순위를 제시합니다.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card demo-data" data-step="6">
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th style="width:16%">구분</th>
+                <th style="width:46%">활용 자료</th>
+                <th>시제품 적용 범위</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><b>기술교범</b></td><td>미 육군 CH-47D 공개 TM 55-1520-240-T-1 / T-2 / T-3</td><td>AI 근거 검색 · Task · 원문 페이지</td></tr>
+              <tr><td><b>3D 외형</b></td><td class="mono">sikorsky_uh-60m_blackhawk.glb (UH-60M 기반)</td><td>항공기 외형 · 디지털트윈 베이스</td></tr>
+              <tr><td><b>내부 계통</b></td><td>Three.js / R3F Prototype Overlay</td><td>계통·조립체·부품 단계 표현</td></tr>
+              <tr><td><b>정비이력</b></td><td>가상 시연용 정비기록 64건</td><td>유사사례 · 조치결과 조회</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="runhead"><span>AIRCRAFT INTEGRATED MAINTENANCE AI</span><span>DEMO SCENARIO</span></div>
+    <div class="pagenum">05</div>
+  </section>
+
+  <!-- ============================================================ 11b TARGET ARCHITECTURE -->
+  <section class="slide tone-dark" data-title="목표 아키텍처">
+    <div class="eyebrow">05 <span class="sep">/</span> TARGET ARCHITECTURE</div>
+    <h1 class="slide-title">수리온 계열 적용을 전제로 한 <span class="hl">폐쇄망 목표 아키텍처</span></h1>
+    <div class="rule"></div>
+    <div class="slide-body arch-split">
+      <div class="arch-col" data-step="1">
+        <div class="arch">
+          <div class="arch-layer">
+            <div class="arch-k">01 · 군 정비 데이터 영역 <em>수리온 계열</em></div>
+            <div class="arch-row">
+              <span>승인된 기술교범</span><span>작업카드</span><span>정비이력</span><span>상태 · 검사정보</span>
+            </div>
+          </div>
+          <div class="arch-dn">↓ 연계 인터페이스 <small>구체 API·DB 방식은 미확정</small></div>
+          <div class="arch-layer">
+            <div class="arch-k">02 · 데이터 표준화 · 연계 영역</div>
+            <div class="arch-row">
+              <span>문서 구조화</span><span>정비 데이터 표준화</span><span>메타데이터 · 정비코드 연계</span>
+            </div>
+          </div>
+          <div class="arch-dn">↓ 폐쇄망 · 온프레미스 <small>외부 인터넷 · 상용 AI 미사용</small></div>
+          <div class="arch-layer ink">
+            <div class="arch-k">03 · 폐쇄망 AI 정비지원 영역</div>
+            <div class="arch-row">
+              <span class="on">AI Orchestrator</span>
+              <span>내부망 RAG 검색</span>
+              <span>유사 정비이력 검색</span>
+              <span>근거 · 출처 검증</span>
+              <span>정비지원 정보 생성</span>
+            </div>
+          </div>
+          <div class="arch-dn">↓ 판단근거 제공 · 원인 확정 아님</div>
+          <div class="arch-layer">
+            <div class="arch-k">04 · 정비지원 서비스 영역</div>
+            <div class="arch-row">
+              <span>교범 원문 · Task 제시</span>
+              <span>유사 정비사례 비교</span>
+              <span>점검 우선순위 제안</span>
+              <span>3D Digital Twin 연계</span>
+            </div>
+          </div>
+          <div class="arch-dn">↓ Human-in-the-loop</div>
+          <div class="arch-layer human">
+            <div class="arch-k">05 · 정비사 · 검사자 최종 판단</div>
+            <div class="arch-row">
+              <span>근거 확인</span><span>최종 판단 · 승인</span><span>정비 수행</span><span>결과 기록</span>
+            </div>
+          </div>
+          <div class="arch-fb">Feedback Loop · 정비 결과가 다시 정비이력 · 지식자산으로 축적되어 이후 유사사례 검색에 활용</div>
+        </div>
+      </div>
+
+      <aside class="arch-viz" data-step="2" aria-label="온프레미스 인프라 구성도">
+        <img class="inf-art" src="assets/onprem-infra.png" alt="폐쇄망 AI On-Premise 구성: 외부 접근 차단, 내부 RAG 검색, 기술교범·작업카드·정비이력·상태검사·3D 연계 DB" />
+      </aside>
+    </div>
+    <div class="runhead"><span>AIRCRAFT INTEGRATED MAINTENANCE AI</span><span>SURION · ON-PREM · CLOSED NETWORK · HITL</span></div>
+    <div class="pagenum">06</div>
+  </section>
+
+  <!-- ============================================================ 06 LIVE PROTOTYPE -->
+  <section class="slide" data-title="시제품 바로가기">
+    <div class="eyebrow">06 <span class="sep">/</span> LIVE PROTOTYPE</div>
+    <div class="slide-body live-body">
+      <a class="live-go js-ext" href="../" target="_blank" rel="noopener noreferrer">
+        <span class="live-go-k">OPEN PROTOTYPE</span>
+        <span class="live-go-t">시제품 열기</span>
+      </a>
+    </div>
+    <div class="runhead"><span>AIRCRAFT INTEGRATED MAINTENANCE AI</span><span>GITHUB PAGES · DEMO MODE</span></div>
+    <div class="pagenum">07</div>
+  </section>
+
+  </div><!-- /#stage -->
+</div><!-- /#viewport -->
+
+<div id="hud">
+  <div class="hud-info" id="counter">01 / 18</div>
+  <div class="dots" id="dots"></div>
+  <div class="hud-hint"><kbd>→</kbd> 다음 <kbd>←</kbd> 이전 <kbd>Space</kbd> 진행 <kbd>F</kbd> 전체화면 <kbd>Esc</kbd> 해제</div>
+</div>
+
+<script src="js/deck.js"></script>
+</body>
+</html>
