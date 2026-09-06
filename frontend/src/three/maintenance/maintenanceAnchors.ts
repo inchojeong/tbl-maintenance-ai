@@ -1,6 +1,9 @@
 /**
- * Engine bay anchors — retuned for cutaway “installed in cowling” look.
- * Prototype visualization — illustrative UH-60/T700 placement.
+ * Engine bay / powertrain anchors — cutaway “installed in cowling” look.
+ *
+ * Internal engine, drivetrain, gearbox and rotor-mast geometry is an
+ * illustrative prototype visualization and is not an exact reproduction
+ * of the UH-60 internal configuration.
  */
 
 import { UH60_FIT, ENGINE_ASSEMBLY_SCALE } from "./uh60Fit";
@@ -13,38 +16,51 @@ const hub = UH60_FIT.mainRotorHub;
  * Twin engines slightly forward of transmission, low enough to sit in upper deck,
  * closer to centerline so they read as bay-mounted (not outboard pods).
  */
-export const ENGINE_LEFT_ANCHOR: Vec3 = [-0.3, UH60_FIT.upperDeckY, hub[2] + 0.18];
-export const ENGINE_RIGHT_ANCHOR: Vec3 = [0.3, UH60_FIT.upperDeckY, hub[2] + 0.18];
+export const ENGINE_LEFT_ANCHOR: Vec3 = [-0.32, UH60_FIT.upperDeckY, hub[2] + 0.2];
+export const ENGINE_RIGHT_ANCHOR: Vec3 = [0.32, UH60_FIT.upperDeckY, hub[2] + 0.2];
 
 /** Mild nose-up + inboard yaw so exhaust aims at central gearbox */
-export const ENGINE_LEFT_ROTATION: Vec3 = [0.06, 0.14, 0.02];
-export const ENGINE_RIGHT_ROTATION: Vec3 = [0.06, -0.14, -0.02];
+export const ENGINE_LEFT_ROTATION: Vec3 = [0.05, 0.16, 0.02];
+export const ENGINE_RIGHT_ROTATION: Vec3 = [0.05, -0.16, -0.02];
 
 export const ENGINE_PRIMARY_ANCHOR = ENGINE_LEFT_ANCHOR;
 export const ENGINE_PRIMARY_ROTATION = ENGINE_LEFT_ROTATION;
 
-export const GEARBOX_ANCHOR: Vec3 = [0, UH60_FIT.upperDeckY + 0.04, hub[2]];
-export const MAST_TOP: Vec3 = [hub[0], hub[1] + 0.08, hub[2]];
+/** Main gearbox under rotor mast (illustrative) */
+export const GEARBOX_ANCHOR: Vec3 = [0, UH60_FIT.upperDeckY + 0.06, hub[2]];
+/** Top of internal mast stub — meets exterior main rotor context */
+export const MAST_TOP: Vec3 = [hub[0], hub[1] + 0.1, hub[2]];
+export const MAST_BOTTOM: Vec3 = [
+  GEARBOX_ANCHOR[0],
+  GEARBOX_ANCHOR[1] + 0.12,
+  GEARBOX_ANCHOR[2],
+];
+
+/** Local aft tip of nacelle (output / exhaust) before scale */
+export const ENGINE_OUTPUT_LOCAL: Vec3 = [0, 0, -0.28];
 
 export const HYDRAULIC_ANCHOR: Vec3 = [0.12, 1.12, 0.05];
 export const GENERATOR_ANCHOR: Vec3 = [-0.38, 1.55, hub[2] + 0.38];
 
 /**
  * Oil parts attached to nacelle (local): outboard/lower/housing side for left engine.
- * −X = outboard on No.1 (left).
+ * −X = outboard on No.1 (left). Tuned to sit on housing surface.
  */
 export const ENGINE_REL = {
-  length: 0.52,
-  diameter: 0.22,
-  OIL_FILTER: [-0.11, -0.085, 0.04] as Vec3,
-  OIL_PUMP: [0.04, -0.11, -0.04] as Vec3,
-  PRESSURE_SENSOR: [-0.12, -0.02, 0.13] as Vec3,
+  length: 0.56,
+  diameter: 0.24,
+  OIL_FILTER: [-0.125, -0.02, 0.02] as Vec3,
+  OIL_PUMP: [0.02, -0.125, -0.02] as Vec3,
+  PRESSURE_SENSOR: [-0.11, 0.02, 0.14] as Vec3,
+  /** Pump → filter → sensor flow along housing */
   OIL_PIPE: [
-    [0.02, -0.1, -0.03],
-    [-0.04, -0.1, 0.0],
-    [-0.09, -0.09, 0.04],
-    [-0.11, -0.05, 0.09],
-    [-0.12, -0.02, 0.12],
+    [0.02, -0.12, -0.02],
+    [-0.02, -0.11, 0.0],
+    [-0.07, -0.08, 0.02],
+    [-0.11, -0.04, 0.04],
+    [-0.125, -0.02, 0.04],
+    [-0.12, 0.0, 0.09],
+    [-0.11, 0.02, 0.13],
   ] as Vec3[],
 } as const;
 
@@ -89,59 +105,88 @@ export function worldFromHydraulicRel(rel: Vec3): Vec3 {
   return worldFromAnchorRel(HYDRAULIC_ANCHOR, rel);
 }
 
-/** Apply assembly scale + approximate yaw (inboard) for world tip positions. */
-export function worldFromPrimaryRel(rel: Vec3): Vec3 {
-  const s = ENGINE_ASSEMBLY_SCALE;
-  const yaw = ENGINE_PRIMARY_ROTATION[1];
+/** World point from engine local offset (scale + yaw approx). */
+export function worldFromEngineRel(
+  anchor: Vec3,
+  rotation: Vec3,
+  rel: Vec3,
+  scale = ENGINE_ASSEMBLY_SCALE,
+): Vec3 {
+  const yaw = rotation[1];
   const cos = Math.cos(yaw);
   const sin = Math.sin(yaw);
-  const lx = rel[0] * s;
-  const ly = rel[1] * s;
-  const lz = rel[2] * s;
-  // Yaw around Y
+  const lx = rel[0] * scale;
+  const ly = rel[1] * scale;
+  const lz = rel[2] * scale;
   const rx = lx * cos + lz * sin;
   const rz = -lx * sin + lz * cos;
-  return [
-    ENGINE_PRIMARY_ANCHOR[0] + rx,
-    ENGINE_PRIMARY_ANCHOR[1] + ly,
-    ENGINE_PRIMARY_ANCHOR[2] + rz,
-  ];
+  return [anchor[0] + rx, anchor[1] + ly, anchor[2] + rz];
 }
+
+/** Apply assembly scale + approximate yaw (inboard) for world tip positions. */
+export function worldFromPrimaryRel(rel: Vec3): Vec3 {
+  return worldFromEngineRel(
+    ENGINE_PRIMARY_ANCHOR,
+    ENGINE_PRIMARY_ROTATION,
+    rel,
+  );
+}
+
+/** Gearbox side ports where drive shafts meet */
+export const GEARBOX_PORT_LEFT: Vec3 = addVec(GEARBOX_ANCHOR, [-0.1, -0.01, 0.04]);
+export const GEARBOX_PORT_RIGHT: Vec3 = addVec(GEARBOX_ANCHOR, [0.1, -0.01, 0.04]);
+
+export const DRIVE_SHAFT_LEFT_PATH: Vec3[] = [
+  worldFromEngineRel(ENGINE_LEFT_ANCHOR, ENGINE_LEFT_ROTATION, ENGINE_OUTPUT_LOCAL),
+  addVec(
+    worldFromEngineRel(ENGINE_LEFT_ANCHOR, ENGINE_LEFT_ROTATION, ENGINE_OUTPUT_LOCAL),
+    [0.04, 0.01, -0.06],
+  ),
+  GEARBOX_PORT_LEFT,
+];
+
+export const DRIVE_SHAFT_RIGHT_PATH: Vec3[] = [
+  worldFromEngineRel(ENGINE_RIGHT_ANCHOR, ENGINE_RIGHT_ROTATION, ENGINE_OUTPUT_LOCAL),
+  addVec(
+    worldFromEngineRel(ENGINE_RIGHT_ANCHOR, ENGINE_RIGHT_ROTATION, ENGINE_OUTPUT_LOCAL),
+    [-0.04, 0.01, -0.06],
+  ),
+  GEARBOX_PORT_RIGHT,
+];
 
 export const ENGINE_CAMERAS = {
   zoneGuide: {
     cameraPosition: [4.8, 2.6, 4.2] as Vec3,
     cameraTarget: [0.0, 1.45, 0.2] as Vec3,
   },
-  /** 3/4 side cutaway — engines readable inside ghost fuselage */
+  /** 3/4 side — twin engines + gearbox + mast readable */
   system: {
-    cameraPosition: [3.6, 1.75, 0.85] as Vec3,
-    cameraTarget: [0.0, 1.48, 0.22] as Vec3,
+    cameraPosition: [3.9, 2.05, 1.35] as Vec3,
+    cameraTarget: [0.0, 1.55, 0.18] as Vec3,
   },
   leftAssembly: {
-    cameraPosition: [1.15, 1.62, 0.55] as Vec3,
+    cameraPosition: [1.95, 1.82, 1.45] as Vec3,
     cameraTarget: [
-      ENGINE_LEFT_ANCHOR[0],
-      ENGINE_LEFT_ANCHOR[1] + 0.02,
-      ENGINE_LEFT_ANCHOR[2],
+      ENGINE_LEFT_ANCHOR[0] * 0.55,
+      ENGINE_LEFT_ANCHOR[1] + 0.04,
+      ENGINE_LEFT_ANCHOR[2] * 0.7 + 0.05,
     ] as Vec3,
   },
   sensor: {
-    cameraPosition: [0.55, 1.58, 0.72] as Vec3,
+    cameraPosition: [0.95, 1.68, 1.15] as Vec3,
     cameraTarget: worldFromPrimaryRel(ENGINE_REL.PRESSURE_SENSOR),
   },
   filter: {
-    cameraPosition: [0.45, 1.48, 0.65] as Vec3,
+    cameraPosition: [0.75, 1.58, 1.05] as Vec3,
     cameraTarget: worldFromPrimaryRel(ENGINE_REL.OIL_FILTER),
   },
   pump: {
-    cameraPosition: [0.7, 1.42, 0.55] as Vec3,
+    cameraPosition: [1.05, 1.48, 0.95] as Vec3,
     cameraTarget: worldFromPrimaryRel(ENGINE_REL.OIL_PUMP),
   },
 } as const;
 
 export const GENERATOR_CAMERAS = {
-  /** Wide SYSTEM — aircraft fills frame; generator location readable */
   system: {
     cameraPosition: [5.4, 2.9, 5.8] as Vec3,
     cameraTarget: [0.0, 1.35, 0.15] as Vec3,
@@ -200,9 +245,18 @@ export const MAINTENANCE_ANCHORS = {
   ENGINE_RIGHT: ENGINE_RIGHT_ANCHOR,
   ENGINE_PRIMARY: ENGINE_PRIMARY_ANCHOR,
   GEARBOX: GEARBOX_ANCHOR,
+  MAST_TOP,
   HYDRAULIC: HYDRAULIC_ANCHOR,
   GENERATOR: GENERATOR_ANCHOR,
 } as const;
+
+/** Context-only object ids (not drill-down components) */
+export const POWERTRAIN_CONTEXT_IDS = [
+  "DRIVE_SHAFT_LEFT",
+  "DRIVE_SHAFT_RIGHT",
+  "MAIN_GEARBOX",
+  "ROTOR_MAST",
+] as const;
 
 export const COMPONENT_VIEW_TARGET: Record<string, string> = {
   PRESSURE_SENSOR: "ENGINE_PRESSURE_SENSOR",

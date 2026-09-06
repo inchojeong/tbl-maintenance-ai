@@ -153,4 +153,21 @@ Installed-bay look (not floating pods):
 
 Callouts: screen-space side rails (`CutawayAnnotationOverlay` + `AnnotationProjector`), short elbow leaders, endpoint dots. Legacy world Html callout removed.
 
-Oil REL (No.1 local): filter `[-0.11,-0.085,0.04]`, pump `[0.04,-0.11,-0.04]`, sensor `[-0.12,-0.02,0.13]`.
+Oil REL (No.1 local): filter `[-0.125,-0.02,0.02]`, pump `[0.02,-0.125,-0.02]`, sensor `[-0.11,0.02,0.14]`.
+
+## 13. Internal powertrain (connected cutaway)
+
+```text
+INTERNAL_POWERTRAIN
+ ├─ ENGINE_SYSTEM (No.1 + No.2)
+ ├─ DRIVE_SYSTEM (DRIVE_SHAFT_LEFT / RIGHT)
+ ├─ MAIN_GEARBOX
+ └─ ROTOR_MAST
+```
+
+Internal engine, drivetrain, gearbox and rotor-mast geometry is an illustrative
+prototype visualization and is not an exact reproduction of the UH-60 internal
+configuration.
+
+Context objects (`POWERTRAIN_CONTEXT_OBJECTS`) are visual-only — not drill-down
+targets. Maintenance clicks remain ENGINE_BLOCK / oil parts.

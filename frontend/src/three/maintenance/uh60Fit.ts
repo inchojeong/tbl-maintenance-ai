@@ -16,22 +16,22 @@ export const UH60_FIT = {
   center: [0, 1.15, 0] as [number, number, number],
   /** Upper cowling deck — engines sit inside this band */
   upperDeckY: 1.48,
-  mainRotorHub: [0, 1.72, 0.12] as [number, number, number],
+  mainRotorHub: [0, 1.78, 0.15] as [number, number, number],
 } as const;
 
 /** Ghost shell — stronger hierarchy vs internal metal */
 export const EXTERIOR_OPACITY_BY_LEVEL: Record<InspectionLevel, number> = {
   EXTERIOR: 1,
   SYSTEM: 0.16,
-  ASSEMBLY: 0.08,
-  COMPONENT: 0.05,
+  ASSEMBLY: 0.12,
+  COMPONENT: 0.08,
 };
 
 export const ROTOR_EXTRA_OPACITY_FACTOR: Record<InspectionLevel, number> = {
   EXTERIOR: 1,
-  SYSTEM: 0.35,
-  ASSEMBLY: 0.12,
-  COMPONENT: 0.08,
+  SYSTEM: 0.45,
+  ASSEMBLY: 0.55,
+  COMPONENT: 0.4,
 };
 
 export const EXTERIOR_XRAY_OPACITY = EXTERIOR_OPACITY_BY_LEVEL.SYSTEM;

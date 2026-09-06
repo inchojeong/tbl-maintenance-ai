@@ -47,6 +47,15 @@ import {
   toActiveMaintenanceSystem,
   toLegacyInspectionSystem,
 } from "../three/maintenance/activeMaintenanceSystem";
+import {
+  CLICK_TRANSITION_LOCK_MS,
+  nextInspectionLevel,
+  resolveEngineOilClick,
+} from "../three/maintenance/inspectionClick";
+import {
+  resetPointerGesture,
+  wasDragGesture,
+} from "../three/maintenance/pointerGesture";
 import type { ActiveMaintenanceSystem } from "../types/diagnosis";
 import { useAnnotationStore } from "../three/annotationStore";
 
@@ -207,6 +216,8 @@ interface AppState {
   activeBottomTab: BottomTab;
   modelWarning: string | null;
   cameraAnimating: boolean;
+  /** Ignore drill-down clicks until this timestamp (ms). */
+  clickLockUntil: number;
   activeAreaId: AreaId | null;
   activeFault: ResolvedFault | null;
   areaLoadStatus: AreaLoadStatus;
@@ -365,6 +376,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   activeBottomTab: "guide",
   modelWarning: null,
   cameraAnimating: false,
+  clickLockUntil: 0,
   activeAreaId: null,
   activeFault: null,
   areaLoadStatus: "idle",
@@ -704,6 +716,25 @@ export const useAppStore = create<AppState>((set, get) => ({
   },
 
   selectObject: (objectId) => {
+    if (wasDragGesture()) {
+      resetPointerGesture();
+      return;
+    }
+    resetPointerGesture();
+
+    const now = Date.now();
+    if (get().cameraAnimating || now < get().clickLockUntil) {
+      if (import.meta.env.DEV) {
+        // eslint-disable-next-line no-console
+        console.debug("[3D Click] blocked (transition lock)", {
+          id: objectId,
+          cameraAnimating: get().cameraAnimating,
+          clickLockUntil: get().clickLockUntil,
+        });
+      }
+      return;
+    }
+
     const legacy =
       objectId === "AREA_01_HOTSPOT"
         ? "ENGINE_ZONE"
@@ -724,64 +755,64 @@ export const useAppStore = create<AppState>((set, get) => ({
                       : objectId;
 
     const level = get().inspectionLevel;
+    const active = get().activeMaintenanceSystem;
 
-    if (
-      legacy === "ENGINE_ZONE" ||
-      objectId === "ENGINE_ZONE_MARKER" ||
-      objectId === "AREA_01_HOTSPOT"
-    ) {
-      get().enterInspectionSystem();
-      return;
-    }
+    // Engine oil: exactly one level per click (never skip SYSTEM/ASSEMBLY).
+    if (!active || active === "ENGINE_OIL") {
+      const action = resolveEngineOilClick(level, objectId);
+      const next =
+        action.type === "system"
+          ? "SYSTEM"
+          : action.type === "assembly"
+            ? "ASSEMBLY"
+            : action.type === "component"
+              ? "COMPONENT"
+              : null;
 
-    if (
-      legacy === "ENGINE_BLOCK" ||
-      objectId === "ENGINE_LEFT" ||
-      objectId === "ENGINE_LEFT_HIT"
-    ) {
-      if (level === "EXTERIOR" || level === "SYSTEM") {
-        get().enterInspectionAssembly("ENGINE_LEFT");
-        return;
-      }
-      if (level === "ASSEMBLY" || level === "COMPONENT") {
-        get().enterInspectionAssembly("ENGINE_LEFT");
-        return;
-      }
-    }
-
-    if (objectId === "ENGINE_RIGHT" || objectId === "ENGINE_RIGHT_HIT") {
-      get().enterInspectionAssembly("ENGINE_RIGHT");
-      return;
-    }
-
-    const oilParts = [
-      "OIL_FILTER",
-      "PRESSURE_SENSOR",
-      "OIL_PUMP",
-      "OIL_PIPE_MAIN",
-    ];
-    if (oilParts.includes(legacy)) {
-      if (get().activeMaintenanceSystem !== "ENGINE_OIL") return;
-      if (level === "EXTERIOR" || level === "SYSTEM") {
-        set({
-          selectedAssembly: "ENGINE_LEFT",
-          activeMaintenanceSystem: "ENGINE_OIL",
-          inspectionSystem: "ENGINE_OIL",
+      if (import.meta.env.DEV) {
+        // eslint-disable-next-line no-console
+        console.debug("[3D Click]", {
+          level,
+          raw: objectId,
+          resolved:
+            action.type === "assembly"
+              ? action.assembly
+              : action.type === "component"
+                ? action.partId
+                : action.type === "system"
+                  ? "ENGINE_ZONE"
+                  : `ignore:${action.reason}`,
+          next: next ?? nextInspectionLevel(level),
+          selectedPart:
+            action.type === "component"
+              ? action.partId
+              : get().selectedMaintenancePart,
         });
       }
-      get().enterInspectionComponent(legacy);
-      return;
+
+      if (action.type === "system") {
+        set({ clickLockUntil: now + CLICK_TRANSITION_LOCK_MS });
+        get().enterInspectionSystem();
+        return;
+      }
+      if (action.type === "assembly") {
+        set({ clickLockUntil: now + CLICK_TRANSITION_LOCK_MS });
+        get().enterInspectionAssembly(action.assembly);
+        return;
+      }
+      if (action.type === "component") {
+        set({ clickLockUntil: now + CLICK_TRANSITION_LOCK_MS });
+        get().enterInspectionComponent(action.partId);
+        return;
+      }
+      if (active === "ENGINE_OIL") return;
     }
 
     const genParts = ["GENERATOR", "GENERATOR_CONTROL", "GENERATOR_WIRING"];
     if (genParts.includes(legacy) || legacy === "ELECTRICAL_ZONE") {
-      if (
-        get().activeMaintenanceSystem &&
-        get().activeMaintenanceSystem !== "GENERATOR"
-      ) {
-        return;
-      }
+      if (active && active !== "GENERATOR") return;
       set({
+        clickLockUntil: now + CLICK_TRANSITION_LOCK_MS,
         activeMaintenanceSystem: "GENERATOR",
         inspectionSystem: "ELECTRICAL",
       });
@@ -797,13 +828,9 @@ export const useAppStore = create<AppState>((set, get) => ({
 
     const hydParts = ["HYDRAULIC_PUMP", "HYDRAULIC_SENSOR", "HYDRAULIC_LINE"];
     if (hydParts.includes(legacy) || legacy === "HYDRAULIC_ZONE") {
-      if (
-        get().activeMaintenanceSystem &&
-        get().activeMaintenanceSystem !== "HYDRAULIC"
-      ) {
-        return;
-      }
+      if (active && active !== "HYDRAULIC") return;
       set({
+        clickLockUntil: now + CLICK_TRANSITION_LOCK_MS,
         activeMaintenanceSystem: "HYDRAULIC",
         inspectionSystem: "HYDRAULIC",
       });

@@ -62,6 +62,9 @@ export function CameraController({ controlsRef }: Props) {
       },
     });
 
+    // Keep drill-down transitions snappy (~400–600ms) for one-click feel.
+    const duration = Math.min(0.6, Math.max(0.4, cfg.duration ?? 0.55));
+
     tl.to(proxy, {
       px: toPos.x,
       py: toPos.y,
@@ -69,13 +72,15 @@ export function CameraController({ controlsRef }: Props) {
       tx: toTarget.x,
       ty: toTarget.y,
       tz: toTarget.z,
-      duration: cfg.duration ?? 1.2,
+      duration,
       ease: "power2.inOut",
     });
 
     tweenRef.current = tl;
     return () => {
       tl.kill();
+      if (controls) controls.enabled = true;
+      setCameraAnimating(false);
     };
   }, [viewTargetId, camera, controlsRef, setCameraAnimating]);
 

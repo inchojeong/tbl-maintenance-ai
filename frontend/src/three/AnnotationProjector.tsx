@@ -27,10 +27,6 @@ export function AnnotationProjector() {
         selectedPart: part,
         recommendedPart: recommended,
         hoveredPart: hovered,
-      }).map((s) => {
-        // Prefer rail on the same side as the target in world X (left = −X)
-        const preferLeft = s.world[0] < 0;
-        return { ...s, side: preferLeft ? ("left" as const) : ("right" as const) };
       }),
     [active, level, part, recommended, hovered],
   );

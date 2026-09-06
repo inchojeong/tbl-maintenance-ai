@@ -10,8 +10,8 @@ import { labelComponent } from "../../services/displayLabels";
 import type { AnnotationSpec } from "../annotationStore";
 import {
   ENGINE_LEFT_ANCHOR,
-  ENGINE_RIGHT_ANCHOR,
   ENGINE_REL,
+  GEARBOX_ANCHOR,
   GENERATOR_ANCHOR,
   GENERATOR_REL,
   HYDRAULIC_ANCHOR,
@@ -45,13 +45,13 @@ function oilAnnotations(ctx: AnnotationContext): AnnotationSpec[] {
         clickId: "ENGINE_BLOCK",
       },
       {
-        id: "NO2",
-        world: ENGINE_RIGHT_ANCHOR,
+        id: "GBX",
+        world: GEARBOX_ANCHOR,
         side: "right",
-        title: "No.2 엔진",
-        subtitle: "비교·참조",
+        title: "메인기어박스",
+        subtitle: "동력 전달부",
         accent: false,
-        clickId: "ENGINE_RIGHT",
+        clickId: undefined,
       },
     ];
   }
@@ -101,11 +101,13 @@ function oilAnnotations(ctx: AnnotationContext): AnnotationSpec[] {
         : focus === "PRESSURE_SENSOR"
           ? worldFromPrimaryRel(ENGINE_REL.PRESSURE_SENSOR)
           : ENGINE_LEFT_ANCHOR;
+  const side =
+    focus === "OIL_FILTER" || focus === "OIL_PUMP" ? "left" : "right";
   return [
     {
       id: "FOCUS",
       world,
-      side: "right",
+      side,
       title: labelComponent(focus),
       subtitle:
         recommendedPart === focus || focus === selectedPart

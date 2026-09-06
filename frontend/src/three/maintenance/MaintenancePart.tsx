@@ -39,7 +39,7 @@ export function PartMaterial({
       transparent={transparent || opacity < 0.99 || selected}
       opacity={opacity}
       emissive={selected ? HIGHLIGHT : hovered ? "#78350f" : "#000000"}
-      emissiveIntensity={selected ? 0.75 : hovered ? 0.25 : 0}
+      emissiveIntensity={selected ? 0.95 : hovered ? 0.28 : 0}
       depthWrite={!transparent && opacity > 0.5}
       metalness={selected ? 0.35 : metalness}
       roughness={selected ? 0.35 : roughness}

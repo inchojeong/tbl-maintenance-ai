@@ -1,3 +1,4 @@
+import { Html } from "@react-three/drei";
 import {
   ClickableMesh,
   PartMaterial,
@@ -26,10 +27,32 @@ function dimFactor(
   muted: boolean,
   partSelected: boolean,
   anyComponentSelected: boolean,
+  kind: "body" | "oil" = "body",
 ): number {
-  if (muted) return level === "ASSEMBLY" || level === "COMPONENT" ? 0.28 : 0.45;
-  if (level === "COMPONENT" && anyComponentSelected && !partSelected) return 0.4;
+  if (muted) {
+    return level === "ASSEMBLY" || level === "COMPONENT" ? 0.3 : 0.45;
+  }
+  if (level === "COMPONENT" && anyComponentSelected) {
+    if (partSelected) return 1;
+    return kind === "oil" ? 0.32 : 0.42;
+  }
+  // ASSEMBLY: oil parts slightly brighter than engine body
+  if (level === "ASSEMBLY" && kind === "oil") return 1.08;
   return 1;
+}
+
+function hitRadiusFor(
+  partId: string,
+  recommended: string | null,
+): number {
+  const base =
+    partId === "PRESSURE_SENSOR"
+      ? 0.11
+      : partId === "OIL_FILTER" || partId === "OIL_PUMP"
+        ? 0.14
+        : 0.12;
+  if (recommended === partId) return base * 1.75;
+  return base * 1.35;
 }
 
 /**
@@ -48,6 +71,7 @@ export function EngineAssemblyModel({
   const hovered = useAppStore((s) => s.hoveredMaintenancePart);
   const setHovered = useAppStore((s) => s.setHoveredMaintenancePart);
   const selectedPart = useAppStore((s) => s.selectedMaintenancePart);
+  const recommended = useAppStore((s) => s.recommendedMaintenancePart);
 
   const pipeGeo = useTubeGeometry(
     [...ENGINE_REL.OIL_PIPE] as [number, number, number][],
@@ -62,15 +86,18 @@ export function EngineAssemblyModel({
   });
 
   const showOil =
-    withOilSystem &&
-    (level === "ASSEMBLY" || level === "COMPONENT" || level === "SYSTEM");
+    withOilSystem && (level === "ASSEMBLY" || level === "COMPONENT");
   const oilInteractive = level === "ASSEMBLY" || level === "COMPONENT";
-  const blockInteractive =
-    primary && (level === "SYSTEM" || level === "ASSEMBLY" || level === "COMPONENT");
+  // SYSTEM only: engine body advances one step to ASSEMBLY (never at ASSEMBLY+)
+  const blockInteractive = primary && level === "SYSTEM";
 
   const block = state("ENGINE_BLOCK");
   const anyComp = Boolean(selectedPart);
-  const bodyDim = dimFactor(level, muted, false, anyComp);
+  const bodyDim = dimFactor(level, muted, false, anyComp, "body");
+  const oilDim = (id: string) =>
+    dimFactor(level, false, state(id).selected, anyComp, "oil");
+
+  const engineHovered = hovered === "ENGINE_BLOCK" || hovered === "ENGINE_LEFT";
 
   return (
     <group name="ENGINE_ASSEMBLY">
@@ -85,7 +112,8 @@ export function EngineAssemblyModel({
         }
         onPointerOver={
           blockInteractive
-            ? () => {
+            ? (e) => {
+                e.stopPropagation();
                 document.body.style.cursor = "pointer";
                 setHovered("ENGINE_BLOCK");
               }
@@ -109,16 +137,38 @@ export function EngineAssemblyModel({
 
       {primary && blockInteractive && !block.hidden ? (
         <mesh
-          name="ENGINE_LEFT_HIT"
+          name="ENGINE_LEFT_HIT_AREA"
           rotation={[Math.PI / 2, 0, 0]}
           onClick={(e) => {
             e.stopPropagation();
-            onObjectClick("ENGINE_BLOCK");
+            onObjectClick("ENGINE_LEFT_HIT_AREA");
+          }}
+          onPointerOver={(e) => {
+            e.stopPropagation();
+            document.body.style.cursor = "pointer";
+            setHovered("ENGINE_BLOCK");
+          }}
+          onPointerOut={() => {
+            document.body.style.cursor = "auto";
+            setHovered(null);
           }}
         >
-          <cylinderGeometry args={[0.16, 0.16, 0.55, 16]} />
+          <cylinderGeometry args={[0.28, 0.28, 0.72, 16]} />
           <meshBasicMaterial transparent opacity={0} depthWrite={false} />
         </mesh>
+      ) : null}
+
+      {primary && blockInteractive && engineHovered ? (
+        <Html
+          position={[0, 0.22, 0]}
+          center
+          distanceFactor={8}
+          style={{ pointerEvents: "none" }}
+        >
+          <div className="rounded bg-slate-950/85 px-1.5 py-0.5 text-[8px] text-amber-100 whitespace-nowrap ring-1 ring-amber-500/45">
+            No.1 엔진 · 클릭하여 내부 보기
+          </div>
+        </Html>
       ) : null}
 
       {showOil ? (
@@ -129,7 +179,7 @@ export function EngineAssemblyModel({
                 name="OIL_FILTER"
                 position={[0, 0, 0]}
                 {...state("OIL_FILTER")}
-                dimmed={dimFactor(level, false, state("OIL_FILTER").selected, anyComp) < 0.9}
+                dimmed={oilDim("OIL_FILTER") < 0.9}
                 interactive={oilInteractive}
                 hovered={hovered === "OIL_FILTER"}
                 onObjectClick={onObjectClick}
@@ -137,30 +187,37 @@ export function EngineAssemblyModel({
               >
                 <cylinderGeometry args={[0.05, 0.05, 0.13, 16]} />
                 <PartMaterial
-                  color="#b45309"
+                  color="#d97706"
                   selected={state("OIL_FILTER").selected}
                   transparent={state("OIL_FILTER").transparent}
                   hovered={hovered === "OIL_FILTER"}
                   metalness={0.35}
-                  roughness={0.45}
-                  opacityScale={dimFactor(
-                    level,
-                    false,
-                    state("OIL_FILTER").selected,
-                    anyComp,
-                  )}
+                  roughness={0.4}
+                  opacityScale={oilDim("OIL_FILTER")}
                 />
               </ClickableMesh>
               {oilInteractive ? (
                 <HitProxy
                   name="OIL_FILTER"
-                  radius={0.09}
+                  radius={hitRadiusFor("OIL_FILTER", recommended)}
                   onObjectClick={onObjectClick}
                   onHover={setHovered}
                 />
               ) : null}
-              {state("OIL_FILTER").selected ? (
-                <HighlightRing radius={0.09} />
+              {state("OIL_FILTER").selected || hovered === "OIL_FILTER" ? (
+                <HighlightRing radius={0.1} />
+              ) : null}
+              {hovered === "OIL_FILTER" ? (
+                <Html
+                  position={[0, 0.12, 0]}
+                  center
+                  distanceFactor={6}
+                  style={{ pointerEvents: "none" }}
+                >
+                  <div className="rounded bg-slate-950/85 px-1 py-0.5 text-[7px] text-amber-100 whitespace-nowrap">
+                    오일 필터
+                  </div>
+                </Html>
               ) : null}
             </group>
           ) : null}
@@ -171,7 +228,7 @@ export function EngineAssemblyModel({
                 name="OIL_PUMP"
                 position={[0, 0, 0]}
                 {...state("OIL_PUMP")}
-                dimmed={dimFactor(level, false, state("OIL_PUMP").selected, anyComp) < 0.9}
+                dimmed={oilDim("OIL_PUMP") < 0.9}
                 interactive={oilInteractive}
                 hovered={hovered === "OIL_PUMP"}
                 onObjectClick={onObjectClick}
@@ -179,29 +236,38 @@ export function EngineAssemblyModel({
               >
                 <boxGeometry args={[0.1, 0.08, 0.09]} />
                 <PartMaterial
-                  color="#1e3a5f"
+                  color="#2563eb"
                   selected={state("OIL_PUMP").selected}
                   transparent={state("OIL_PUMP").transparent}
                   hovered={hovered === "OIL_PUMP"}
                   metalness={0.45}
-                  roughness={0.4}
-                  opacityScale={dimFactor(
-                    level,
-                    false,
-                    state("OIL_PUMP").selected,
-                    anyComp,
-                  )}
+                  roughness={0.35}
+                  opacityScale={oilDim("OIL_PUMP")}
                 />
               </ClickableMesh>
               {oilInteractive ? (
                 <HitProxy
                   name="OIL_PUMP"
-                  radius={0.09}
+                  radius={hitRadiusFor("OIL_PUMP", recommended)}
                   onObjectClick={onObjectClick}
                   onHover={setHovered}
                 />
               ) : null}
-              {state("OIL_PUMP").selected ? <HighlightRing radius={0.09} /> : null}
+              {state("OIL_PUMP").selected || hovered === "OIL_PUMP" ? (
+                <HighlightRing radius={0.1} />
+              ) : null}
+              {hovered === "OIL_PUMP" ? (
+                <Html
+                  position={[0, 0.12, 0]}
+                  center
+                  distanceFactor={6}
+                  style={{ pointerEvents: "none" }}
+                >
+                  <div className="rounded bg-slate-950/85 px-1 py-0.5 text-[7px] text-amber-100 whitespace-nowrap">
+                    오일 펌프
+                  </div>
+                </Html>
+              ) : null}
             </group>
           ) : null}
 
@@ -211,41 +277,46 @@ export function EngineAssemblyModel({
                 name="PRESSURE_SENSOR"
                 position={[0, 0, 0]}
                 {...state("PRESSURE_SENSOR")}
-                dimmed={
-                  dimFactor(level, false, state("PRESSURE_SENSOR").selected, anyComp) <
-                  0.9
-                }
+                dimmed={oilDim("PRESSURE_SENSOR") < 0.9}
                 interactive={oilInteractive}
                 hovered={hovered === "PRESSURE_SENSOR"}
                 onObjectClick={onObjectClick}
                 onHover={setHovered}
               >
-                <cylinderGeometry args={[0.025, 0.025, 0.08, 12]} />
+                <cylinderGeometry args={[0.028, 0.028, 0.09, 12]} />
                 <PartMaterial
-                  color="#a16207"
+                  color="#f59e0b"
                   selected={state("PRESSURE_SENSOR").selected}
                   transparent={state("PRESSURE_SENSOR").transparent}
                   hovered={hovered === "PRESSURE_SENSOR"}
-                  metalness={0.55}
-                  roughness={0.28}
-                  opacityScale={dimFactor(
-                    level,
-                    false,
-                    state("PRESSURE_SENSOR").selected,
-                    anyComp,
-                  )}
+                  metalness={0.5}
+                  roughness={0.25}
+                  opacityScale={oilDim("PRESSURE_SENSOR")}
                 />
               </ClickableMesh>
               {oilInteractive ? (
                 <HitProxy
                   name="PRESSURE_SENSOR"
-                  radius={0.1}
+                  radius={hitRadiusFor("PRESSURE_SENSOR", recommended)}
                   onObjectClick={onObjectClick}
                   onHover={setHovered}
                 />
               ) : null}
-              {state("PRESSURE_SENSOR").selected ? (
-                <HighlightRing radius={0.1} />
+              {state("PRESSURE_SENSOR").selected ||
+              hovered === "PRESSURE_SENSOR" ? (
+                <HighlightRing radius={0.11} />
+              ) : null}
+              {hovered === "PRESSURE_SENSOR" ? (
+                <Html
+                  position={[0, 0.12, 0]}
+                  center
+                  distanceFactor={6}
+                  style={{ pointerEvents: "none" }}
+                >
+                  <div className="rounded bg-slate-950/85 px-1 py-0.5 text-[7px] text-amber-100 whitespace-nowrap">
+                    오일 압력 센서
+                  </div>
+                </Html>
               ) : null}
             </group>
           ) : null}
@@ -264,17 +335,12 @@ export function EngineAssemblyModel({
               }
             >
               <PartMaterial
-                color="#78350f"
+                color="#b45309"
                 selected={state("OIL_PIPE_MAIN").selected}
                 transparent={state("OIL_PIPE_MAIN").transparent}
                 metalness={0.3}
-                roughness={0.55}
-                opacityScale={dimFactor(
-                  level,
-                  false,
-                  state("OIL_PIPE_MAIN").selected,
-                  anyComp,
-                )}
+                roughness={0.5}
+                opacityScale={oilDim("OIL_PIPE_MAIN")}
               />
             </mesh>
           ) : null}

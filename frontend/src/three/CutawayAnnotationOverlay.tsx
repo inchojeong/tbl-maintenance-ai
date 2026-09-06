@@ -2,8 +2,10 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { useAnnotationStore } from "./annotationStore";
 import { useAppStore } from "../stores/useAppStore";
 
-const CARD_W = 148;
+const CARD_W = 136;
 const RAIL = 10;
+/** Cap horizontal leader run so lines do not cross the whole viewport */
+const MAX_LEADER_X = 150;
 
 /**
  * Screen-space side-rail callouts. Leader endpoints track projected 3D targets.
@@ -35,14 +37,21 @@ export function CutawayAnnotationOverlay() {
   const left = specs.filter((s) => s.side === "left");
   const right = specs.filter((s) => s.side === "right");
 
+  /** Stable vertical slots — filter above pump on left; sensor tracks target on right */
   const cardYFor = (
     list: typeof specs,
     id: string,
     scrY: number | undefined,
   ) => {
+    if (id === "FILTER") return Math.min(Math.max(56, 52), h - 56);
+    if (id === "PUMP") return Math.min(Math.max(118, 110), h - 56);
+    if (id === "SENSOR" || id === "FOCUS") {
+      const prefer = scrY != null ? scrY - 14 : 72;
+      return Math.min(Math.max(prefer, 48), h - 56);
+    }
     const idx = list.findIndex((x) => x.id === id);
-    const prefer = scrY != null ? scrY - 16 : 56 + idx * 48;
-    return Math.min(Math.max(prefer, 44 + idx * 46), h - 52);
+    const prefer = scrY != null ? scrY - 16 : 56 + idx * 52;
+    return Math.min(Math.max(prefer, 44 + idx * 50), h - 52);
   };
 
   return (
@@ -55,18 +64,21 @@ export function CutawayAnnotationOverlay() {
           const list = isLeft ? left : right;
           const cy = cardYFor(list, s.id, scr.y) + 14;
           const sx = isLeft ? RAIL + CARD_W : w - RAIL - CARD_W;
+          const clampedX = isLeft
+            ? Math.min(scr.x, sx + MAX_LEADER_X)
+            : Math.max(scr.x, sx - MAX_LEADER_X);
           const midX = isLeft
-            ? sx + Math.min(40, Math.max(16, (scr.x - sx) * 0.35))
-            : sx - Math.min(40, Math.max(16, (sx - scr.x) * 0.35));
+            ? sx + Math.min(32, Math.max(14, (clampedX - sx) * 0.4))
+            : sx - Math.min(32, Math.max(14, (sx - clampedX) * 0.4));
           const color = s.accent ? "#f59e0b" : "#94a3b8";
-          const d = `M ${sx} ${cy} L ${midX} ${cy} L ${midX} ${scr.y} L ${scr.x} ${scr.y}`;
+          const d = `M ${sx} ${cy} L ${midX} ${cy} L ${midX} ${scr.y} L ${clampedX} ${scr.y}`;
           return (
             <g key={s.id}>
               <path
                 d={d}
                 fill="none"
                 stroke={color}
-                strokeWidth={1.2}
+                strokeWidth={1.15}
                 strokeOpacity={0.9}
               />
               <circle
@@ -105,11 +117,11 @@ export function CutawayAnnotationOverlay() {
               if (s.clickId) selectObject(s.clickId);
             }}
           >
-            <div className="text-[10px] font-semibold leading-tight">
+            <div className="line-clamp-1 text-[10px] font-semibold leading-tight">
               {s.title}
             </div>
             {s.subtitle ? (
-              <div className="text-[9px] leading-tight text-slate-400">
+              <div className="line-clamp-1 text-[9px] leading-tight text-slate-400">
                 {s.subtitle}
               </div>
             ) : null}

@@ -45,18 +45,35 @@ describe("demoService", () => {
 });
 
 describe("maintenance annotations by active system", () => {
-  it("ENGINE_OIL ASSEMBLY → oil parts only", () => {
+  it("ENGINE_OIL SYSTEM → No.1 engine + gearbox context, no oil parts", () => {
     const clicks = annotationClickIds({
+      active: "ENGINE_OIL",
+      level: "SYSTEM",
+      selectedPart: null,
+      recommendedPart: "PRESSURE_SENSOR",
+      hoveredPart: null,
+    });
+    expect(clicks).toEqual(["ENGINE_BLOCK"]);
+    expect(clicks).not.toContain("PRESSURE_SENSOR");
+    expect(clicks).not.toContain("OIL_FILTER");
+  });
+
+  it("ENGINE_OIL ASSEMBLY → oil parts only", () => {
+    const specs = buildAnnotationsForActiveSystem({
       active: "ENGINE_OIL",
       level: "ASSEMBLY",
       selectedPart: null,
       recommendedPart: "PRESSURE_SENSOR",
       hoveredPart: null,
     });
+    const clicks = specs.map((s) => s.clickId);
     expect(clicks).toEqual(
       expect.arrayContaining(["PRESSURE_SENSOR", "OIL_FILTER", "OIL_PUMP"]),
     );
     expect(clicks).not.toContain("GENERATOR");
+    expect(specs.find((s) => s.id === "SENSOR")?.side).toBe("right");
+    expect(specs.find((s) => s.id === "FILTER")?.side).toBe("left");
+    expect(specs.find((s) => s.id === "PUMP")?.side).toBe("left");
   });
 
   it("GENERATOR SYSTEM → generator only, no oil", () => {
@@ -264,5 +281,122 @@ describe("useAppStore applyViewTarget", () => {
     expect(s.selectedMaintenancePart).toBeNull();
     expect(s.recommendedMaintenancePart).toBe("PRESSURE_SENSOR");
     expect(s.inspectionLevel).toBe("EXTERIOR");
+  });
+
+  it("selectObject advances exactly one level per click", () => {
+    useAppStore.setState({
+      diagnosisResult: {
+        system_code: "ENGINE_OIL",
+        symptom_code: "ENG_OIL_PRESS_LOW",
+        risk_level: "MEDIUM",
+        suspected_components: ["PRESSURE_SENSOR"],
+        answer: "test",
+        manual_ids: [],
+        recommended_steps: [],
+        view_target_id: "ENGINE_ZONE_GUIDE",
+        confidence: 0.9,
+        is_demo: true,
+      },
+      activeMaintenanceSystem: "ENGINE_OIL",
+      cameraAnimating: false,
+      clickLockUntil: 0,
+    });
+    useAppStore.getState().beginEngineOilInspection("PRESSURE_SENSOR");
+    expect(useAppStore.getState().inspectionLevel).toBe("EXTERIOR");
+
+    useAppStore.getState().selectObject("ENGINE_ZONE_HIT_AREA");
+    expect(useAppStore.getState().inspectionLevel).toBe("SYSTEM");
+
+    useAppStore.setState({ cameraAnimating: false, clickLockUntil: 0 });
+    useAppStore.getState().selectObject("ENGINE_LEFT_HIT_AREA");
+    expect(useAppStore.getState().inspectionLevel).toBe("ASSEMBLY");
+
+    useAppStore.setState({ cameraAnimating: false, clickLockUntil: 0 });
+    useAppStore.getState().selectObject("PRESSURE_SENSOR");
+    expect(useAppStore.getState().inspectionLevel).toBe("COMPONENT");
+    expect(useAppStore.getState().selectedMaintenancePart).toBe(
+      "PRESSURE_SENSOR",
+    );
+
+    useAppStore.setState({ cameraAnimating: false, clickLockUntil: 0 });
+    useAppStore.getState().selectObject("OIL_FILTER");
+    expect(useAppStore.getState().inspectionLevel).toBe("COMPONENT");
+    expect(useAppStore.getState().selectedMaintenancePart).toBe("OIL_FILTER");
+  });
+
+  it("selectObject does not skip SYSTEM when oil part clicked early", () => {
+    useAppStore.setState({
+      diagnosisResult: {
+        system_code: "ENGINE_OIL",
+        symptom_code: "ENG_OIL_PRESS_LOW",
+        risk_level: "MEDIUM",
+        suspected_components: ["PRESSURE_SENSOR"],
+        answer: "test",
+        manual_ids: [],
+        recommended_steps: [],
+        view_target_id: "ENGINE_ZONE_GUIDE",
+        confidence: 0.9,
+        is_demo: true,
+      },
+      activeMaintenanceSystem: "ENGINE_OIL",
+      cameraAnimating: false,
+      clickLockUntil: 0,
+    });
+    useAppStore.getState().beginEngineOilInspection();
+    useAppStore.getState().selectObject("PRESSURE_SENSOR");
+    expect(useAppStore.getState().inspectionLevel).toBe("EXTERIOR");
+  });
+
+  it("selectObject respects click transition lock", () => {
+    useAppStore.setState({
+      diagnosisResult: {
+        system_code: "ENGINE_OIL",
+        symptom_code: "ENG_OIL_PRESS_LOW",
+        risk_level: "MEDIUM",
+        suspected_components: ["PRESSURE_SENSOR"],
+        answer: "test",
+        manual_ids: [],
+        recommended_steps: [],
+        view_target_id: "ENGINE_ZONE_GUIDE",
+        confidence: 0.9,
+        is_demo: true,
+      },
+      activeMaintenanceSystem: "ENGINE_OIL",
+      cameraAnimating: false,
+      clickLockUntil: 0,
+    });
+    useAppStore.getState().beginEngineOilInspection();
+    useAppStore.getState().selectObject("ENGINE_ZONE");
+    expect(useAppStore.getState().inspectionLevel).toBe("SYSTEM");
+    // Immediate second click while lock active must not advance
+    useAppStore.setState({ cameraAnimating: false });
+    useAppStore.getState().selectObject("ENGINE_LEFT");
+    expect(useAppStore.getState().inspectionLevel).toBe("SYSTEM");
+  });
+
+  it("goInspectionLevel steps back one level from COMPONENT", () => {
+    useAppStore.setState({
+      diagnosisResult: {
+        system_code: "ENGINE_OIL",
+        symptom_code: "ENG_OIL_PRESS_LOW",
+        risk_level: "MEDIUM",
+        suspected_components: ["PRESSURE_SENSOR"],
+        answer: "test",
+        manual_ids: [],
+        recommended_steps: [],
+        view_target_id: "ENGINE_ZONE_GUIDE",
+        confidence: 0.9,
+        is_demo: true,
+      },
+      activeMaintenanceSystem: "ENGINE_OIL",
+    });
+    useAppStore.getState().beginEngineOilInspection();
+    useAppStore.getState().enterInspectionSystem();
+    useAppStore.getState().enterInspectionAssembly("ENGINE_LEFT");
+    useAppStore.getState().enterInspectionComponent("PRESSURE_SENSOR");
+    useAppStore.getState().goInspectionLevel("ASSEMBLY");
+    expect(useAppStore.getState().inspectionLevel).toBe("ASSEMBLY");
+    useAppStore.getState().goInspectionLevel("SYSTEM");
+    expect(useAppStore.getState().inspectionLevel).toBe("SYSTEM");
   });
 });

@@ -12,6 +12,11 @@ import {
   labelViewTarget,
 } from "../services/displayLabels";
 import { isDebug3DEnabled } from "./maintenance/Debug3DHelpers";
+import { previousInspectionLevel } from "./maintenance/inspectionClick";
+import {
+  notePointerDown,
+  notePointerMove,
+} from "./maintenance/pointerGesture";
 
 type QuickAction = { label: string; onClick: () => void };
 
@@ -49,12 +54,24 @@ function hierarchicalActions(
           onClick: () => enterComponent("HYDRAULIC_SENSOR"),
         },
         { label: "유압 배관", onClick: () => enterComponent("HYDRAULIC_LINE") },
-        { label: "이전 단계", onClick: () => goLevel("SYSTEM") },
+        {
+          label: "이전 단계",
+          onClick: () => {
+            const prev = previousInspectionLevel(level);
+            if (prev) goLevel(prev);
+          },
+        },
       ];
     }
     return [
       { label: "Assembly 보기", onClick: () => goLevel("ASSEMBLY") },
-      { label: "이전 단계", onClick: () => goLevel("ASSEMBLY") },
+      {
+        label: "이전 단계",
+        onClick: () => {
+          const prev = previousInspectionLevel(level);
+          if (prev) goLevel(prev);
+        },
+      },
     ];
   }
 
@@ -75,12 +92,24 @@ function hierarchicalActions(
           onClick: () => enterComponent("GENERATOR_CONTROL"),
         },
         { label: "전기 배선", onClick: () => enterComponent("GENERATOR_WIRING") },
-        { label: "이전 단계", onClick: () => goLevel("SYSTEM") },
+        {
+          label: "이전 단계",
+          onClick: () => {
+            const prev = previousInspectionLevel(level);
+            if (prev) goLevel(prev);
+          },
+        },
       ];
     }
     return [
       { label: "Assembly 보기", onClick: () => goLevel("ASSEMBLY") },
-      { label: "이전 단계", onClick: () => goLevel("ASSEMBLY") },
+      {
+        label: "이전 단계",
+        onClick: () => {
+          const prev = previousInspectionLevel(level);
+          if (prev) goLevel(prev);
+        },
+      },
     ];
   }
 
@@ -93,7 +122,13 @@ function hierarchicalActions(
     return [
       { label: "No.1 엔진", onClick: () => enterAssembly("ENGINE_LEFT") },
       { label: "No.2 엔진", onClick: () => enterAssembly("ENGINE_RIGHT") },
-      { label: "이전 · 외형", onClick: () => goLevel("EXTERIOR") },
+      {
+        label: "이전 · 외형",
+        onClick: () => {
+          const prev = previousInspectionLevel(level);
+          if (prev) goLevel(prev);
+        },
+      },
     ];
   }
   if (level === "ASSEMBLY") {
@@ -104,12 +139,24 @@ function hierarchicalActions(
       },
       { label: "오일 필터", onClick: () => enterComponent("OIL_FILTER") },
       { label: "오일 펌프", onClick: () => enterComponent("OIL_PUMP") },
-      { label: "이전 단계", onClick: () => goLevel("SYSTEM") },
+      {
+        label: "이전 단계",
+        onClick: () => {
+          const prev = previousInspectionLevel(level);
+          if (prev) goLevel(prev);
+        },
+      },
     ];
   }
   return [
     { label: "엔진 전체 보기", onClick: () => goLevel("ASSEMBLY") },
-    { label: "이전 단계", onClick: () => goLevel("ASSEMBLY") },
+    {
+      label: "이전 단계",
+      onClick: () => {
+        const prev = previousInspectionLevel(level);
+        if (prev) goLevel(prev);
+      },
+    },
   ];
 }
 
@@ -239,7 +286,13 @@ export function AircraftViewer() {
         </div>
       </div>
 
-      <div className="relative min-h-0 flex-1">
+      <div
+        className="relative min-h-0 flex-1"
+        onPointerDown={(e) => notePointerDown(e.clientX, e.clientY)}
+        onPointerMove={(e) => {
+          if (e.buttons !== 0) notePointerMove(e.clientX, e.clientY);
+        }}
+      >
         <Canvas
           shadows
           dpr={[1, 1.5]}

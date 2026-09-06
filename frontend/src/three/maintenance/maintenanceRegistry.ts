@@ -180,6 +180,14 @@ export const SYSTEM_REGISTRY: Record<
   },
 };
 
+/** Visual context only — not maintenance drill-down targets */
+export const POWERTRAIN_CONTEXT_OBJECTS = [
+  "DRIVE_SHAFT_LEFT",
+  "DRIVE_SHAFT_RIGHT",
+  "MAIN_GEARBOX",
+  "ROTOR_MAST",
+] as const;
+
 export function isMaintenanceObjectId(id: string): id is MaintenanceObjectId {
   return id in MAINTENANCE_OBJECTS;
 }

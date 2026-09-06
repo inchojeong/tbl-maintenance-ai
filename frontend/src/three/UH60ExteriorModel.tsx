@@ -34,6 +34,7 @@ export function UH60ExteriorModel({
   const { scene } = useGLTF(url);
   const cloned = useMemo(() => scene.clone(true), [scene]);
   const inspectionLevel = useAppStore((s) => s.inspectionLevel);
+  const activeSystem = useAppStore((s) => s.activeMaintenanceSystem);
 
   const fit = useMemo(() => {
     const box = new THREE.Box3().setFromObject(cloned);
@@ -68,10 +69,12 @@ export function UH60ExteriorModel({
     cloned.traverse((obj) => {
       if (!(obj instanceof THREE.Mesh)) return;
       obj.renderOrder = EXTERIOR_RENDER_ORDER;
-      obj.raycast =
-        inspectionLevel === "EXTERIOR"
-          ? THREE.Mesh.prototype.raycast
-          : () => undefined;
+      // ENGINE_OIL EXTERIOR: only zone hit-area receives clicks (not fuselage mesh).
+      const exteriorClickable =
+        inspectionLevel === "EXTERIOR" && activeSystem !== "ENGINE_OIL";
+      obj.raycast = exteriorClickable
+        ? THREE.Mesh.prototype.raycast
+        : () => undefined;
 
       const mats = Array.isArray(obj.material) ? obj.material : [obj.material];
       const localBox = new THREE.Box3().setFromObject(obj);
@@ -94,11 +97,26 @@ export function UH60ExteriorModel({
           mat.transparent = true;
           mat.opacity = baseOpacity * (isHigh ? rotorFactor : 1);
           if (mat.color && mat.userData.__baseColor instanceof THREE.Color) {
+            const desat =
+              inspectionLevel === "ASSEMBLY"
+                ? 0.38
+                : inspectionLevel === "COMPONENT"
+                  ? 0.48
+                  : 0.55;
             mat.color
               .copy(mat.userData.__baseColor as THREE.Color)
-              .lerp(new THREE.Color("#1e293b"), 0.55);
+              .lerp(new THREE.Color("#1e293b"), desat);
+            mat.color.multiplyScalar(
+              inspectionLevel === "ASSEMBLY"
+                ? 0.85
+                : inspectionLevel === "COMPONENT"
+                  ? 0.75
+                  : 0.7,
+            );
           }
           mat.depthWrite = false;
+          if ("metalness" in mat) mat.metalness = Math.min(mat.metalness ?? 0.3, 0.25);
+          if ("roughness" in mat) mat.roughness = Math.max(mat.roughness ?? 0.5, 0.72);
         } else {
           mat.transparent = Boolean(mat.userData.__baseTransparent);
           mat.opacity = (mat.userData.__baseOpacity as number) ?? 1;
@@ -110,10 +128,11 @@ export function UH60ExteriorModel({
         mat.needsUpdate = true;
       });
     });
-  }, [cloned, transparentObjectIds, inspectionLevel, fit]);
+  }, [cloned, transparentObjectIds, inspectionLevel, activeSystem, fit]);
 
   const handleClick = (e: ThreeEvent<MouseEvent>) => {
     if (inspectionLevel !== "EXTERIOR") return;
+    if (activeSystem === "ENGINE_OIL") return;
     e.stopPropagation();
     logDebugPick(e.object, e.point);
     // Upper-deck click → engine zone drill-down

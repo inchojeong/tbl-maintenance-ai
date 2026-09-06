@@ -80,6 +80,7 @@ function ModelSwitcher() {
 
 export function AircraftScene() {
   const controlsRef = useRef<OrbitControlsImpl>(null);
+  const cameraAnimating = useAppStore((s) => s.cameraAnimating);
 
   return (
     <>
@@ -95,6 +96,7 @@ export function AircraftScene() {
       <OrbitControls
         ref={controlsRef}
         makeDefault
+        enabled={!cameraAnimating}
         enableDamping
         maxPolarAngle={Math.PI * 0.49}
         minDistance={0.55}
